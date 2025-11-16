@@ -84,6 +84,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Gifts
       objectReference: {fileID: 0}
+    - target: {fileID: 6510597492889988817, guid: 17a32ee0ebd90a940970b89e4ce7a41e, type: 3}
+      propertyPath: m_TagString
+      value: SmallObstacle
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -131,7 +135,7 @@ BoxCollider2D:
   m_UsedByEffector: 0
   m_CompositeOperation: 0
   m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 1.21}
+  m_Offset: {x: -0.18501997, y: 2.5041003}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0}
@@ -141,5 +145,5 @@ BoxCollider2D:
     drawMode: 0
     adaptiveTiling: 0
   m_AutoTiling: 0
-  m_Size: {x: 6.64, y: 2.42}
+  m_Size: {x: 5.69808, y: 3.3934803}
   m_EdgeRadius: 0

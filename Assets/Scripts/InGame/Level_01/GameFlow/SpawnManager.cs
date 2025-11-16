@@ -44,7 +44,7 @@ public class SpawnManager : MonoBehaviour
 
     // === Spawning methods ===
 
-    private void SpawnObstacle()
+    public void SpawnObstacle()
     {
         GameObject randomObstaclePool = obstaclePools[Random.Range(0, obstaclePools.Length)];
         GameObject obstacleSpawned = randomObstaclePool.GetComponent<ObjectPool>().GetObjectFromPool();
@@ -53,7 +53,7 @@ public class SpawnManager : MonoBehaviour
         InitializeNewFollower(obstacleSpawned, trackIndex);
     }
 
-    private void SpawnPowerup()
+    public void SpawnPowerup()
     {
         GameObject randomPowerupPool = powerupPools[Random.Range(0, powerupPools.Length)];
         GameObject powerupSpawned = randomPowerupPool.GetComponent<ObjectPool>().GetObjectFromPool();
@@ -62,7 +62,7 @@ public class SpawnManager : MonoBehaviour
         InitializeNewFollower(powerupSpawned, trackIndex);
     }
 
-    private void SpawnGoal()
+    public void SpawnGoal()
     {
         GameObject goalSpawned = goalPool.GetComponent<ObjectPool>().GetObjectFromPool();
         int trackIndex = trackManager.Tracks.Count() / 2;

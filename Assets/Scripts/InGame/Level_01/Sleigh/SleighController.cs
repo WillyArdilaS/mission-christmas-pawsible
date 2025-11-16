@@ -24,6 +24,9 @@ public class SleighController : MonoBehaviour
     private Rigidbody2D rb2D;
     private bool isJumping = false;
 
+    // === Properties ===
+    public bool IsJumping => isJumping;
+
     void Awake()
     {
         playerInput = GetComponent<PlayerInput>();

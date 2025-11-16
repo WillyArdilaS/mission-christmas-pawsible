@@ -1,13 +1,14 @@
 using System.Linq;
 using UnityEngine;
 
-[RequireComponent(typeof(CollisionDetector))]
+[RequireComponent(typeof(CollisionManager), typeof(PowerupManager))]
 public class LifeManager : MonoBehaviour
 {
-    // === ===
-    private CollisionDetector collisionDetector;
+    // === Collision ===
+    private CollisionManager collisionManager;
+    private PowerupManager powerupManager;
 
-    // === ===
+    // === Lives ===
     [SerializeField] private GameObject[] livesUI;
     private int lifeCounter;
 
@@ -16,9 +17,10 @@ public class LifeManager : MonoBehaviour
 
     void Awake()
     {
-        collisionDetector = GetComponent<CollisionDetector>();
+        collisionManager = GetComponent<CollisionManager>();
+        powerupManager = GetComponent<PowerupManager>();
 
-        collisionDetector.ObstacleHit += SubstractLife;
+        collisionManager.ObstacleHit += SubstractLife;
 
         lifeCounter = livesUI.Count();
     }
@@ -36,10 +38,12 @@ public class LifeManager : MonoBehaviour
             GameObject lostLife = livesUI.LastOrDefault(life => life.activeSelf == true);
             lostLife.SetActive(false);
             lifeCounter--;
+
+            StartCoroutine(powerupManager.StartInvincibility(0.5f, 0.5f));
         }
     }
 
-    private void ResetLives()
+    public void ResetLives()
     {
         foreach (var life in livesUI)
         {
