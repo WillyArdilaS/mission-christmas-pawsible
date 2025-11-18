@@ -684,6 +684,7 @@ MonoBehaviour:
   - {fileID: 1792892781}
   - {fileID: 1848466113}
   - {fileID: 204216031}
+  trackAvailable: 
 --- !u!1 &579869016
 GameObject:
   m_ObjectHideFlags: 0
@@ -939,6 +940,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 669291715}
+  - component: {fileID: 669291717}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -961,8 +963,27 @@ Transform:
   m_Children:
   - {fileID: 541953542}
   - {fileID: 851067653}
+  - {fileID: 835481634}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &669291717
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 669291713}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 38487a8bcb159c84796d7622ffb3b965, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  gameState: 0
+  minutes: 3
+  seconds: 0
+  currentGameTime: 0
+  playerLifeManager: {fileID: 7022368775244105663}
+  currentLap: 0
 --- !u!1 &737023723
 GameObject:
   m_ObjectHideFlags: 0
@@ -1041,6 +1062,136 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultPoolSize: 5
   objectPrefab: {fileID: 798882806000814447, guid: 3180088e03743304abc923ea4d5db01a, type: 3}
+--- !u!1 &835481633
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 835481634}
+  - component: {fileID: 835481637}
+  - component: {fileID: 835481636}
+  - component: {fileID: 835481635}
+  m_Layer: 0
+  m_Name: RaceManager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &835481634
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 835481633}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 669291715}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &835481635
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 835481633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f1b479b352be1414b9bae900c3add3bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnManager: {fileID: 851067654}
+  difficultyEvents:
+  - minutes: 0
+    seconds: 3
+    spawnedType: 2
+    DoubleSpawnChance: 0
+    newSpawnRate: 0
+    newGlobalSpeed: 6
+  - minutes: 1
+    seconds: 3
+    spawnedType: 2
+    DoubleSpawnChance: 0
+    newSpawnRate: 0
+    newGlobalSpeed: 7
+  - minutes: 2
+    seconds: 3
+    spawnedType: 2
+    DoubleSpawnChance: 0
+    newSpawnRate: 0
+    newGlobalSpeed: 10
+--- !u!114 &835481636
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 835481633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fc7f7b16426c4324aaee1a34da488c2a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnManager: {fileID: 851067655}
+  difficultyEvents:
+  - minutes: 0
+    seconds: 5
+    spawnedType: 1
+    DoubleSpawnChance: 0
+    newSpawnRate: 10
+    newGlobalSpeed: 6
+  - minutes: 0
+    seconds: 35
+    spawnedType: 1
+    DoubleSpawnChance: 0
+    newSpawnRate: 10
+    newGlobalSpeed: 6
+  - minutes: 1
+    seconds: 5
+    spawnedType: 1
+    DoubleSpawnChance: 0
+    newSpawnRate: 8
+    newGlobalSpeed: 7
+--- !u!114 &835481637
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 835481633}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cd06e438b12b8b34096c59fbd24530e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spawnManager: {fileID: 851067656}
+  difficultyEvents:
+  - minutes: 0
+    seconds: 5
+    spawnedType: 0
+    DoubleSpawnChance: 0
+    newSpawnRate: 1.5
+    newGlobalSpeed: 6
+  - minutes: 0
+    seconds: 20
+    spawnedType: 0
+    DoubleSpawnChance: 0.5
+    newSpawnRate: 1.5
+    newGlobalSpeed: 7
+  - minutes: 1
+    seconds: 5
+    spawnedType: 0
+    DoubleSpawnChance: 0.5
+    newSpawnRate: 1.2
+    newGlobalSpeed: 7
 --- !u!1 &851067652
 GameObject:
   m_ObjectHideFlags: 0
@@ -1050,6 +1201,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 851067653}
+  - component: {fileID: 851067656}
+  - component: {fileID: 851067655}
   - component: {fileID: 851067654}
   m_Layer: 0
   m_Name: SpawnManager
@@ -1082,20 +1235,52 @@ MonoBehaviour:
   m_GameObject: {fileID: 851067652}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 41484ebdaf19a44439bdb9ee9968613f, type: 3}
+  m_Script: {fileID: 11500000, guid: 1016a9528256ef847bc99fd976682814, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spanwedType: 2
+  spawnRate: 0
+  globalSpeed: 0
+  objectPools:
+  - {fileID: 1979320539}
+--- !u!114 &851067655
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 851067652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: edf38889e0c6a8d4c88c7333a134cd75, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  spanwedType: 1
+  spawnRate: 0
+  globalSpeed: 0
+  objectPools:
+  - {fileID: 1296770119}
+--- !u!114 &851067656
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 851067652}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0bd67a5834abe5147bdb0bc64568afb4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spanwedType: 0
-  globalSpeed: 7
-  obstaclePools:
+  spawnRate: 0
+  globalSpeed: 0
+  objectPools:
   - {fileID: 1201131004}
   - {fileID: 210772823}
   - {fileID: 808101162}
   - {fileID: 1634868102}
   - {fileID: 1817506586}
-  powerupPools:
-  - {fileID: 1296770119}
-  goalPool: {fileID: 1979320539}
 --- !u!1 &946461952
 GameObject:
   m_ObjectHideFlags: 0
@@ -2157,7 +2342,7 @@ GameObject:
   - component: {fileID: 7022368775244105663}
   - component: {fileID: 8226297058670126729}
   m_Layer: 0
-  m_Name: Sleigh
+  m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

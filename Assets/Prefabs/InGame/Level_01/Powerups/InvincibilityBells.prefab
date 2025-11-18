@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: data
       value: 
       objectReference: {fileID: 11400000, guid: d00ca1d2c45c666458f25a7d21d732e1, type: 2}
+    - target: {fileID: -59820336432476768, guid: 121ccc8841be8f14d82797e5e30b3e68, type: 3}
+      propertyPath: powerupData
+      value: 
+      objectReference: {fileID: 11400000, guid: d00ca1d2c45c666458f25a7d21d732e1, type: 2}
     - target: {fileID: 4088022004584035929, guid: 121ccc8841be8f14d82797e5e30b3e68, type: 3}
       propertyPath: m_Name
       value: InvincibilityBells

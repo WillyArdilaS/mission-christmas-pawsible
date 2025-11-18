@@ -14,11 +14,13 @@ public class SleighController : MonoBehaviour
     [SerializeField] private Sprite[] sleighSprites;
     private SpriteRenderer spriteRend;
     private Collider2D col2D;
+    private Vector2 originalColliderOffset;
 
     // === Movement ===
     [SerializeField] private Transform[] tracks;
+    private int originalTrackIndex;
     private int currentTrackIndex;
-
+    
     // === Jump ===
     [SerializeField] private float jumpForce;
     private Rigidbody2D rb2D;
@@ -34,6 +36,7 @@ public class SleighController : MonoBehaviour
         col2D = GetComponent<Collider2D>();
         rb2D = GetComponent<Rigidbody2D>();
 
+        GameManager.instance.LapRestarted += RestartPosition;
         playerInput.onActionTriggered += OnActionTriggered;
 
         tracks = tracks.OrderBy(track => track.transform.position.x).ToArray();
@@ -43,6 +46,9 @@ public class SleighController : MonoBehaviour
         {
             Debug.LogWarning($"No se encontró un track con la misma posición X que {gameObject.name}");
         }
+
+        originalTrackIndex = currentTrackIndex;
+        originalColliderOffset = col2D.offset;
     }
 
     void Update()
@@ -90,5 +96,14 @@ public class SleighController : MonoBehaviour
     {
         isJumping = true;
         rb2D.AddForceY(jumpForce, ForceMode2D.Impulse);
+    }
+
+    private void RestartPosition()
+    {
+        currentTrackIndex = originalTrackIndex;
+        
+        transform.position = new Vector2(tracks[originalTrackIndex].position.x, transform.position.y);
+        spriteRend.sprite = sleighSprites[originalTrackIndex];
+        col2D.offset = originalColliderOffset;
     }
 }

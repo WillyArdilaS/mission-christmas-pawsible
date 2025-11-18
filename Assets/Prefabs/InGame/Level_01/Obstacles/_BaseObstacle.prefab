@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 970375731966937271}
   - component: {fileID: 5373282691363677318}
   - component: {fileID: 1839997597375824385}
+  - component: {fileID: 8995302801919566113}
   m_Layer: 0
   m_Name: _BaseObstacle
   m_TagString: Untagged
@@ -126,3 +127,16 @@ MonoBehaviour:
     m_RotationOrder: 4
   minScale: 0
   maxScale: 0
+  releaseDistance: 15
+--- !u!114 &8995302801919566113
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6510597492889988817}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c68b88c6b0482f543b4cf624b41dce94, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

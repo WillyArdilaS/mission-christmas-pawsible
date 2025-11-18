@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class PowerupData : ScriptableObject
 {
-    // === Data fields ===
+    // === Data Fields ===
     public enum PowerupType { Invincibility }
     [SerializeField] private PowerupType powerupType;
     [SerializeField] protected float duration;

@@ -27,7 +27,7 @@ public class LifeManager : MonoBehaviour
 
     public void AddLife()
     {
-        livesUI.LastOrDefault(life => life.activeSelf == false).SetActive(true);
+        livesUI.FirstOrDefault(life => life.activeSelf == false).SetActive(true);
         lifeCounter++;
     }
 

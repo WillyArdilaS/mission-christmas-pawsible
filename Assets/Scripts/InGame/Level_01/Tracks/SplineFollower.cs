@@ -13,7 +13,7 @@ public class SplineFollower : MonoBehaviour
     private float speed;
     private float distanceTraveled;
     private float totalLength;
-    private bool isActive = false;
+    private bool isActive;
 
     public void InitializeFollower(SplineContainer spline, float speed)
     {
