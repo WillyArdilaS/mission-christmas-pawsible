@@ -2,10 +2,10 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class GameManager : MonoBehaviour
+public class GameManagerLevel1 : MonoBehaviour
 {
     // === Singleton ===
-    public static GameManager instance;
+    public static GameManagerLevel1 instance;
 
     // === Managers ===
     private GameObject raceManager;

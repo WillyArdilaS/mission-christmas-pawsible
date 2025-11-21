@@ -36,7 +36,7 @@ public class SleighController : MonoBehaviour
         col2D = GetComponent<Collider2D>();
         rb2D = GetComponent<Rigidbody2D>();
 
-        GameManager.instance.LapRestarted += RestartPosition;
+        GameManagerLevel1.instance.LapRestarted += RestartPosition;
         playerInput.onActionTriggered += OnActionTriggered;
 
         tracks = tracks.OrderBy(track => track.transform.position.x).ToArray();

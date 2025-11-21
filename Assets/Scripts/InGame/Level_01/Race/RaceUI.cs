@@ -4,22 +4,22 @@ using UnityEngine;
 public class RaceUI : MonoBehaviour
 {
     // === Laps ===
-    [SerializeField] private TextMeshProUGUI lapsCounter;
+    [SerializeField] private TextMeshProUGUI lapCounter;
     [SerializeField] private int totalLaps;
     private int currentLap = 0;
 
     void Update()
     {
-        if (currentLap == GameManager.instance.CurrentLap) return;
+        if (currentLap == GameManagerLevel1.instance.CurrentLap) return;
 
-        currentLap = GameManager.instance.CurrentLap;
+        currentLap = GameManagerLevel1.instance.CurrentLap;
         if (currentLap == 0)
         {
-            lapsCounter.text = "";
+            lapCounter.text = "";
         }
         else
         {
-            lapsCounter.text = $"{currentLap}/{totalLaps}";
+            lapCounter.text = $"{currentLap}/{totalLaps}";
         }
     }
 }

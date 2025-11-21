@@ -21,7 +21,7 @@ public class SpawnManagerBase : MonoBehaviour
 
     void Start()
     {
-        trackManager = GameManager.instance.TrackManager.GetComponent<TrackManager>();
+        trackManager = GameManagerLevel1.instance.TrackManager.GetComponent<TrackManager>();
     }
 
     // === Spawning Methods ===
@@ -76,7 +76,7 @@ public class SpawnManagerBase : MonoBehaviour
 
     private IEnumerator ReleaseTrackNextFrame(int index)
     {
-        yield return new WaitForSeconds(1); // espera 1 frame
+        yield return new WaitForSeconds(1);
         trackManager.SetTrackAvailable(index, true);
     }
 }

@@ -11,8 +11,8 @@ public class MinimapUI : MonoBehaviour
     void Update()
     {
         // Calculate progress relative to the current lap
-        float currentTime = GameManager.instance.CurrentGameTime;
-        currentRaceProgress = (currentTime % GameManager.instance.LapDuration) / GameManager.instance.LapDuration;
+        float currentTime = GameManagerLevel1.instance.CurrentGameTime;
+        currentRaceProgress = (currentTime % GameManagerLevel1.instance.LapDuration) / GameManagerLevel1.instance.LapDuration;
         currentRaceProgress = Mathf.Clamp01(currentRaceProgress);
 
         // Evaluate spline and convert it to screen point

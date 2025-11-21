@@ -4,7 +4,7 @@ public class ObjectDespawner : MonoBehaviour
 {
     void Start()
     {
-        GameManager.instance.LapRestarted += Despawn;
+        GameManagerLevel1.instance.LapRestarted += Despawn;
     }
 
     private void Despawn()

@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 [Serializable]
-public class DifficultyEventData
+public class DifficultyEventLevel1Data
 {
     // === Settings ===
     [Header("Time Settings")]
@@ -11,7 +11,7 @@ public class DifficultyEventData
 
     [Header("Spawn Settings")]
     [SerializeField] private SpawnManagerBase.SpanwedType spawnedType;
-    [SerializeField, Range(0f, 1f), Tooltip("Only for obstacles")] public float DoubleSpawnChance;
+    [SerializeField, Range(0f, 1f), Tooltip("Only for obstacles")] private float doubleSpawnChance;
     [SerializeField, Tooltip("Only for obstacles and powerups")] private float newSpawnRate;
     [SerializeField] private float newGlobalSpeed;
     
@@ -19,6 +19,7 @@ public class DifficultyEventData
     public int Minutes => minutes;
     public int Seconds => seconds;
     public SpawnManagerBase.SpanwedType SpawnedType => spawnedType;
+    public float DoubleSpawnChance => doubleSpawnChance;
     public float NewSpawnRate => newSpawnRate;
     public float NewGlobalSpeed => newGlobalSpeed;
 }

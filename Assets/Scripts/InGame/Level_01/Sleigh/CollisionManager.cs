@@ -33,6 +33,6 @@ public class CollisionManager : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Goal")) GameManager.instance.CurrentLap++;
+        if (collision.CompareTag("Goal")) GameManagerLevel1.instance.CurrentLap++;
     }
 }

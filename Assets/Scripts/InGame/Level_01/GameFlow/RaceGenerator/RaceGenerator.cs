@@ -11,8 +11,8 @@ public class RaceGenerator : MonoBehaviour
     private float spawnTimer = 0f;
 
     // === Difficulty events management ===
-    [SerializeField] private DifficultyEventData[] difficultyEvents;
-    private DifficultyEventData currentDifficultyEvent;
+    [SerializeField] private DifficultyEventLevel1Data[] difficultyEvents;
+    private DifficultyEventLevel1Data currentDifficultyEvent;
     private readonly List<int> originalDifficultyEventTimes = new();
     private Queue<int> pendingTimes;
     private int currentGlobalTime = 0;
@@ -34,7 +34,7 @@ public class RaceGenerator : MonoBehaviour
 
     void Update()
     {
-        currentGlobalTime = GameManager.instance.CurrentGameTime;
+        currentGlobalTime = GameManagerLevel1.instance.CurrentGameTime;
 
         // Check if there are pending timestamps AND if the current time matches the next scheduled timestamp
         if (pendingTimes.Count > 0 && currentGlobalTime == pendingTimes.Peek())
@@ -52,7 +52,7 @@ public class RaceGenerator : MonoBehaviour
     public void InitializeRace()
     {
         currentDifficultyEvent = null;
-        currentGlobalTime = GameManager.instance.CurrentGameTime;
+        currentGlobalTime = GameManagerLevel1.instance.CurrentGameTime;
         currentSpawnRate = 0f;
         spawnTimer = 0f;
         pendingTimes = new Queue<int>(originalDifficultyEventTimes);
@@ -72,7 +72,7 @@ public class RaceGenerator : MonoBehaviour
         pendingTimes = filtered;
     }
 
-    private IEnumerator ChangeDifficulty(DifficultyEventData difficultyEvent)
+    private IEnumerator ChangeDifficulty(DifficultyEventLevel1Data difficultyEvent)
     {
         spawnManager.SpawnRate = difficultyEvent.NewSpawnRate;
         spawnManager.GlobalSpeed = difficultyEvent.NewGlobalSpeed;
