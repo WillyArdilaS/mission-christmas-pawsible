@@ -20,16 +20,25 @@ public class SkaterFoxController : MonoBehaviour
     [SerializeField] private float reboundForce;
     private float normalDamping = 0f;
     private Rigidbody2D rb2D;
-    private SpriteRenderer spriteRend;
     private Vector2 movementInput;
+
+    // === Sprite ===
+    [Header("Sprite")]
+    [SerializeField] private Vector2 newColliderOffset;
+    private SpriteRenderer spriteRend;
+    private Collider2D col2D;
+    private Vector2 originalColliderOffset;
 
     void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
         rb2D = GetComponent<Rigidbody2D>();
         spriteRend = GetComponent<SpriteRenderer>();
+        col2D = GetComponent<Collider2D>();
 
         moveAction = playerInput.actions["Move"];
+        
+        originalColliderOffset = col2D.offset;
     }
 
     void FixedUpdate()
@@ -64,5 +73,16 @@ public class SkaterFoxController : MonoBehaviour
     {
         rb2D.AddForceX(xInput * speed * Time.deltaTime, ForceMode2D.Force);
         spriteRend.flipX = xInput > 0;
+
+        if (xInput > 0)
+        {
+            spriteRend.flipX = true;
+            col2D.offset = newColliderOffset;
+        }
+        else
+        {
+            spriteRend.flipX = false;
+            col2D.offset = originalColliderOffset;
+        }
     }
 }

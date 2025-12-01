@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Berry
       objectReference: {fileID: 0}
+    - target: {fileID: 4050585700334585522, guid: 0e57a1253c94bcc4cb5a3e95595b5631, type: 3}
+      propertyPath: m_TagString
+      value: Berry
+      objectReference: {fileID: 0}
     - target: {fileID: 6293737720129816722, guid: 0e57a1253c94bcc4cb5a3e95595b5631, type: 3}
       propertyPath: m_Sprite
       value: 
@@ -65,7 +69,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4050585700334585522, guid: 0e57a1253c94bcc4cb5a3e95595b5631, type: 3}
-      insertIndex: -1
+      insertIndex: 3
       addedObject: {fileID: -3894032558239808998}
   m_SourcePrefab: {fileID: 100100000, guid: 0e57a1253c94bcc4cb5a3e95595b5631, type: 3}
 --- !u!1 &7756224851543414005 stripped

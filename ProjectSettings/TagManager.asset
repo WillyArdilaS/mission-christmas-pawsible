@@ -6,8 +6,11 @@ TagManager:
   tags:
   - SmallObstacle
   - BigObstacle
-  - Undefined
   - Goal
+  - Berry
+  - Orange
+  - Pinecone
+  - Coal
   layers:
   - Default
   - TransparentFX

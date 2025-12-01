@@ -12,6 +12,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Orange
       objectReference: {fileID: 0}
+    - target: {fileID: 4050585700334585522, guid: 0e57a1253c94bcc4cb5a3e95595b5631, type: 3}
+      propertyPath: m_TagString
+      value: Orange
+      objectReference: {fileID: 0}
     - target: {fileID: 6293737720129816722, guid: 0e57a1253c94bcc4cb5a3e95595b5631, type: 3}
       propertyPath: m_Size.x
       value: 2.47
@@ -73,7 +77,7 @@ PrefabInstance:
     m_AddedGameObjects: []
     m_AddedComponents:
     - targetCorrespondingSourceObject: {fileID: 4050585700334585522, guid: 0e57a1253c94bcc4cb5a3e95595b5631, type: 3}
-      insertIndex: -1
+      insertIndex: 3
       addedObject: {fileID: 2013801287036477021}
   m_SourcePrefab: {fileID: 100100000, guid: 0e57a1253c94bcc4cb5a3e95595b5631, type: 3}
 --- !u!1 &4733449226912799911 stripped

@@ -1,11 +1,11 @@
 using System.Linq;
 using UnityEngine;
 
-[RequireComponent(typeof(CollisionManager), typeof(PowerupManager))]
+[RequireComponent(typeof(CollisionManagerLevel1), typeof(PowerupManager))]
 public class LifeManager : MonoBehaviour
 {
     // === Collision ===
-    private CollisionManager collisionManager;
+    private CollisionManagerLevel1 collisionManager;
     private PowerupManager powerupManager;
 
     // === Lives ===
@@ -17,7 +17,7 @@ public class LifeManager : MonoBehaviour
 
     void Awake()
     {
-        collisionManager = GetComponent<CollisionManager>();
+        collisionManager = GetComponent<CollisionManagerLevel1>();
         powerupManager = GetComponent<PowerupManager>();
 
         collisionManager.ObstacleHit += SubstractLife;

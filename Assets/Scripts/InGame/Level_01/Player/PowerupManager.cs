@@ -1,12 +1,12 @@
 using System.Collections;
 using UnityEngine;
 
-[RequireComponent(typeof(SpriteRenderer), typeof(CollisionManager))]
+[RequireComponent(typeof(SpriteRenderer), typeof(CollisionManagerLevel1))]
 public class PowerupManager : MonoBehaviour
 {
     // === Invincibility ===
     private SpriteRenderer spriteRend;
-    private CollisionManager collisionManager;
+    private CollisionManagerLevel1 collisionManager;
 
     // === Fade Settings ===
     [SerializeField] protected float fadeBlinkDuration;
@@ -19,7 +19,7 @@ public class PowerupManager : MonoBehaviour
     void Awake()
     {
         spriteRend = GetComponent<SpriteRenderer>();
-        collisionManager = GetComponent<CollisionManager>();
+        collisionManager = GetComponent<CollisionManagerLevel1>();
     }
 
     public void ApplyPowerup(PowerupData data)

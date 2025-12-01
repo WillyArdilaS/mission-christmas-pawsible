@@ -2,7 +2,7 @@ using System;
 using UnityEngine;
 
 [RequireComponent(typeof(SleighController))]
-public class CollisionManager : MonoBehaviour
+public class CollisionManagerLevel1 : MonoBehaviour
 {
     // === Sleigh ===
     private SleighController sleighController;

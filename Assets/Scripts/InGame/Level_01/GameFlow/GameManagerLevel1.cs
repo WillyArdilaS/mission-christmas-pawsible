@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
+[DefaultExecutionOrder(-1)]
 public class GameManagerLevel1 : MonoBehaviour
 {
     // === Singleton ===
@@ -16,7 +17,7 @@ public class GameManagerLevel1 : MonoBehaviour
     [SerializeField] private GameState gameState = GameState.Playing;
 
     // === Game Timer ===
-    [Header("Game duration")]
+    [Header("Game Duration")]
     [SerializeField, Min(0)] private int minutes;
     [SerializeField, Range(0, 59)] private int seconds;
     [SerializeField] private int currentGameTime = 0;

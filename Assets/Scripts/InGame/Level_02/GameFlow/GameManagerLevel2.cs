@@ -1,6 +1,9 @@
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
+[DefaultExecutionOrder(-1)]
 public class GameManagerLevel2 : MonoBehaviour
 {
     // === Singleton ===
@@ -8,37 +11,32 @@ public class GameManagerLevel2 : MonoBehaviour
 
     // === Managers ===
     private GameObject spawnManager;
+    private GameObject scoreManager;
 
     // === States ===
-    public enum GameState { Playing, InPause }
+    public enum GameState { Playing, InPause, Finishing }
     [SerializeField] private GameState gameState = GameState.Playing;
 
     // === Game Timer ===
-    [Header("Game duration")]
-    [SerializeField, Min(0)] private int minutes;
-    [SerializeField, Range(0, 59)] private int seconds;
+    [Header("Game Timer")]
     [SerializeField] private int currentGameTime = 0;
-    private int gameDuration;
 
     // === Fruits ===
     [Header("Fruits")]
     [SerializeField] private int requiredBerries;
     [SerializeField] private int requiredOranges;
     [SerializeField] private int requiredPinecones;
-    private int berriesCounter;
-    private int orangesCounter;
-    private int pineconesCounter;
+    private Dictionary<string, int> requiredFruitsDictionary;
 
     // === Coroutines ===
     private Coroutine gameTimerRoutine;
 
-    // === Events ===
-    
     // === Properties ===
     public GameObject SpawnManager => spawnManager;
+    public GameObject ScoreManager => scoreManager;
     public GameState State { get => gameState; set => gameState = value; }
     public int CurrentGameTime => currentGameTime;
-    public int TotalGameDuration => gameDuration;
+    public Dictionary<string, int> RequiredFruitsDictionary => requiredFruitsDictionary;
 
     void Awake()
     {
@@ -55,8 +53,7 @@ public class GameManagerLevel2 : MonoBehaviour
             Destroy(gameObject);
         }
 
-        // Initialize timer
-        gameDuration = (minutes * 60) + seconds;
+        InitializeDictionary();
 
         if (gameTimerRoutine != null) StopCoroutine(gameTimerRoutine);
         gameTimerRoutine = StartCoroutine(StartGameTimer());
@@ -64,20 +61,41 @@ public class GameManagerLevel2 : MonoBehaviour
 
     void Update()
     {
-        
+        if(scoreManager.GetComponent<ScoreManager>().FruitsDictionary.All(fruit => fruit.Value >= requiredFruitsDictionary[fruit.Key]))
+        {
+            FinishGame();
+        }
     }
 
     private void InitializeManagers()
     {
         if (spawnManager == null) spawnManager = transform.Find("SpawnManager").gameObject;
+        if (scoreManager == null) scoreManager = transform.Find("ScoreManager").gameObject;
+    }
+
+    private void InitializeDictionary()
+    {
+        requiredFruitsDictionary = new()
+        {
+            {"Berry", requiredBerries},
+            {"Orange", requiredOranges},
+            {"Pinecone", requiredPinecones},
+        };
     }
 
     private IEnumerator StartGameTimer()
     {
-        while (currentGameTime < gameDuration)
+        while (gameState == GameState.Playing)
         {
             yield return new WaitForSeconds(1);
             currentGameTime++;
         }
+    }
+
+    private void FinishGame()
+    {
+        Debug.Log("Juego finalizado...");
+        gameState = GameState.Finishing;
+        Time.timeScale = 0;
     }
 }
