@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -25,10 +26,13 @@ public class FoxController : MonoBehaviour
     private float targetYRotation = 180f;
 
     // === Enter The House ===
-    private bool isEntering = false;
+    private bool isGoingInside = false;
+
+    // === Events ===
+    public event Action GoInsidePressed;
 
     // === Properties ===
-    public bool IsEntering { get => isEntering; set => isEntering = value; }
+    public bool IsGoingInside { get => isGoingInside; set => isGoingInside = value; }
 
     void Awake()
     {
@@ -90,9 +94,13 @@ public class FoxController : MonoBehaviour
 
     private void OnActionTriggered(InputAction.CallbackContext ctx)
     {
-        if (ctx.action.actionMap.name == "Player" && ctx.started)
+        if (ctx.action.actionMap.name == "Player" && ctx.performed)
         {
-            if (ctx.action.name == "Go Inside") isEntering = true;
+            if (ctx.action.name == "Go Inside" && !isGoingInside)
+            {
+                isGoingInside = true;
+                GoInsidePressed?.Invoke();
+            }
         }
     }
 }

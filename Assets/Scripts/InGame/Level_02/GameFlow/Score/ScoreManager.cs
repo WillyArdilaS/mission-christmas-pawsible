@@ -5,7 +5,7 @@ using UnityEngine;
 public class ScoreManager : MonoBehaviour
 {
     // === Player ===
-    [SerializeField] private GameObject player;
+    private GameObject player;
 
     // === Counters ===
     private int berriesCounter = 0;
@@ -23,6 +23,7 @@ public class ScoreManager : MonoBehaviour
 
     void Awake()
     {
+        player = GameObject.FindGameObjectWithTag("Player");
         player.GetComponent<CollisionManagerLevel2>().FruitRecolected += AddPoint;
         player.GetComponent<CollisionManagerLevel2>().CoalRecolected += SubstractPoint;
 

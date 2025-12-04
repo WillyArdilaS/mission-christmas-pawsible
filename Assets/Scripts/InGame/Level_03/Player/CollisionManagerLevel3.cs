@@ -4,7 +4,9 @@ using UnityEngine;
 [RequireComponent(typeof(FoxController))]
 public class CollisionManagerLevel3 : MonoBehaviour
 {
+    // === Player ===
     private FoxController foxController;
+    private bool goInsidePressedThisFrame = false;
 
     // === Events ===
     public event Action<int> HouseEntered;
@@ -12,14 +14,24 @@ public class CollisionManagerLevel3 : MonoBehaviour
     void Awake()
     {
         foxController = GetComponent<FoxController>();
+        foxController.GoInsidePressed += HandleGoInside;
+    }
+
+    private void HandleGoInside()
+    {
+        goInsidePressedThisFrame = true;
     }
 
     void OnTriggerStay2D(Collider2D collision)
     {
-        if (foxController.IsEntering)
+        if (!goInsidePressedThisFrame) return;
+
+        if (collision.TryGetComponent(out HouseLightController house))
         {
-            int triggerID = collision.GetComponent<HouseLightController>().HouseID;
-            HouseEntered?.Invoke(triggerID);
+            HouseEntered?.Invoke(house.HouseID);
+            foxController.IsGoingInside = false;
         }
+
+        goInsidePressedThisFrame = false;
     }
 }

@@ -1,9 +1,10 @@
+using System;
 using UnityEngine;
 
 public class HouseLightController : MonoBehaviour
 {
     // === Player ===
-    private GameObject player;
+    private CollisionManagerLevel3 collisionManager;
 
     // === House ===
     [SerializeField] private int houseID;
@@ -12,29 +13,30 @@ public class HouseLightController : MonoBehaviour
     private GameObject houseLight;
     private bool isOn = false;
 
+    // === Events ===
+    public event Action<HouseLightController> LightSwitched;
+
     // === Properties ===
     public int HouseID => houseID;
     public bool IsOn => isOn;
 
     void Awake()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        var player = GameObject.FindGameObjectWithTag("Player");
+        collisionManager = player.GetComponent<CollisionManagerLevel3>();
+
         houseLight = transform.GetChild(0).gameObject;
+        houseLight.SetActive(false);
 
-        player.GetComponent<CollisionManagerLevel3>().HouseEntered += SwitchLight;
-    }
-
-    void Update()
-    {
-        houseLight.SetActive(isOn);
+        collisionManager.HouseEntered += SwitchLight;
     }
 
     private void SwitchLight(int triggerID)
     {
-        if (triggerID == houseID)
-        {
-            isOn = !isOn;
-            player.GetComponent<FoxController>().IsEntering = false;
-        }
+        if (triggerID != houseID) return;
+
+        isOn = !isOn;
+        houseLight.SetActive(isOn);
+        LightSwitched?.Invoke(this);
     }
 }
