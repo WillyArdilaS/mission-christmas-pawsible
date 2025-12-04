@@ -24,11 +24,18 @@ public class FoxController : MonoBehaviour
     [SerializeField] private float rotationSpeed;
     private float targetYRotation = 180f;
 
+    // === Enter The House ===
+    private bool isEntering = false;
+
+    // === Properties ===
+    public bool IsEntering { get => isEntering; set => isEntering = value; }
+
     void Awake()
     {
         playerInput = GetComponent<PlayerInput>();
         rb2D = GetComponent<Rigidbody2D>();
 
+        playerInput.onActionTriggered += OnActionTriggered;
         moveAction = playerInput.actions["Move"];
     }
 
@@ -36,7 +43,7 @@ public class FoxController : MonoBehaviour
     {
         // Predict next X position
         float xInput = movementInput.x;
-        
+
         Vector2 currentPos = rb2D.position;
         float desiredVelocity = xInput * speed;
         float nextXPos = currentPos.x + desiredVelocity * Time.fixedDeltaTime;
@@ -79,5 +86,13 @@ public class FoxController : MonoBehaviour
         // Interpolate to the target rotation
         Quaternion targetRot = Quaternion.Euler(0, targetYRotation, 0);
         transform.rotation = Quaternion.Lerp(transform.rotation, targetRot, rotationSpeed * Time.deltaTime);
+    }
+
+    private void OnActionTriggered(InputAction.CallbackContext ctx)
+    {
+        if (ctx.action.actionMap.name == "Player" && ctx.started)
+        {
+            if (ctx.action.name == "Go Inside") isEntering = true;
+        }
     }
 }
