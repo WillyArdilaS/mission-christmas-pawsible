@@ -68,7 +68,7 @@ public class SleighController : MonoBehaviour
                 case "Move Right":
                     ChangeTrack(1);
                     break;
-                case "Jump / Go Inside":
+                case "Jump":
                     Jump();
                     break;
                 default:

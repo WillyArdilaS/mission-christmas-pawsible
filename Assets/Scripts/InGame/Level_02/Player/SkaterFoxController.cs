@@ -2,6 +2,7 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 
 [RequireComponent(typeof(PlayerInput), typeof(Rigidbody2D), typeof(SpriteRenderer))]
+[RequireComponent(typeof(Collider2D))]
 public class SkaterFoxController : MonoBehaviour
 {
     // === Input ===
@@ -50,29 +51,27 @@ public class SkaterFoxController : MonoBehaviour
         if (movementInput.x != 0) MovePlayer(movementInput.x);
 
         // Check that the player doesn't exceed the horizontal limits
-        Vector2 xPosition = rb2D.position;
+        Vector2 position = rb2D.position;
 
-        if (xPosition.x < minXPos)
+        if (position.x < minXPos)
         {
-            xPosition.x = minXPos;
-            rb2D.position = xPosition;
+            position.x = minXPos;
+            rb2D.position = position;
             rb2D.linearVelocityX = 0;
-            rb2D.AddForceX(reboundForce, ForceMode2D.Impulse); // Rebote hacia la derecha
+            rb2D.AddForceX(reboundForce, ForceMode2D.Impulse); // Bounce to the right
         }
-        else if (xPosition.x > maxXPos)
+        else if (position.x > maxXPos)
         {
-            xPosition.x = maxXPos;
-            rb2D.position = xPosition;
+            position.x = maxXPos;
+            rb2D.position = position;
             rb2D.linearVelocityX = 0;
-            rb2D.AddForceX(-reboundForce, ForceMode2D.Impulse); // Rebote hacia la izquierda
+            rb2D.AddForceX(-reboundForce, ForceMode2D.Impulse); // Bounce to the left
         }
-
     }
 
     private void MovePlayer(float xInput)
     {
         rb2D.AddForceX(xInput * speed * Time.deltaTime, ForceMode2D.Force);
-        spriteRend.flipX = xInput > 0;
 
         if (xInput > 0)
         {
