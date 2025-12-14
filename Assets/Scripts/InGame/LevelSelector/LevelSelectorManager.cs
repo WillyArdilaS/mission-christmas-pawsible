@@ -6,26 +6,37 @@ public class LevelSelectorManager : MonoBehaviour
     // === Singleton ===
     public static LevelSelectorManager instance;
 
-    // === Managers ===
-    private InputManager inputManager;
-
     // === State ===
     public enum NextLevel { Level_01, Level_02, Level_03, Finished };
-    public static NextLevel nextLevel = NextLevel.Level_01;
+    public NextLevel nextLevel = NextLevel.Level_01;
 
     void Awake()
     {
         if (instance == null)
         {
             instance = this;
+            DontDestroyOnLoad(gameObject);
         }
         else
         {
             Destroy(gameObject);
         }
+    }
 
-        inputManager = GetComponentInChildren<InputManager>();
-        inputManager.LevelSelected += SelectLevel;
+    void OnEnable()
+    {
+        GlobalGameManager.instance.InputManager.SelectLevelPressed += SelectLevel;
+    }
+
+    void OnDisable()
+    {
+        if (GlobalGameManager.instance != null) GlobalGameManager.instance.InputManager.SelectLevelPressed -= SelectLevel;
+    }
+
+    public void ResetLevelSelector()
+    {
+        gameObject.SetActive(true);
+        nextLevel = NextLevel.Level_01;
     }
 
     private void SelectLevel()
@@ -50,5 +61,6 @@ public class LevelSelectorManager : MonoBehaviour
     private void ChangeScene(string sceneName)
     {
         GlobalGameManager.instance.SceneSwitchManager.StartLoadScene(sceneName);
+        gameObject.SetActive(false);
     }
 }

@@ -16,6 +16,11 @@ public class SceneSwitchManager : MonoBehaviour
         transitionAnim = GetComponentInChildren<Animator>();    
     }
 
+    public string GetCurrentScene()
+    {
+        return SceneManager.GetActiveScene().name;
+    }
+
     public void StartLoadScene(string sceneName)
     {
         if (loadSceneRoutine != null) StopCoroutine(loadSceneRoutine);

@@ -3761,6 +3761,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: SnowTransition
       objectReference: {fileID: 0}
+    - target: {fileID: 1368581726147164884, guid: e16dd04eb49ecb048a1ca7e9c16c1260, type: 3}
+      propertyPath: gameManager
+      value: 
+      objectReference: {fileID: 2019467883}
     - target: {fileID: 2833561502718884663, guid: e16dd04eb49ecb048a1ca7e9c16c1260, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

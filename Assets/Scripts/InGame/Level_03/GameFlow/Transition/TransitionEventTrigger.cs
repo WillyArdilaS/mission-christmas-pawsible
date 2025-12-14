@@ -2,25 +2,18 @@ using UnityEngine;
 
 public class TransitionEventTrigger : MonoBehaviour
 {
-    // === Game Manager Type ===
-    public enum GameManager { Level1, Level3 };
-    [SerializeField] private GameManager gameManager;
-
-    // === Manager ===
+    [SerializeField] private AbstractGameManager gameManager;
     private TransitionManager transitionManager;
 
     void Awake()
     {
-        switch (gameManager)
+        if (gameManager != null)
         {
-            // case GameManager.Level1: 
-            //     transitionManager = GameManagerLevel1.instance.TransitionManager.GetComponent<TransitionManager>();
-            //     break;
-            case GameManager.Level3: 
-                transitionManager = GameManagerLevel3.instance.TransitionManager.GetComponent<TransitionManager>();
-                break;
+            transitionManager = gameManager.TransitionManager.GetComponent<TransitionManager>();
+        } else
+        {
+            Debug.LogWarning($"No se le ha asignado un GameManager a {name}");
         }
-        
     }
 
     public void TriggerTransitionFinished()

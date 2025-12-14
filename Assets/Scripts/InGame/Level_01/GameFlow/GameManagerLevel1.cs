@@ -88,11 +88,11 @@ public class GameManagerLevel1 : AbstractGameManager
     {
         if (playerLifeManager.LifeCounter == 0 && hasExtraLife)
         {
-            RestartLap();
+            ResetLap();
         }
         else if (playerLifeManager.LifeCounter == 0 && !hasExtraLife)
         {
-            RestartRace();
+            ResetRace();
         }
     }
 
@@ -106,7 +106,7 @@ public class GameManagerLevel1 : AbstractGameManager
         }
     }
 
-    private void RestartLap()
+    private void ResetLap()
     {
         int lapStartTime = (currentGameTime / LAP_DURATION) * LAP_DURATION;
         currentGameTime = lapStartTime;
@@ -126,7 +126,7 @@ public class GameManagerLevel1 : AbstractGameManager
         LapRestarted?.Invoke();
     }
 
-    private void RestartRace()
+    private void ResetRace()
     {
         currentGameTime = 0;
         currentLap = 0;

@@ -3,6 +3,54 @@
     "name": "InputSystem_Actions",
     "maps": [
         {
+            "name": "Global",
+            "id": "a4d6a82b-ec10-41d9-8213-2ea95be4356c",
+            "actions": [
+                {
+                    "name": "Select Level",
+                    "type": "Button",
+                    "id": "2a607530-c34d-41eb-99bc-a132c3437f69",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                },
+                {
+                    "name": "Pause",
+                    "type": "Button",
+                    "id": "4ec44035-7c0f-461c-94a9-62f36e7914b7",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
+                }
+            ],
+            "bindings": [
+                {
+                    "name": "",
+                    "id": "d53adc44-2fd0-4422-95c9-bf835f65d8c8",
+                    "path": "<Keyboard>/escape",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Pause",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "532348f7-b9e0-4154-9847-7a2b5f9274a0",
+                    "path": "<Keyboard>/enter",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Select Level",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                }
+            ]
+        },
+        {
             "name": "Sleigh",
             "id": "df70fa95-8a34-4494-b137-73ab6b9c7d37",
             "actions": [
@@ -201,34 +249,6 @@
                     "processors": "",
                     "groups": ";Keyboard&Mouse",
                     "action": "Go Inside",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                }
-            ]
-        },
-        {
-            "name": "Level Selector",
-            "id": "d06cb319-747d-4f2a-8581-1c4ee78d0d06",
-            "actions": [
-                {
-                    "name": "Continue",
-                    "type": "Button",
-                    "id": "1d319e97-d31f-4cde-a71f-e8063e1096a1",
-                    "expectedControlType": "",
-                    "processors": "",
-                    "interactions": "",
-                    "initialStateCheck": false
-                }
-            ],
-            "bindings": [
-                {
-                    "name": "",
-                    "id": "092f03c4-48bb-42ff-87b3-71c70decadae",
-                    "path": "<Keyboard>/enter",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": ";Keyboard&Mouse",
-                    "action": "Continue",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
