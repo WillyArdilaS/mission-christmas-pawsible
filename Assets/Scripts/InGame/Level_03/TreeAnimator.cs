@@ -6,6 +6,7 @@ public class TreeAnimator : MonoBehaviour
 {
     // === Managers ===
     private SequenceManager sequenceManager;
+    private SequenceGenerator sequenceGenerator;
     private LightManager lightManager;
 
     // === Tree ===
@@ -23,13 +24,16 @@ public class TreeAnimator : MonoBehaviour
 
     // === Coroutines ===
     private Coroutine treeAnimationRoutine;
+    private Coroutine finalTreeAnimationRoutine;
 
     // === Events ===
     public event Action LightedTree;
+    public event Action<LevelSelectorManager.NextLevel> LightedTreeFinal;
 
     void Awake()
     {
         sequenceManager = GameManagerLevel3.instance.SequenceManager.GetComponent<SequenceManager>();
+        sequenceGenerator = GameManagerLevel3.instance.SequenceManager.GetComponent<SequenceGenerator>();
         lightManager = GameManagerLevel3.instance.LightManager.GetComponent<LightManager>();
 
         mainCam = Camera.main;
@@ -38,6 +42,12 @@ public class TreeAnimator : MonoBehaviour
         sequenceManager.SequenceMatched += StartTreeAnimation;
     }
 
+    public void TurnOffTree()
+    {
+        treeLight.SetActive(false);
+    }
+
+    // === Tree Animation Methods ===
     private void StartTreeAnimation()
     {
         if (treeAnimationRoutine != null) StopCoroutine(treeAnimationRoutine);
@@ -46,7 +56,7 @@ public class TreeAnimator : MonoBehaviour
 
     private IEnumerator ShowTreeIlumination()
     {
-        GameManagerLevel3.instance.State = GameManagerLevel3.GameState.ShowingTree;
+        GameManagerLevel3.instance.State = GameManagerLevel3.GameState.ShowingAnimation;
 
         // Turn on all the house lights
         WaitForSeconds lightDelay = new WaitForSeconds(houseLightTransitionTime);
@@ -73,12 +83,22 @@ public class TreeAnimator : MonoBehaviour
         yield return new WaitForSeconds(transitionTime);
         treeLight.SetActive(true);
 
+        // Extend the animation only if it is the final round
         yield return new WaitForSeconds(transitionTime);
-        LightedTree?.Invoke();
+        if (!sequenceGenerator.IsFinalRound)
+        {
+            LightedTree?.Invoke();
+        }
+        else
+        {
+            if (finalTreeAnimationRoutine != null) StopCoroutine(finalTreeAnimationRoutine);
+            finalTreeAnimationRoutine = StartCoroutine(ShowFinalTreeIlumination());
+        }
     }
 
-    public void TurnOffTree()
+    private IEnumerator ShowFinalTreeIlumination()
     {
-        treeLight.SetActive(false);
+        yield return null;
+        LightedTreeFinal?.Invoke(LevelSelectorManager.NextLevel.Finished);
     }
 }

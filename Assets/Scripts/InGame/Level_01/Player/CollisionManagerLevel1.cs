@@ -10,6 +10,7 @@ public class CollisionManagerLevel1 : MonoBehaviour
 
     // === Events ===
     public event Action ObstacleHit;
+    public event Action FinishLineCrossed;
 
     // === Properties ===
     public bool CanCrash { get => canCrash; set => canCrash = value; }
@@ -33,6 +34,6 @@ public class CollisionManagerLevel1 : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Goal")) GameManagerLevel1.instance.CurrentLap++;
+        if (collision.CompareTag("FinishLine")) FinishLineCrossed?.Invoke();
     }
 }

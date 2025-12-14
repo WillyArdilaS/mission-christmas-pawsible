@@ -21,6 +21,8 @@ public class MapLightsAnimator : MonoBehaviour
 
     private IEnumerator ShowLightSequence(List<int> sequence)
     {
+        GameManagerLevel3.instance.State = GameManagerLevel3.GameState.ShowingAnimation;
+        
         foreach (var number in sequence)
         {
             GameObject currentLight = Array.Find(mapLights, light => light.name == number.ToString());

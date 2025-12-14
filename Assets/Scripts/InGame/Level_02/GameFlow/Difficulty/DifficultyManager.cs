@@ -7,6 +7,7 @@ using UnityEngine;
 public class DifficultyManager : MonoBehaviour
 {
     // === Spawn Settings ===
+    private ScoreManager scoreManager;
     private SpawnManager spawnManager;
     private float currentSpawnRate;
     private float spawnTimer = 0f;
@@ -19,7 +20,10 @@ public class DifficultyManager : MonoBehaviour
 
     void Start()
     {
+        scoreManager = GameManagerLevel2.instance.ScoreManager.GetComponent<ScoreManager>();
         spawnManager = GameManagerLevel2.instance.SpawnManager.GetComponent<SpawnManager>();
+
+        scoreManager.ScoreAchieved += _ => StopSpawnLoop();
 
         // Convert all timestamps into total seconds and sort them in ascending order
         IOrderedEnumerable<int> times = difficultyEvents.Select(difEvent => (difEvent.Minutes * 60) + difEvent.Seconds).OrderBy(difEvent => difEvent);
@@ -70,5 +74,11 @@ public class DifficultyManager : MonoBehaviour
             
             spawnTimer = 0f;
         }
+    }
+
+    private void StopSpawnLoop()
+    {
+        currentDifficultyEvent = null;
+        currentSpawnRate = 0f;
     }
 }
