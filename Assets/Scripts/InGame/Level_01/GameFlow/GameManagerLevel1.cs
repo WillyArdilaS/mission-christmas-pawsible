@@ -2,8 +2,7 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-[DefaultExecutionOrder(-1)]
-public class GameManagerLevel1 : MonoBehaviour
+public class GameManagerLevel1 : AbstractGameManager
 {
     // === Singleton ===
     public static GameManagerLevel1 instance;
@@ -12,45 +11,58 @@ public class GameManagerLevel1 : MonoBehaviour
     private GameObject raceManager;
     private GameObject trackManager;
 
-    // === States ===
-    public enum GameState { Playing, InPause }
-    [SerializeField] private GameState gameState = GameState.Playing;
-
     // === Game Timer ===
     [Header("Game Duration")]
     [SerializeField, Min(0)] private int minutes;
     [SerializeField, Range(0, 59)] private int seconds;
-    [SerializeField] private int currentGameTime = 0;
+    [SerializeField, Tooltip("It should start at -1 due to the delay at the beginning")] private int currentGameTime;
     private int gameDuration;
 
     // === Player ===
     [Header("Player Lives")]
     [SerializeField] private LifeManager playerLifeManager;
+    [SerializeField] private CollisionManagerLevel1 collisionManager;
     private bool hasExtraLife = true;
 
     // === Race ===
     [Header("Race")]
+    [SerializeField, Range(0, 3)] private float startRaceDelay;
+    [SerializeField] private int totalLaps;
     private const int LAP_DURATION = 60;
     private int currentLap = 0;
-
-    // === Coroutines ===
-    private Coroutine gameTimerRoutine;
 
     // === Events ===
     public event Action LapRestarted;
 
     // === Properties ===
     public GameObject TrackManager => trackManager;
-    public GameState State { get => gameState; set => gameState = value; }
     public int CurrentGameTime => currentGameTime;
     public int TotalGameDuration => gameDuration;
-    public int CurrentLap { get => currentLap; set => currentLap = value; }
+    public int TotalLaps => totalLaps;
+    public int CurrentLap => currentLap;
     public int LapDuration => LAP_DURATION;
 
+    // === Overridden Abstract Methods ===
+    protected override void InitializeManagers()
+    {
+        if (raceManager == null) raceManager = transform.Find("RaceManager").gameObject;
+        if (trackManager == null) trackManager = transform.Find("TrackManager").gameObject;
+    }
+
+    protected override IEnumerator StartGameTimer()
+    {
+        yield return new WaitForSeconds(startRaceDelay);
+
+        while (currentGameTime < gameDuration)
+        {
+            currentGameTime++;
+            yield return new WaitForSeconds(1);
+        }
+    }
+
+    // === Initialization Methods ===
     void Awake()
     {
-        Time.timeScale = 1;
-
         // Singleton
         if (instance == null)
         {
@@ -62,6 +74,8 @@ public class GameManagerLevel1 : MonoBehaviour
             Destroy(gameObject);
         }
 
+        collisionManager.FinishLineCrossed += UpdateLap;
+
         // Initialize timer
         gameDuration = (minutes * 60) + seconds;
 
@@ -69,6 +83,7 @@ public class GameManagerLevel1 : MonoBehaviour
         gameTimerRoutine = StartCoroutine(StartGameTimer());
     }
 
+    // === Race Management Methods ===
     void Update()
     {
         if (playerLifeManager.LifeCounter == 0 && hasExtraLife)
@@ -81,18 +96,13 @@ public class GameManagerLevel1 : MonoBehaviour
         }
     }
 
-    private void InitializeManagers()
+    private void UpdateLap()
     {
-        if (raceManager == null) raceManager = transform.Find("RaceManager").gameObject;
-        if (trackManager == null) trackManager = transform.Find("TrackManager").gameObject;
-    }
+        currentLap++;
 
-    private IEnumerator StartGameTimer()
-    {
-        while (currentGameTime < gameDuration)
+        if (currentLap > totalLaps)
         {
-            yield return new WaitForSeconds(1);
-            currentGameTime++;
+            StartLevelFinishing(LevelSelectorManager.NextLevel.Level_02);
         }
     }
 

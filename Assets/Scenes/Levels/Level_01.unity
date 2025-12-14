@@ -417,23 +417,23 @@ MonoBehaviour:
   - m_EditModeType: 1
     m_Knots:
     - Position:
-        x: 1.0999756
+        x: -4.5
         y: -9.099976
         z: -0
       TangentIn:
         x: 0
         y: 0
-        z: -47.90171
+        z: -46.409016
       TangentOut:
         x: 0
         y: 0
-        z: 47.90171
+        z: 46.409016
       Rotation:
         value:
-          x: 0.49790844
-          y: -0.5020827
-          z: 0.502084
-          w: -0.49790725
+          x: 0.523166
+          y: -0.47570714
+          z: 0.47570845
+          w: -0.5231649
     - Position:
         x: 94.69995
         y: -99.599976
@@ -441,35 +441,35 @@ MonoBehaviour:
       TangentIn:
         x: 0
         y: 0
-        z: -50.316788
+        z: -56.232056
       TangentOut:
         x: 0
         y: 0
-        z: 50.316788
+        z: 56.232056
       Rotation:
         value:
-          x: -0.00913515
-          y: -0.70704764
-          z: 0.7070478
-          w: 0.009136091
+          x: -0.011947678
+          y: 0.7070059
+          z: -0.70700586
+          w: 0.011946626
     - Position:
         x: 2.0999756
-        y: -191.20001
-        z: -0
+        y: -191.9
+        z: 0
       TangentIn:
         x: 0
         y: 0
-        z: -56.712776
+        z: -47.027214
       TangentOut:
         x: 0
         y: 0
-        z: 56.712776
+        z: 47.027214
       Rotation:
         value:
-          x: -0.49468258
-          y: -0.5052617
-          z: 0.50526273
-          w: 0.4946811
+          x: -0.49142298
+          y: -0.5084325
+          z: 0.5084366
+          w: 0.49141833
     - Position:
         x: -95.69995
         y: -98.900024
@@ -477,17 +477,17 @@ MonoBehaviour:
       TangentIn:
         x: 0
         y: 0
-        z: -52.700397
+        z: -53.284473
       TangentOut:
         x: 0
         y: 0
-        z: 52.700397
+        z: 53.284473
       Rotation:
         value:
-          x: 0.7071055
-          y: -0.0013414049
-          z: 0.0013414418
-          w: -0.7071055
+          x: 0.7068263
+          y: -0.019913493
+          z: 0.01991353
+          w: -0.7068263
     m_MetaData:
     - Mode: 2
       Tension: 0.5
@@ -1050,10 +1050,13 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameState: 0
-  minutes: 3
+  minutes: 1
   seconds: 0
-  currentGameTime: 0
+  currentGameTime: -1
   playerLifeManager: {fileID: 7022368775244105663}
+  collisionManager: {fileID: 8060394374396579516}
+  startRaceDelay: 3
+  totalLaps: 1
 --- !u!1 &716577129
 GameObject:
   m_ObjectHideFlags: 0
@@ -1258,23 +1261,17 @@ MonoBehaviour:
   spawnManager: {fileID: 851067654}
   difficultyEvents:
   - minutes: 0
-    seconds: 3
+    seconds: 0
     spawnedType: 2
-    DoubleSpawnChance: 0
+    doubleSpawnChance: 0
     newSpawnRate: 0
     newGlobalSpeed: 6
   - minutes: 1
-    seconds: 3
+    seconds: 0
     spawnedType: 2
-    DoubleSpawnChance: 0
+    doubleSpawnChance: 0
     newSpawnRate: 0
-    newGlobalSpeed: 7
-  - minutes: 2
-    seconds: 3
-    spawnedType: 2
-    DoubleSpawnChance: 0
-    newSpawnRate: 0
-    newGlobalSpeed: 10
+    newGlobalSpeed: 6
 --- !u!114 &835481636
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1290,23 +1287,17 @@ MonoBehaviour:
   spawnManager: {fileID: 851067655}
   difficultyEvents:
   - minutes: 0
-    seconds: 5
+    seconds: 15
     spawnedType: 1
-    DoubleSpawnChance: 0
-    newSpawnRate: 10
-    newGlobalSpeed: 6
-  - minutes: 0
-    seconds: 35
-    spawnedType: 1
-    DoubleSpawnChance: 0
-    newSpawnRate: 10
+    doubleSpawnChance: 0
+    newSpawnRate: 7
     newGlobalSpeed: 6
   - minutes: 1
-    seconds: 5
+    seconds: 0
     spawnedType: 1
-    DoubleSpawnChance: 0
-    newSpawnRate: 8
-    newGlobalSpeed: 7
+    doubleSpawnChance: 0
+    newSpawnRate: 0
+    newGlobalSpeed: 0
 --- !u!114 &835481637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1322,23 +1313,23 @@ MonoBehaviour:
   spawnManager: {fileID: 851067656}
   difficultyEvents:
   - minutes: 0
-    seconds: 5
+    seconds: 2
     spawnedType: 0
-    DoubleSpawnChance: 0
+    doubleSpawnChance: 0
     newSpawnRate: 1.5
     newGlobalSpeed: 6
   - minutes: 0
-    seconds: 20
+    seconds: 15
     spawnedType: 0
-    DoubleSpawnChance: 0.2
+    doubleSpawnChance: 0
     newSpawnRate: 1.5
-    newGlobalSpeed: 7
+    newGlobalSpeed: 6
   - minutes: 1
-    seconds: 5
+    seconds: 0
     spawnedType: 0
-    DoubleSpawnChance: 0.5
-    newSpawnRate: 1.2
-    newGlobalSpeed: 7
+    doubleSpawnChance: 0
+    newSpawnRate: 0
+    newGlobalSpeed: 0
 --- !u!114 &835481638
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1351,8 +1342,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e15d50c98cb206408e8a5f21258a610, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  lapsCounter: {fileID: 1519715345}
-  totalLaps: 3
+  lapCounter: {fileID: 1519715345}
 --- !u!114 &835481639
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1646,6 +1636,63 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   defaultPoolSize: 5
   objectPrefab: {fileID: 8592071352144850090, guid: e8db3102ff70e2e47b8111c8c1ecaf51, type: 3}
+--- !u!1001 &1260791804
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 719341826065264949, guid: 75f2ae024b2ec914eb646ef0fd73d2dd, type: 3}
+      propertyPath: m_Name
+      value: GlobalGameManager
+      objectReference: {fileID: 0}
+    - target: {fileID: 1450523622614696039, guid: 75f2ae024b2ec914eb646ef0fd73d2dd, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1450523622614696039, guid: 75f2ae024b2ec914eb646ef0fd73d2dd, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1450523622614696039, guid: 75f2ae024b2ec914eb646ef0fd73d2dd, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1450523622614696039, guid: 75f2ae024b2ec914eb646ef0fd73d2dd, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1450523622614696039, guid: 75f2ae024b2ec914eb646ef0fd73d2dd, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1450523622614696039, guid: 75f2ae024b2ec914eb646ef0fd73d2dd, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1450523622614696039, guid: 75f2ae024b2ec914eb646ef0fd73d2dd, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1450523622614696039, guid: 75f2ae024b2ec914eb646ef0fd73d2dd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1450523622614696039, guid: 75f2ae024b2ec914eb646ef0fd73d2dd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 1450523622614696039, guid: 75f2ae024b2ec914eb646ef0fd73d2dd, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 75f2ae024b2ec914eb646ef0fd73d2dd, type: 3}
 --- !u!1 &1296770119
 GameObject:
   m_ObjectHideFlags: 0
@@ -1891,8 +1938,8 @@ MonoBehaviour:
       m_Calls: []
   m_text: 
   m_isRightToLeft: 0
-  m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
-  m_sharedMaterial: {fileID: 2100000, guid: 79459efec17a4d00a321bdcc27bbc385, type: 2}
+  m_fontAsset: {fileID: 11400000, guid: 5a58e58311139064799d75539db8dad5, type: 2}
+  m_sharedMaterial: {fileID: 2898720433116759551, guid: 5a58e58311139064799d75539db8dad5, type: 2}
   m_fontSharedMaterials: []
   m_fontMaterial: {fileID: 0}
   m_fontMaterials: []
@@ -2550,7 +2597,7 @@ GameObject:
   - component: {fileID: 1979320540}
   - component: {fileID: 1979320541}
   m_Layer: 0
-  m_Name: GoalPool
+  m_Name: BowPool
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2914,8 +2961,9 @@ MonoBehaviour:
 SceneRoots:
   m_ObjectHideFlags: 0
   m_Roots:
-  - {fileID: 519420032}
+  - {fileID: 1260791804}
   - {fileID: 669291715}
+  - {fileID: 519420032}
   - {fileID: 612209436}
   - {fileID: 2369897550139304199}
   - {fileID: 498954253}

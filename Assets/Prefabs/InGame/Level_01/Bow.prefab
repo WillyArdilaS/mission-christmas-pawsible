@@ -15,8 +15,8 @@ GameObject:
   - component: {fileID: 5329602604838937976}
   - component: {fileID: -7374414559495256084}
   m_Layer: 0
-  m_Name: Goal
-  m_TagString: Goal
+  m_Name: Bow
+  m_TagString: FinishLine
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -214,3 +214,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c68b88c6b0482f543b4cf624b41dce94, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  minYPos: -10

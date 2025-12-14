@@ -3,8 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-[DefaultExecutionOrder(-1)]
-public class GameManagerLevel2 : MonoBehaviour
+public class GameManagerLevel2 : AbstractGameManager
 {
     // === Singleton ===
     public static GameManagerLevel2 instance;
@@ -13,13 +12,13 @@ public class GameManagerLevel2 : MonoBehaviour
     private GameObject spawnManager;
     private GameObject scoreManager;
 
-    // === States ===
-    public enum GameState { Playing, InPause, Finishing }
-    [SerializeField] private GameState gameState = GameState.Playing;
-
     // === Game Timer ===
     [Header("Game Timer")]
     [SerializeField] private int currentGameTime = 0;
+
+    // === Player ===
+    [Header("Player")]
+    [SerializeField] private SkaterFoxController skaterFoxController;
 
     // === Fruits ===
     [Header("Fruits")]
@@ -28,20 +27,31 @@ public class GameManagerLevel2 : MonoBehaviour
     [SerializeField] private int requiredPinecones;
     private Dictionary<string, int> requiredFruitsDictionary;
 
-    // === Coroutines ===
-    private Coroutine gameTimerRoutine;
-
     // === Properties ===
     public GameObject SpawnManager => spawnManager;
     public GameObject ScoreManager => scoreManager;
-    public GameState State { get => gameState; set => gameState = value; }
     public int CurrentGameTime => currentGameTime;
     public Dictionary<string, int> RequiredFruitsDictionary => requiredFruitsDictionary;
 
+    // === Overridden Abstract Methods ===
+    protected override void InitializeManagers()
+    {
+        if (spawnManager == null) spawnManager = transform.Find("SpawnManager").gameObject;
+        if (scoreManager == null) scoreManager = transform.Find("ScoreManager").gameObject;
+    }
+
+    protected override IEnumerator StartGameTimer()
+    {
+        while (gameState == GameState.Playing)
+        {
+            yield return new WaitForSeconds(1);
+            currentGameTime++;
+        }
+    }
+
+    // === Initialization Methods ===
     void Awake()
     {
-        Time.timeScale = 1;
-
         // Singleton
         if (instance == null)
         {
@@ -53,24 +63,13 @@ public class GameManagerLevel2 : MonoBehaviour
             Destroy(gameObject);
         }
 
+        // Initialization
         InitializeDictionary();
+
+        scoreManager.GetComponent<ScoreManager>().ScoreAchieved += StartLevelFinishing;
 
         if (gameTimerRoutine != null) StopCoroutine(gameTimerRoutine);
         gameTimerRoutine = StartCoroutine(StartGameTimer());
-    }
-
-    void Update()
-    {
-        if(scoreManager.GetComponent<ScoreManager>().FruitsDictionary.All(fruit => fruit.Value >= requiredFruitsDictionary[fruit.Key]))
-        {
-            FinishGame();
-        }
-    }
-
-    private void InitializeManagers()
-    {
-        if (spawnManager == null) spawnManager = transform.Find("SpawnManager").gameObject;
-        if (scoreManager == null) scoreManager = transform.Find("ScoreManager").gameObject;
     }
 
     private void InitializeDictionary()
@@ -83,19 +82,8 @@ public class GameManagerLevel2 : MonoBehaviour
         };
     }
 
-    private IEnumerator StartGameTimer()
+    void Update()
     {
-        while (gameState == GameState.Playing)
-        {
-            yield return new WaitForSeconds(1);
-            currentGameTime++;
-        }
-    }
-
-    private void FinishGame()
-    {
-        Debug.Log("Juego finalizado...");
-        gameState = GameState.Finishing;
-        Time.timeScale = 0;
+        // skaterFoxController.CanMove = (gameState == GameState.Playing);
     }
 }
