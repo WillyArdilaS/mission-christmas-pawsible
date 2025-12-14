@@ -4,8 +4,6 @@ using UnityEngine;
 [RequireComponent(typeof(FoxController))]
 public class CollisionManagerLevel3 : MonoBehaviour
 {
-    // === Player ===
-    private FoxController foxController;
     private bool goInsidePressedThisFrame = false;
 
     // === Events ===
@@ -13,8 +11,7 @@ public class CollisionManagerLevel3 : MonoBehaviour
 
     void Awake()
     {
-        foxController = GetComponent<FoxController>();
-        foxController.GoInsidePressed += HandleGoInside;
+        GlobalGameManager.instance.InputManager.GoInsidePressed += HandleGoInside;
     }
 
     private void HandleGoInside()

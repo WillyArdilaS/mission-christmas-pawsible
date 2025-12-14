@@ -1,15 +1,18 @@
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
+[DefaultExecutionOrder(-2)]
 public class GlobalGameManager : MonoBehaviour
 {
     // === Singleton ===
     public static GlobalGameManager instance;
 
     // === Managers ===
+    private InputManager inputManager;
     private SceneSwitchManager sceneSwitchManager;
 
     // === Properties ===
+    public InputManager InputManager => inputManager;
     public SceneSwitchManager SceneSwitchManager => sceneSwitchManager;
 
     void Awake()
@@ -29,6 +32,7 @@ public class GlobalGameManager : MonoBehaviour
 
     private void InitializeManagers()
     {
+        if (inputManager == null) inputManager = GetComponentInChildren<InputManager>();
         if (sceneSwitchManager == null) sceneSwitchManager = GetComponentInChildren<SceneSwitchManager>();
 
         InitializeGameSettings();
@@ -36,6 +40,6 @@ public class GlobalGameManager : MonoBehaviour
 
     private void InitializeGameSettings()
     {
-
+        
     }
 }

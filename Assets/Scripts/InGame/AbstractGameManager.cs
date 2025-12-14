@@ -4,6 +4,9 @@ using UnityEngine;
 [DefaultExecutionOrder(-1)]
 public abstract class AbstractGameManager : MonoBehaviour
 {
+    // === Managers ===
+    protected GameObject transitionManager;
+
     // === States ===
     public enum GameState { Playing, InPause, ShowingAnimation }
     [SerializeField] protected GameState gameState = GameState.Playing;
@@ -13,6 +16,7 @@ public abstract class AbstractGameManager : MonoBehaviour
     private Coroutine finishLevelRoutine;
 
     // === Properties ===
+    public GameObject TransitionManager => transitionManager;
     public GameState State { get => gameState; set => gameState = value; }
 
     // === Abstract Methods ===
@@ -33,9 +37,11 @@ public abstract class AbstractGameManager : MonoBehaviour
 
     private IEnumerator FinishLevel(LevelSelectorManager.NextLevel nextLevel)
     {
+        LevelSelectorManager.instance.gameObject.SetActive(true);
+        
         yield return new WaitForSeconds(1);
 
-        LevelSelectorManager.nextLevel = nextLevel;
+        LevelSelectorManager.instance.nextLevel = nextLevel;
         GlobalGameManager.instance.SceneSwitchManager.StartLoadScene("LevelSelector");
     }
 

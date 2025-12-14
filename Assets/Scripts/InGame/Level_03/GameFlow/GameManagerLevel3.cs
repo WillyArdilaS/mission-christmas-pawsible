@@ -7,7 +7,6 @@ public class GameManagerLevel3 : AbstractGameManager
     public static GameManagerLevel3 instance;
 
     // === Managers ===
-    private GameObject transitionManager;
     private GameObject sequenceManager;
     private GameObject mapManager;
     private GameObject lightManager;
@@ -26,7 +25,6 @@ public class GameManagerLevel3 : AbstractGameManager
     public event Action RoundStarted;
 
     // === Properties ===
-    public GameObject TransitionManager => transitionManager;
     public GameObject SequenceManager => sequenceManager;
     public GameObject MapManager => mapManager;
     public GameObject LightManager => lightManager;

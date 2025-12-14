@@ -31,7 +31,7 @@ public class PowerupManager : MonoBehaviour
 
                 if (invincibilityRoutine != null) StopCoroutine(invincibilityRoutine);
                 invincibilityRoutine = StartCoroutine(StartInvincibility(invData.Duration, invData.Transparency));
-                
+
                 break;
         }
     }
