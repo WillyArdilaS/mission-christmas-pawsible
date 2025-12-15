@@ -8,6 +8,7 @@ public class GameManagerLevel1 : AbstractGameManager
     public static GameManagerLevel1 instance;
 
     // === Managers ===
+    private SfxManagerLevel1 sfxManager;
     private GameObject raceManager;
     private TrackManager trackManager;
 
@@ -47,6 +48,7 @@ public class GameManagerLevel1 : AbstractGameManager
     // === Overridden Abstract Methods ===
     protected override void InitializeManagers()
     {
+        if (sfxManager == null) sfxManager = GetComponentInChildren<SfxManagerLevel1>();
         if (pauseManager == null) pauseManager = GetComponentInChildren<PauseManager>();
         if (raceManager == null) raceManager = transform.Find("RaceManager").gameObject;
         if (trackManager == null) trackManager = GetComponentInChildren<TrackManager>();

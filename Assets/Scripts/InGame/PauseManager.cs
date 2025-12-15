@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class PauseManager : MonoBehaviour
 {
+    // === Managers ===
+    private AudioManager audioManager;
+
     // === UI ===
     [SerializeField] private GameObject pauseUI;
 
@@ -10,9 +13,9 @@ public class PauseManager : MonoBehaviour
 
     void Awake()
     {
+        audioManager = GlobalGameManager.instance.AudioManager;
         pauseUI.SetActive(false);
     }
-
 
     public void Pause(AbstractGameManager gameManager)
     {
@@ -21,6 +24,8 @@ public class PauseManager : MonoBehaviour
 
         pauseUI.SetActive(true);
         Time.timeScale = 0;
+
+        audioManager.PauseMusic();
     }
 
     public void Continue(AbstractGameManager gameManager)
@@ -29,5 +34,8 @@ public class PauseManager : MonoBehaviour
 
         pauseUI.SetActive(false);
         Time.timeScale = 1;
+
+        audioManager.PlayUISFX(audioManager.UISfxDictionary["Click"], audioManager.ButtonClickVol);
+        audioManager.UnPauseMusic();
     }
 }

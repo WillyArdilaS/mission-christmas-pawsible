@@ -1,5 +1,4 @@
 using UnityEngine;
-using UnityEngine.SceneManagement;
 
 [DefaultExecutionOrder(-2)]
 public class GlobalGameManager : MonoBehaviour
@@ -10,10 +9,12 @@ public class GlobalGameManager : MonoBehaviour
     // === Managers ===
     private InputManager inputManager;
     private SceneSwitchManager sceneSwitchManager;
+    private AudioManager audioManager;
 
     // === Properties ===
     public InputManager InputManager => inputManager;
     public SceneSwitchManager SceneSwitchManager => sceneSwitchManager;
+    public AudioManager AudioManager => audioManager;
 
     void Awake()
     {
@@ -30,16 +31,15 @@ public class GlobalGameManager : MonoBehaviour
         }
     }
 
+    void Start()
+    {
+        audioManager.SelectSceneMusic(sceneSwitchManager.GetCurrentScene());
+    }
+
     private void InitializeManagers()
     {
         if (inputManager == null) inputManager = GetComponentInChildren<InputManager>();
         if (sceneSwitchManager == null) sceneSwitchManager = GetComponentInChildren<SceneSwitchManager>();
-
-        InitializeGameSettings();
-    }
-
-    private void InitializeGameSettings()
-    {
-        
+        if (audioManager == null) audioManager = GetComponentInChildren<AudioManager>();
     }
 }

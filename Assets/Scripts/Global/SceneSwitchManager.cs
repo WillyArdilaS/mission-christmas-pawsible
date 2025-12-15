@@ -21,18 +21,20 @@ public class SceneSwitchManager : MonoBehaviour
         return SceneManager.GetActiveScene().name;
     }
 
-    public void StartLoadScene(string sceneName)
+    public void StartLoadScene(string nextSceneName)
     {
         if (loadSceneRoutine != null) StopCoroutine(loadSceneRoutine);
-        loadSceneRoutine = StartCoroutine(LoadScene(sceneName));
+        loadSceneRoutine = StartCoroutine(LoadScene(nextSceneName));
     }
 
-    private IEnumerator LoadScene(string sceneName)
+    private IEnumerator LoadScene(string nextSceneName)
     {
         Time.timeScale = 1;
         transitionAnim.SetTrigger("t_closeScene");
 
         yield return new WaitForSeconds(transitionTime);
-        SceneManager.LoadScene(sceneName);
+
+        GlobalGameManager.instance.AudioManager.SelectSceneMusic(nextSceneName);
+        SceneManager.LoadScene(nextSceneName);
     }
 }
