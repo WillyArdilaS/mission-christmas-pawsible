@@ -16,7 +16,7 @@ public class CameraFollow : MonoBehaviour
 
     void LateUpdate()
     {
-        if (GameManagerLevel3.instance.State == AbstractGameManager.GameState.Playing)
+        if (LevelManager3.instance.State == AbstractLevelManager.GameState.Playing)
         {
             targetXPos = target.position.x;
 

@@ -25,12 +25,12 @@ public class LevelSelectorManager : MonoBehaviour
 
     void OnEnable()
     {
-        GlobalGameManager.instance.InputManager.SelectLevelPressed += SelectLevel;
+        GameManager.instance.InputManager.SelectLevelPressed += SelectLevel;
     }
 
     void OnDisable()
     {
-        if (GlobalGameManager.instance != null) GlobalGameManager.instance.InputManager.SelectLevelPressed -= SelectLevel;
+        if (GameManager.instance != null) GameManager.instance.InputManager.SelectLevelPressed -= SelectLevel;
     }
 
     public void ResetLevelSelector()
@@ -60,7 +60,7 @@ public class LevelSelectorManager : MonoBehaviour
 
     private void ChangeScene(string sceneName)
     {
-        GlobalGameManager.instance.SceneSwitchManager.StartLoadScene(sceneName);
+        GameManager.instance.SceneSwitchManager.StartLoadScene(sceneName);
         gameObject.SetActive(false);
     }
 }

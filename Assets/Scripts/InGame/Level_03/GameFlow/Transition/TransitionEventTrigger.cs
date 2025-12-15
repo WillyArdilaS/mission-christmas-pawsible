@@ -2,7 +2,7 @@ using UnityEngine;
 
 public class TransitionEventTrigger : MonoBehaviour
 {
-    [SerializeField] private AbstractGameManager gameManager;
+    [SerializeField] private AbstractLevelManager gameManager;
     private TransitionManager transitionManager;
 
     void Awake()

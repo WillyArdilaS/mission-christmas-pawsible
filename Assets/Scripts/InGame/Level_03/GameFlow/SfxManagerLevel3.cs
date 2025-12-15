@@ -9,7 +9,7 @@ public class SfxManagerLevel3 : MonoBehaviour
 
     void Awake()
     {
-        audioManager = GlobalGameManager.instance.AudioManager;
+        audioManager = GameManager.instance.AudioManager;
 
         lightManager.ActiveLightsUpdated += _ => PlayLightSwitchSfx();
         sequenceManager.SequenceMatched += PlaySequenceCompleteSfx;

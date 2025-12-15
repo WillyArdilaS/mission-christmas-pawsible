@@ -33,7 +33,7 @@ public class SleighController : MonoBehaviour
         col2D = GetComponent<Collider2D>();
         rb2D = GetComponent<Rigidbody2D>();
 
-        GameManagerLevel1.instance.LapRestarted += ResetPosition;
+        LevelManager1.instance.LapRestarted += ResetPosition;
 
         // Tracks initialization
         tracks = tracks.OrderBy(track => track.transform.position.x).ToArray();
@@ -50,16 +50,16 @@ public class SleighController : MonoBehaviour
 
     void OnEnable()
     {
-        GlobalGameManager.instance.InputManager.MoveLeftPressed += OnMoveLeft;
-        GlobalGameManager.instance.InputManager.MoveRightPressed += OnMoveRight;
-        GlobalGameManager.instance.InputManager.JumpPressed += Jump;
+        GameManager.instance.InputManager.MoveLeftPressed += OnMoveLeft;
+        GameManager.instance.InputManager.MoveRightPressed += OnMoveRight;
+        GameManager.instance.InputManager.JumpPressed += Jump;
     }
 
     void OnDisable()
     {
-        GlobalGameManager.instance.InputManager.MoveLeftPressed -= OnMoveLeft;
-        GlobalGameManager.instance.InputManager.MoveRightPressed -= OnMoveRight;
-        GlobalGameManager.instance.InputManager.JumpPressed -= Jump;
+        GameManager.instance.InputManager.MoveLeftPressed -= OnMoveLeft;
+        GameManager.instance.InputManager.MoveRightPressed -= OnMoveRight;
+        GameManager.instance.InputManager.JumpPressed -= Jump;
     }
 
     private void OnMoveLeft()

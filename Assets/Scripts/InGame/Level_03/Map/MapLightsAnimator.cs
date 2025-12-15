@@ -21,7 +21,7 @@ public class MapLightsAnimator : MonoBehaviour
 
     private IEnumerator ShowLightSequence(List<int> sequence)
     {
-        GameManagerLevel3.instance.State = GameManagerLevel3.GameState.ShowingAnimation;
+        LevelManager3.instance.State = LevelManager3.GameState.ShowingAnimation;
         
         foreach (var number in sequence)
         {
@@ -41,6 +41,6 @@ public class MapLightsAnimator : MonoBehaviour
             currentLight.SetActive(false);
         }
 
-        GameManagerLevel3.instance.State = GameManagerLevel3.GameState.Playing;
+        LevelManager3.instance.State = LevelManager3.GameState.Playing;
     }
 }

@@ -2,10 +2,10 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-public class GameManagerLevel1 : AbstractGameManager
+public class LevelManager1 : AbstractLevelManager
 {
     // === Singleton ===
-    public static GameManagerLevel1 instance;
+    public static LevelManager1 instance;
 
     // === Managers ===
     private SfxManagerLevel1 sfxManager;

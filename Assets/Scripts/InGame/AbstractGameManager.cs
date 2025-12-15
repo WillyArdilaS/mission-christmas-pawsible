@@ -2,7 +2,7 @@ using System.Collections;
 using UnityEngine;
 
 [DefaultExecutionOrder(-1)]
-public abstract class AbstractGameManager : MonoBehaviour
+public abstract class AbstractLevelManager : MonoBehaviour
 {
     // === Managers ===
     protected PauseManager pauseManager;
@@ -29,12 +29,12 @@ public abstract class AbstractGameManager : MonoBehaviour
     {
         levelSelector = LevelSelectorManager.instance;
 
-        GlobalGameManager.instance.InputManager.PausePressed += HandlePause;
+        GameManager.instance.InputManager.PausePressed += HandlePause;
     }
 
     void OnDestroy()
     {
-        GlobalGameManager.instance.InputManager.PausePressed -= HandlePause;
+        GameManager.instance.InputManager.PausePressed -= HandlePause;
     }
 
     protected virtual IEnumerator StartGameTimer()
@@ -63,7 +63,7 @@ public abstract class AbstractGameManager : MonoBehaviour
         yield return new WaitForSeconds(1);
 
         LevelSelectorManager.instance.nextLevel = nextLevel;
-        GlobalGameManager.instance.SceneSwitchManager.StartLoadScene("LevelSelector");
+        GameManager.instance.SceneSwitchManager.StartLoadScene("LevelSelector");
     }
 
     // === Pause Methods ===

@@ -8,7 +8,7 @@ public class SfxManagerLevel2 : MonoBehaviour
 
     void Awake()
     {
-        audioManager = GlobalGameManager.instance.AudioManager;
+        audioManager = GameManager.instance.AudioManager;
 
         collisionManager.CoalRecolected += PlayCoalRecolectedSfx;
         collisionManager.FruitRecolected += _ => PlayFruitRecolectedSfx();

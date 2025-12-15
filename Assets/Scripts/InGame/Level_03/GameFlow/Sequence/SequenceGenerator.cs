@@ -21,9 +21,9 @@ public class SequenceGenerator : MonoBehaviour
     void Awake()
     {
         sequenceManager = GetComponent<SequenceManager>();
-        mapAnimator = GameManagerLevel3.instance.MapManager.GetComponent<MapLightsAnimator>();
+        mapAnimator = LevelManager3.instance.MapManager.GetComponent<MapLightsAnimator>();
 
-        GameManagerLevel3.instance.RoundStarted += NextRound;
+        LevelManager3.instance.RoundStarted += NextRound;
     }
 
     private void NextRound()

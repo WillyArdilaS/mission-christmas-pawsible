@@ -33,7 +33,7 @@ public class SkaterFoxController : MonoBehaviour
     {
         rb2D = GetComponent<Rigidbody2D>();
 
-        moveAction = GlobalGameManager.instance.InputManager.PlayerInput.actions["Move"];
+        moveAction = GameManager.instance.InputManager.PlayerInput.actions["Move"];
     }
 
     void FixedUpdate()

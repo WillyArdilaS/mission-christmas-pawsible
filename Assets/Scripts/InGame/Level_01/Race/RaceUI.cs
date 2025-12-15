@@ -8,10 +8,10 @@ public class RaceUI : MonoBehaviour
 
     void Update()
     {
-        if (currentLap == GameManagerLevel1.instance.CurrentLap) return;
-        if (GameManagerLevel1.instance.CurrentLap > GameManagerLevel1.instance.TotalLaps) return;
+        if (currentLap == LevelManager1.instance.CurrentLap) return;
+        if (LevelManager1.instance.CurrentLap > LevelManager1.instance.TotalLaps) return;
 
-        currentLap = GameManagerLevel1.instance.CurrentLap;
+        currentLap = LevelManager1.instance.CurrentLap;
         
         if (currentLap == 0)
         {
@@ -19,7 +19,7 @@ public class RaceUI : MonoBehaviour
         }
         else
         {
-            lapCounter.text = $"{currentLap}/{GameManagerLevel1.instance.TotalLaps}";
+            lapCounter.text = $"{currentLap}/{LevelManager1.instance.TotalLaps}";
         }
     }
 }

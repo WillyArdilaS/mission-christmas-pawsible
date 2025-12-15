@@ -1,10 +1,10 @@
 using System;
 using UnityEngine;
 
-public class GameManagerLevel3 : AbstractGameManager
+public class LevelManager3 : AbstractLevelManager
 {
     // === Singleton ===
-    public static GameManagerLevel3 instance;
+    public static LevelManager3 instance;
 
     // === Managers ===
     private GameObject sequenceManager;

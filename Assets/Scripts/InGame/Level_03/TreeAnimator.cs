@@ -32,9 +32,9 @@ public class TreeAnimator : MonoBehaviour
 
     void Awake()
     {
-        sequenceManager = GameManagerLevel3.instance.SequenceManager.GetComponent<SequenceManager>();
-        sequenceGenerator = GameManagerLevel3.instance.SequenceManager.GetComponent<SequenceGenerator>();
-        lightManager = GameManagerLevel3.instance.LightManager;
+        sequenceManager = LevelManager3.instance.SequenceManager.GetComponent<SequenceManager>();
+        sequenceGenerator = LevelManager3.instance.SequenceManager.GetComponent<SequenceGenerator>();
+        lightManager = LevelManager3.instance.LightManager;
 
         mainCam = Camera.main;
         cameraFollow = Camera.main.GetComponent<CameraFollow>();
@@ -56,7 +56,7 @@ public class TreeAnimator : MonoBehaviour
 
     private IEnumerator ShowTreeIlumination()
     {
-        GameManagerLevel3.instance.State = GameManagerLevel3.GameState.ShowingAnimation;
+        LevelManager3.instance.State = LevelManager3.GameState.ShowingAnimation;
 
         // Turn on all the house lights
         WaitForSeconds lightDelay = new WaitForSeconds(houseLightTransitionTime);

@@ -11,7 +11,7 @@ public class CollisionManagerLevel3 : MonoBehaviour
 
     void Awake()
     {
-        GlobalGameManager.instance.InputManager.GoInsidePressed += HandleGoInside;
+        GameManager.instance.InputManager.GoInsidePressed += HandleGoInside;
     }
 
     private void HandleGoInside()

@@ -13,7 +13,7 @@ public class TransitionManager : MonoBehaviour
 
     void Awake()
     {
-        treeAnimator = GameManagerLevel3.instance.TreeManager.GetComponent<TreeAnimator>();
+        treeAnimator = LevelManager3.instance.TreeManager.GetComponent<TreeAnimator>();
         treeAnimator.LightedTree += StartTransitionRoutine;
     }
 

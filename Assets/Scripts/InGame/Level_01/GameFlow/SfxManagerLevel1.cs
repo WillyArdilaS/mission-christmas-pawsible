@@ -9,7 +9,7 @@ public class SfxManagerLevel1 : MonoBehaviour
 
     void Awake()
     {
-        audioManager = GlobalGameManager.instance.AudioManager;
+        audioManager = GameManager.instance.AudioManager;
 
         collisionManager.HitObstacle += PlayHitObstacleSfx;
         collisionManager.FinishLineCrossed += PlayFinishLineSfx;
@@ -30,7 +30,7 @@ public class SfxManagerLevel1 : MonoBehaviour
 
     private void PlayFinishLineSfx()
     {
-        if (GameManagerLevel1.instance.CurrentLap == 1)
+        if (LevelManager1.instance.CurrentLap == 1)
         {
             audioManager.PlaySFX(audioManager.SfxDictionary["RaceStart"], audioManager.RaceStartVol);
         }

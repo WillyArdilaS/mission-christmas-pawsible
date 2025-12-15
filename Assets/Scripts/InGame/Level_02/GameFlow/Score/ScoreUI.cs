@@ -32,13 +32,13 @@ public class ScoreUI : MonoBehaviour
             {"Pinecone", fruitCounters.FirstOrDefault(counter => counter.name == "PineconeCounter")},
         };
 
-        fruitCountersDictionary["Berry"].text = $"{scoreManager.FruitsDictionary["Berry"]}/{GameManagerLevel2.instance.RequiredFruitsDictionary["Berry"]}";
-        fruitCountersDictionary["Orange"].text = $"{scoreManager.FruitsDictionary["Orange"]}/{GameManagerLevel2.instance.RequiredFruitsDictionary["Orange"]}";
-        fruitCountersDictionary["Pinecone"].text = $"{scoreManager.FruitsDictionary["Pinecone"]}/{GameManagerLevel2.instance.RequiredFruitsDictionary["Pinecone"]}";
+        fruitCountersDictionary["Berry"].text = $"{scoreManager.FruitsDictionary["Berry"]}/{LevelManager2.instance.RequiredFruitsDictionary["Berry"]}";
+        fruitCountersDictionary["Orange"].text = $"{scoreManager.FruitsDictionary["Orange"]}/{LevelManager2.instance.RequiredFruitsDictionary["Orange"]}";
+        fruitCountersDictionary["Pinecone"].text = $"{scoreManager.FruitsDictionary["Pinecone"]}/{LevelManager2.instance.RequiredFruitsDictionary["Pinecone"]}";
     }
 
     private void UpdateScore(string fruit)
     {
-        fruitCountersDictionary[fruit].text = $"{scoreManager.FruitsDictionary[fruit]}/{GameManagerLevel2.instance.RequiredFruitsDictionary[fruit]}";
+        fruitCountersDictionary[fruit].text = $"{scoreManager.FruitsDictionary[fruit]}/{LevelManager2.instance.RequiredFruitsDictionary[fruit]}";
     }
 }

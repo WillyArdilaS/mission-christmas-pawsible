@@ -43,17 +43,17 @@ public class FoxController : MonoBehaviour
         rb2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
 
-        moveAction = GlobalGameManager.instance.InputManager.PlayerInput.actions["Move"];
+        moveAction = GameManager.instance.InputManager.PlayerInput.actions["Move"];
     }
 
     void OnEnable()
     {
-        GlobalGameManager.instance.InputManager.GoInsidePressed += StartGoInside;
+        GameManager.instance.InputManager.GoInsidePressed += StartGoInside;
     }
 
     void OnDisable()
     {
-        GlobalGameManager.instance.InputManager.GoInsidePressed -= StartGoInside;
+        GameManager.instance.InputManager.GoInsidePressed -= StartGoInside;
     }
 
     // === Movement Methods ===

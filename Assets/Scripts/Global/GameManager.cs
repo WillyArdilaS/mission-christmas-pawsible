@@ -1,10 +1,10 @@
 using UnityEngine;
 
 [DefaultExecutionOrder(-2)]
-public class GlobalGameManager : MonoBehaviour
+public class GameManager : MonoBehaviour
 {
     // === Singleton ===
-    public static GlobalGameManager instance;
+    public static GameManager instance;
 
     // === Managers ===
     private InputManager inputManager;

@@ -15,7 +15,7 @@ public class LoadSceneButton : MonoBehaviour
 
     void OnEnable()
     {
-        audioManager = GlobalGameManager.instance.AudioManager;
+        audioManager = GameManager.instance.AudioManager;
         buttonUI = GetComponent<Button>();
 
         buttonUI.onClick.RemoveAllListeners();
@@ -24,12 +24,12 @@ public class LoadSceneButton : MonoBehaviour
 
     private void ChangeScene()
     {
-        if (GlobalGameManager.instance.SceneSwitchManager.GetCurrentScene() == "MainMenu" && sceneName == "LevelSelector")
+        if (GameManager.instance.SceneSwitchManager.GetCurrentScene() == "MainMenu" && sceneName == "LevelSelector")
         {
             if (LevelSelectorManager.instance != null) LevelSelectorManager.instance.ResetLevelSelector();
         }
 
         audioManager.PlayUISFX(audioManager.UISfxDictionary["Click"], audioManager.ButtonClickVol);
-        GlobalGameManager.instance.SceneSwitchManager.StartLoadScene(sceneName);
+        GameManager.instance.SceneSwitchManager.StartLoadScene(sceneName);
     }
 }

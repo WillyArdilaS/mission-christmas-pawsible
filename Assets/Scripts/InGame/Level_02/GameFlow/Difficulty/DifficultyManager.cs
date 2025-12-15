@@ -19,8 +19,8 @@ public class DifficultyManager : MonoBehaviour
 
     void Start()
     {
-        scoreManager = GameManagerLevel2.instance.ScoreManager;
-        spawnManager = GameManagerLevel2.instance.SpawnManager;
+        scoreManager = LevelManager2.instance.ScoreManager;
+        spawnManager = LevelManager2.instance.SpawnManager;
 
         scoreManager.ScoreAchieved += _ => StopSpawnLoop();
 
@@ -34,7 +34,7 @@ public class DifficultyManager : MonoBehaviour
 
     void Update()
     {
-        currentGlobalTime = GameManagerLevel2.instance.CurrentGameTime;
+        currentGlobalTime = LevelManager2.instance.CurrentGameTime;
 
         // Check if there are pending timestamps AND if the current time matches the next scheduled timestamp
         if (pendingTimes.Count > 0 && currentGlobalTime == pendingTimes.Peek())

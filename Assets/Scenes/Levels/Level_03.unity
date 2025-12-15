@@ -2409,7 +2409,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 719341826065264949, guid: 75f2ae024b2ec914eb646ef0fd73d2dd, type: 3}
       propertyPath: m_Name
-      value: GlobalGameManager
+      value: GameManager
       objectReference: {fileID: 0}
     - target: {fileID: 1450523622614696039, guid: 75f2ae024b2ec914eb646ef0fd73d2dd, type: 3}
       propertyPath: m_LocalPosition.x
@@ -3586,7 +3586,7 @@ GameObject:
   - component: {fileID: 2019467882}
   - component: {fileID: 2019467883}
   m_Layer: 0
-  m_Name: GameManager
+  m_Name: LevelManager
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
