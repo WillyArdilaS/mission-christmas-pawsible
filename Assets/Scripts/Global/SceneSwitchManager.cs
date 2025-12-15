@@ -13,7 +13,7 @@ public class SceneSwitchManager : MonoBehaviour
 
     void Awake()
     {
-        transitionAnim = GetComponentInChildren<Animator>();    
+        transitionAnim = GetComponentInChildren<Animator>();
     }
 
     public string GetCurrentScene()
@@ -29,7 +29,9 @@ public class SceneSwitchManager : MonoBehaviour
 
     private IEnumerator LoadScene(string sceneName)
     {
+        Time.timeScale = 1;
         transitionAnim.SetTrigger("t_closeScene");
+
         yield return new WaitForSeconds(transitionTime);
         SceneManager.LoadScene(sceneName);
     }

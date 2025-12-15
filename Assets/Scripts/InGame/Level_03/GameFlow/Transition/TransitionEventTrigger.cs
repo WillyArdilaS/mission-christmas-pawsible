@@ -9,7 +9,7 @@ public class TransitionEventTrigger : MonoBehaviour
     {
         if (gameManager != null)
         {
-            transitionManager = gameManager.TransitionManager.GetComponent<TransitionManager>();
+            transitionManager = gameManager.TransitionManager;
         } else
         {
             Debug.LogWarning($"No se le ha asignado un GameManager a {name}");

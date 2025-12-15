@@ -9,7 +9,7 @@ public class GameManagerLevel3 : AbstractGameManager
     // === Managers ===
     private GameObject sequenceManager;
     private GameObject mapManager;
-    private GameObject lightManager;
+    private LightManager lightManager;
     private GameObject treeManager;
 
     // === Camera ===
@@ -27,22 +27,24 @@ public class GameManagerLevel3 : AbstractGameManager
     // === Properties ===
     public GameObject SequenceManager => sequenceManager;
     public GameObject MapManager => mapManager;
-    public GameObject LightManager => lightManager;
+    public LightManager LightManager => lightManager;
     public GameObject TreeManager => treeManager;
 
     // === Overridden Abstract Methods ===
     protected override void InitializeManagers()
     {
-        if (transitionManager == null) transitionManager = transform.Find("TransitionManager").gameObject;
+        if (pauseManager == null) pauseManager = GetComponentInChildren<PauseManager>();
+        if (transitionManager == null) transitionManager = GetComponentInChildren<TransitionManager>();
         if (sequenceManager == null) sequenceManager = transform.Find("SequenceManager").gameObject;
         if (mapManager == null) mapManager = transform.Find("MapManager").gameObject;
-        if (lightManager == null) lightManager = transform.Find("LightManager").gameObject;
+        if (lightManager == null) lightManager = GetComponentInChildren<LightManager>();
         if (treeManager == null) treeManager = transform.Find("TreeManager").gameObject;
     }
 
-    // === Initialization Methods ===
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         // Singleton
         if (instance == null)
         {
@@ -62,6 +64,7 @@ public class GameManagerLevel3 : AbstractGameManager
         treeAnimator.LightedTreeFinal += StartLevelFinishing;
     }
 
+    // === Round Management Methods ===
     void Start()
     {
         StartNewRound();
@@ -72,7 +75,6 @@ public class GameManagerLevel3 : AbstractGameManager
         foxController.CanMove = (gameState == GameState.Playing);
     }
 
-    // === Round Management Methods ===
     private void StartNewRound()
     {
         RoundStarted?.Invoke();

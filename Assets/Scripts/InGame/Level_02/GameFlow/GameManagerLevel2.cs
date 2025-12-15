@@ -8,8 +8,8 @@ public class GameManagerLevel2 : AbstractGameManager
     public static GameManagerLevel2 instance;
 
     // === Managers ===
-    private GameObject spawnManager;
-    private GameObject scoreManager;
+    private SpawnManager spawnManager;
+    private ScoreManager scoreManager;
 
     // === Game Timer ===
     [Header("Game Timer")]
@@ -27,16 +27,17 @@ public class GameManagerLevel2 : AbstractGameManager
     private Dictionary<string, int> requiredFruitsDictionary;
 
     // === Properties ===
-    public GameObject SpawnManager => spawnManager;
-    public GameObject ScoreManager => scoreManager;
+    public SpawnManager SpawnManager => spawnManager;
+    public ScoreManager ScoreManager => scoreManager;
     public int CurrentGameTime => currentGameTime;
     public Dictionary<string, int> RequiredFruitsDictionary => requiredFruitsDictionary;
 
     // === Overridden Abstract Methods ===
     protected override void InitializeManagers()
     {
-        if (spawnManager == null) spawnManager = transform.Find("SpawnManager").gameObject;
-        if (scoreManager == null) scoreManager = transform.Find("ScoreManager").gameObject;
+        if (pauseManager == null) pauseManager = GetComponentInChildren<PauseManager>();
+        if (spawnManager == null) spawnManager = GetComponentInChildren<SpawnManager>();
+        if (scoreManager == null) scoreManager = GetComponentInChildren<ScoreManager>();
     }
 
     protected override IEnumerator StartGameTimer()
@@ -48,9 +49,10 @@ public class GameManagerLevel2 : AbstractGameManager
         }
     }
 
-    // === Initialization Methods ===
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         // Singleton
         if (instance == null)
         {
@@ -71,6 +73,7 @@ public class GameManagerLevel2 : AbstractGameManager
         gameTimerRoutine = StartCoroutine(StartGameTimer());
     }
 
+    // === Initialization Methods ===
     private void InitializeDictionary()
     {
         requiredFruitsDictionary = new()

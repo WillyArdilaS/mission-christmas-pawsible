@@ -34,7 +34,7 @@ public class TreeAnimator : MonoBehaviour
     {
         sequenceManager = GameManagerLevel3.instance.SequenceManager.GetComponent<SequenceManager>();
         sequenceGenerator = GameManagerLevel3.instance.SequenceManager.GetComponent<SequenceGenerator>();
-        lightManager = GameManagerLevel3.instance.LightManager.GetComponent<LightManager>();
+        lightManager = GameManagerLevel3.instance.LightManager;
 
         mainCam = Camera.main;
         cameraFollow = Camera.main.GetComponent<CameraFollow>();

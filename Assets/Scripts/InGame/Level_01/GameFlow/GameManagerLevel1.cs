@@ -9,7 +9,7 @@ public class GameManagerLevel1 : AbstractGameManager
 
     // === Managers ===
     private GameObject raceManager;
-    private GameObject trackManager;
+    private TrackManager trackManager;
 
     // === Game Timer ===
     [Header("Game Duration")]
@@ -19,9 +19,11 @@ public class GameManagerLevel1 : AbstractGameManager
     private int gameDuration;
 
     // === Player ===
-    [Header("Player Lives")]
-    [SerializeField] private LifeManager playerLifeManager;
-    [SerializeField] private CollisionManagerLevel1 collisionManager;
+    [Header("Player")]
+    [SerializeField] private GameObject player;
+    private SleighController sleighController;
+    private LifeManager lifeManager;
+    private CollisionManagerLevel1 collisionManager;
     private bool hasExtraLife = true;
 
     // === Race ===
@@ -35,7 +37,7 @@ public class GameManagerLevel1 : AbstractGameManager
     public event Action LapRestarted;
 
     // === Properties ===
-    public GameObject TrackManager => trackManager;
+    public TrackManager TrackManager => trackManager;
     public int CurrentGameTime => currentGameTime;
     public int TotalGameDuration => gameDuration;
     public int TotalLaps => totalLaps;
@@ -45,8 +47,9 @@ public class GameManagerLevel1 : AbstractGameManager
     // === Overridden Abstract Methods ===
     protected override void InitializeManagers()
     {
+        if (pauseManager == null) pauseManager = GetComponentInChildren<PauseManager>();
         if (raceManager == null) raceManager = transform.Find("RaceManager").gameObject;
-        if (trackManager == null) trackManager = transform.Find("TrackManager").gameObject;
+        if (trackManager == null) trackManager = GetComponentInChildren<TrackManager>();
     }
 
     protected override IEnumerator StartGameTimer()
@@ -60,9 +63,10 @@ public class GameManagerLevel1 : AbstractGameManager
         }
     }
 
-    // === Initialization Methods ===
-    void Awake()
+    protected override void Awake()
     {
+        base.Awake();
+
         // Singleton
         if (instance == null)
         {
@@ -74,9 +78,13 @@ public class GameManagerLevel1 : AbstractGameManager
             Destroy(gameObject);
         }
 
+        // Initialization
+        sleighController = player.GetComponent<SleighController>();
+        lifeManager = player.GetComponent<LifeManager>();
+        collisionManager = player.GetComponent<CollisionManagerLevel1>();
+
         collisionManager.FinishLineCrossed += UpdateLap;
 
-        // Initialize timer
         gameDuration = (minutes * 60) + seconds;
 
         if (gameTimerRoutine != null) StopCoroutine(gameTimerRoutine);
@@ -86,11 +94,13 @@ public class GameManagerLevel1 : AbstractGameManager
     // === Race Management Methods ===
     void Update()
     {
-        if (playerLifeManager.LifeCounter == 0 && hasExtraLife)
+        sleighController.CanMove = (gameState == GameState.Playing);
+
+        if (lifeManager.LifeCounter == 0 && hasExtraLife)
         {
             ResetLap();
         }
-        else if (playerLifeManager.LifeCounter == 0 && !hasExtraLife)
+        else if (lifeManager.LifeCounter == 0 && !hasExtraLife)
         {
             ResetRace();
         }
@@ -111,28 +121,24 @@ public class GameManagerLevel1 : AbstractGameManager
         int lapStartTime = (currentGameTime / LAP_DURATION) * LAP_DURATION;
         currentGameTime = lapStartTime;
         currentLap--;
-        playerLifeManager.AddLife();
+        lifeManager.AddLife();
         hasExtraLife = false;
 
-        RaceGenerator[] raceGenerators = raceManager.GetComponents<RaceGenerator>();
-        foreach (var raceGenerator in raceGenerators)
-        {
-            raceGenerator.InitializeRace();
-        }
-
-        StopCoroutine(gameTimerRoutine);
-        gameTimerRoutine = StartCoroutine(StartGameTimer());
-
-        LapRestarted?.Invoke();
+        ResetTimer();
     }
 
     private void ResetRace()
     {
         currentGameTime = 0;
         currentLap = 0;
-        playerLifeManager.ResetLives();
+        lifeManager.ResetLives();
         hasExtraLife = true;
 
+        ResetTimer();
+    }
+
+    private void ResetTimer()
+    {
         RaceGenerator[] raceGenerators = raceManager.GetComponents<RaceGenerator>();
         foreach (var raceGenerator in raceGenerators)
         {
