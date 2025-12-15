@@ -1288,10 +1288,10 @@ MonoBehaviour:
   spawnManager: {fileID: 851067655}
   difficultyEvents:
   - minutes: 0
-    seconds: 15
+    seconds: 5
     spawnedType: 1
     doubleSpawnChance: 0
-    newSpawnRate: 7
+    newSpawnRate: 4
     newGlobalSpeed: 6
   - minutes: 1
     seconds: 0
@@ -1680,13 +1680,41 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7022942541748451554, guid: b9b98dd2eaa8a69469ed6a422f93b51f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Mode
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7022942541748451554, guid: b9b98dd2eaa8a69469ed6a422f93b51f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1827262341}
     - target: {fileID: 7022942541748451554, guid: b9b98dd2eaa8a69469ed6a422f93b51f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1827262341}
+    - target: {fileID: 7022942541748451554, guid: b9b98dd2eaa8a69469ed6a422f93b51f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: Continue
+      objectReference: {fileID: 0}
+    - target: {fileID: 7022942541748451554, guid: b9b98dd2eaa8a69469ed6a422f93b51f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlayButtonSFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 7022942541748451554, guid: b9b98dd2eaa8a69469ed6a422f93b51f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 669291717}
+    - target: {fileID: 7022942541748451554, guid: b9b98dd2eaa8a69469ed6a422f93b51f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgument
+      value: 
+      objectReference: {fileID: 669291717}
+    - target: {fileID: 7022942541748451554, guid: b9b98dd2eaa8a69469ed6a422f93b51f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: AbstractLevelManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7022942541748451554, guid: b9b98dd2eaa8a69469ed6a422f93b51f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7512159132148723988, guid: b9b98dd2eaa8a69469ed6a422f93b51f, type: 3}
       propertyPath: m_Name
       value: PauseMenu
@@ -3014,6 +3042,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: a66ba2b001006f24ba0fc106ac73d7cb, type: 3}
   - {fileID: 21300000, guid: 951ef771153c30740a8aa418f477ab19, type: 3}
   - {fileID: 21300000, guid: 10f504644da6e3d40a8266fd3e628326, type: 3}
+  sleighJumpSprites:
+  - {fileID: 21300000, guid: c83864fc5ab776e4b81669efbdc62071, type: 3}
+  - {fileID: 21300000, guid: 694f216a1d229fa48a11f1c7fa2f8efa, type: 3}
+  - {fileID: 21300000, guid: bd6bbb6fc35caa343aade7f6c3ad9a10, type: 3}
   tracks:
   - {fileID: 2112245572}
   - {fileID: 1111634616}

@@ -7,6 +7,7 @@ public class SleighController : MonoBehaviour
 {
     // === Sprites ===
     [SerializeField] private Sprite[] sleighSprites;
+    [SerializeField] private Sprite[] sleighJumpSprites;
     private SpriteRenderer spriteRend;
     private Collider2D col2D;
     private Vector2 originalColliderOffset;
@@ -76,6 +77,15 @@ public class SleighController : MonoBehaviour
     void Update()
     {
         if (Mathf.Abs(rb2D.linearVelocityY) < 0.01f) isJumping = false;
+
+        if (isJumping)
+        {
+            spriteRend.sprite = sleighJumpSprites[currentTrackIndex];
+        }
+        else
+        {
+            spriteRend.sprite = sleighSprites[currentTrackIndex];
+        }
     }
 
     private void ChangeTrack(int direction)
