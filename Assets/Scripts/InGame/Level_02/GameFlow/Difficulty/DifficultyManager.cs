@@ -19,8 +19,8 @@ public class DifficultyManager : MonoBehaviour
 
     void Start()
     {
-        scoreManager = GameManagerLevel2.instance.ScoreManager.GetComponent<ScoreManager>();
-        spawnManager = GameManagerLevel2.instance.SpawnManager.GetComponent<SpawnManager>();
+        scoreManager = GameManagerLevel2.instance.ScoreManager;
+        spawnManager = GameManagerLevel2.instance.SpawnManager;
 
         scoreManager.ScoreAchieved += _ => StopSpawnLoop();
 

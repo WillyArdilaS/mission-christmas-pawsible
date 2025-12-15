@@ -15,6 +15,7 @@ public class SleighController : MonoBehaviour
     [SerializeField] private Transform[] tracks;
     private int originalTrackIndex;
     private int currentTrackIndex;
+    private bool canMove = true;
 
     // === Jump ===
     [SerializeField] private float jumpForce;
@@ -22,8 +23,8 @@ public class SleighController : MonoBehaviour
     private bool isJumping = false;
 
     // === Properties ===
+    public bool CanMove { get => canMove; set => canMove = value; }
     public bool IsJumping => isJumping;
-
 
     // === Initialization Methods ===
     void Awake()
@@ -65,7 +66,7 @@ public class SleighController : MonoBehaviour
     {
         ChangeTrack(-1);
     }
-    
+
     private void OnMoveRight()
     {
         ChangeTrack(1);
@@ -79,7 +80,7 @@ public class SleighController : MonoBehaviour
 
     private void ChangeTrack(int direction)
     {
-        if (isJumping) return;
+        if (!canMove || isJumping) return;
 
         if ((direction == -1 && currentTrackIndex > 0) || (direction == 1 && currentTrackIndex < tracks.Length - 1))
         {
@@ -93,6 +94,7 @@ public class SleighController : MonoBehaviour
 
     private void Jump()
     {
+        if (!canMove) return;
         isJumping = true;
         rb2D.AddForceY(jumpForce, ForceMode2D.Impulse);
     }
