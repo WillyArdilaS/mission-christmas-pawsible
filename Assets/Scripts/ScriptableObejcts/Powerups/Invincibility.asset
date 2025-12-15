@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71260845fe4ca5d4bb6ed551ef4a48a5, type: 3}
   m_Name: Invincibility
   m_EditorClassIdentifier: 
-  duration: 2
+  powerupType: 0
+  duration: 3
   transparency: 0.5

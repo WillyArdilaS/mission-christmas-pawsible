@@ -78,11 +78,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6377576569291919836, guid: 121ccc8841be8f14d82797e5e30b3e68, type: 3}
       propertyPath: maxScale
-      value: 1.4
+      value: 1.2
       objectReference: {fileID: 0}
     - target: {fileID: 6377576569291919836, guid: 121ccc8841be8f14d82797e5e30b3e68, type: 3}
       propertyPath: minScale
-      value: 0.5
+      value: 0.4
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
