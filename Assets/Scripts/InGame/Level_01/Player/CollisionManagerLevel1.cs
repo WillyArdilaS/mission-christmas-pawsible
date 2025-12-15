@@ -9,7 +9,7 @@ public class CollisionManagerLevel1 : MonoBehaviour
     private bool canCrash = true;
 
     // === Events ===
-    public event Action ObstacleHit;
+    public event Action HitObstacle;
     public event Action FinishLineCrossed;
 
     // === Properties ===
@@ -26,7 +26,7 @@ public class CollisionManagerLevel1 : MonoBehaviour
         {
             if ((collision.CompareTag("SmallObstacle") && !sleighController.IsJumping) || collision.CompareTag("BigObstacle"))
             {
-                ObstacleHit?.Invoke();
+                HitObstacle?.Invoke();
                 collision.gameObject.SetActive(false);
             }
         }

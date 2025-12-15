@@ -7,6 +7,7 @@ public abstract class AbstractGameManager : MonoBehaviour
     // === Managers ===
     protected PauseManager pauseManager;
     protected TransitionManager transitionManager;
+    private LevelSelectorManager levelSelector;
 
     // === States ===
     public enum GameState { Playing, InPause, ShowingAnimation }
@@ -26,6 +27,8 @@ public abstract class AbstractGameManager : MonoBehaviour
     // === Level Start Methods ===
     protected virtual void Awake()
     {
+        levelSelector = LevelSelectorManager.instance;
+
         GlobalGameManager.instance.InputManager.PausePressed += HandlePause;
     }
 
@@ -42,8 +45,15 @@ public abstract class AbstractGameManager : MonoBehaviour
     // === Level Finishing Methods ===
     protected void StartLevelFinishing(LevelSelectorManager.NextLevel nextLevel)
     {
-        if (finishLevelRoutine != null) StopCoroutine(finishLevelRoutine);
-        finishLevelRoutine = StartCoroutine(FinishLevel(nextLevel));
+        if (levelSelector != null)
+        {
+            if (finishLevelRoutine != null) StopCoroutine(finishLevelRoutine);
+            finishLevelRoutine = StartCoroutine(FinishLevel(nextLevel));
+        }
+        else
+        {
+            Debug.LogWarning("Esta escena no tiene un LevelSelector");
+        }
     }
 
     private IEnumerator FinishLevel(LevelSelectorManager.NextLevel nextLevel)
