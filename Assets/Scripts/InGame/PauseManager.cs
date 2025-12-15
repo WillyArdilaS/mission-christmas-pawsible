@@ -30,12 +30,17 @@ public class PauseManager : MonoBehaviour
 
     public void Continue(AbstractGameManager gameManager)
     {
-        gameManager.State  = previousState;
+        gameManager.State = previousState;
 
         pauseUI.SetActive(false);
         Time.timeScale = 1;
 
-        audioManager.PlayUISFX(audioManager.UISfxDictionary["Click"], audioManager.ButtonClickVol);
+
         audioManager.UnPauseMusic();
+    }
+
+    public void PlayButtonSFX()
+    {
+        audioManager.PlayUISFX(audioManager.UISfxDictionary["Click"], audioManager.ButtonClickVol);
     }
 }
