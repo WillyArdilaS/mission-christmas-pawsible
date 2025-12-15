@@ -1277,7 +1277,6 @@ GameObject:
   m_Component:
   - component: {fileID: 1492890103}
   - component: {fileID: 1492890102}
-  - component: {fileID: 1492890104}
   - component: {fileID: 1492890106}
   - component: {fileID: 1492890107}
   - component: {fileID: 1492890105}
@@ -1359,36 +1358,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1492890104
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1492890101}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Actions: {fileID: -944628639613478452, guid: 58e83b72eb27e0949871666fe68f0324, type: 3}
-  m_NotificationBehavior: 3
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 1
-  m_DefaultControlScheme: Keyboard&Mouse
-  m_DefaultActionMap: Player
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!114 &1492890105
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1406,7 +1375,7 @@ MonoBehaviour:
   speed: 200
   slidingDamping: 2
   reboundForce: 2
-  newColliderOffset: {x: 0, y: 0}
+  rotationSpeed: 12
 --- !u!50 &1492890106
 Rigidbody2D:
   serializedVersion: 5
@@ -1926,9 +1895,9 @@ MonoBehaviour:
   gameState: 0
   currentGameTime: 0
   skaterFoxController: {fileID: 1492890105}
-  requiredBerries: 1
-  requiredOranges: 1
-  requiredPinecones: 1
+  requiredBerries: 24
+  requiredOranges: 24
+  requiredPinecones: 24
 --- !u!1 &2028046718
 GameObject:
   m_ObjectHideFlags: 0
@@ -2344,17 +2313,45 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7022942541748451554, guid: b9b98dd2eaa8a69469ed6a422f93b51f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7022942541748451554, guid: b9b98dd2eaa8a69469ed6a422f93b51f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Mode
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7022942541748451554, guid: b9b98dd2eaa8a69469ed6a422f93b51f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 1916384600}
+    - target: {fileID: 7022942541748451554, guid: b9b98dd2eaa8a69469ed6a422f93b51f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Target
+      value: 
+      objectReference: {fileID: 1916384600}
+    - target: {fileID: 7022942541748451554, guid: b9b98dd2eaa8a69469ed6a422f93b51f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_CallState
+      value: 2
+      objectReference: {fileID: 0}
     - target: {fileID: 7022942541748451554, guid: b9b98dd2eaa8a69469ed6a422f93b51f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
       value: Continue
       objectReference: {fileID: 0}
     - target: {fileID: 7022942541748451554, guid: b9b98dd2eaa8a69469ed6a422f93b51f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_MethodName
+      value: PlayButtonSFX
+      objectReference: {fileID: 0}
+    - target: {fileID: 7022942541748451554, guid: b9b98dd2eaa8a69469ed6a422f93b51f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_TargetAssemblyTypeName
+      value: PauseManager, Assembly-CSharp
+      objectReference: {fileID: 0}
+    - target: {fileID: 7022942541748451554, guid: b9b98dd2eaa8a69469ed6a422f93b51f, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_ObjectArgument
       value: 
       objectReference: {fileID: 2019467883}
+    - target: {fileID: 7022942541748451554, guid: b9b98dd2eaa8a69469ed6a422f93b51f, type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[1].m_Arguments.m_ObjectArgumentAssemblyTypeName
+      value: UnityEngine.Object, UnityEngine
+      objectReference: {fileID: 0}
     - target: {fileID: 7512159132148723988, guid: b9b98dd2eaa8a69469ed6a422f93b51f, type: 3}
       propertyPath: m_Name
       value: PauseMenu

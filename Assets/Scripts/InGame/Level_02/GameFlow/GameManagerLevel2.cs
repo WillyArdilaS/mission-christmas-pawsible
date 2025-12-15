@@ -86,6 +86,6 @@ public class GameManagerLevel2 : AbstractGameManager
 
     void Update()
     {
-        // skaterFoxController.CanMove = (gameState == GameState.Playing);
+        skaterFoxController.CanMove = (gameState == GameState.Playing);
     }
 }
