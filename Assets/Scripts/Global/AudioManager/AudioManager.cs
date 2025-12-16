@@ -164,6 +164,12 @@ public class AudioManager : MonoBehaviour
                     PlayMusic(musicDictionary["MainMenu"], mainMenuVol);
                 }
                 break;
+            case "Credits":
+                if (GetMusicClip() == null || GetMusicClip().name != "MainMenu") // To avoid restarting the music if it is already playing
+                {
+                    PlayMusic(musicDictionary["MainMenu"], mainMenuVol);
+                }
+                break;
             case "LevelSelector":
                 StopMusic();
                 break;
