@@ -2,54 +2,72 @@ using System;
 using System.Collections;
 using UnityEngine;
 
-[DefaultExecutionOrder(-1)]
-public class GameManagerLevel1 : MonoBehaviour
+public class GameManagerLevel1 : AbstractGameManager
 {
     // === Singleton ===
     public static GameManagerLevel1 instance;
 
     // === Managers ===
+    private SfxManagerLevel1 sfxManager;
     private GameObject raceManager;
-    private GameObject trackManager;
-
-    // === States ===
-    public enum GameState { Playing, InPause }
-    [SerializeField] private GameState gameState = GameState.Playing;
+    private TrackManager trackManager;
 
     // === Game Timer ===
     [Header("Game Duration")]
     [SerializeField, Min(0)] private int minutes;
     [SerializeField, Range(0, 59)] private int seconds;
-    [SerializeField] private int currentGameTime = 0;
+    [SerializeField, Tooltip("It should start at -1 due to the delay at the beginning")] private int currentGameTime;
     private int gameDuration;
 
     // === Player ===
-    [Header("Player Lives")]
-    [SerializeField] private LifeManager playerLifeManager;
+    [Header("Player")]
+    [SerializeField] private GameObject player;
+    private SleighController sleighController;
+    private LifeManager lifeManager;
+    private CollisionManagerLevel1 collisionManager;
     private bool hasExtraLife = true;
 
     // === Race ===
     [Header("Race")]
+    [SerializeField, Range(0, 3)] private float startRaceDelay;
+    [SerializeField] private int totalLaps;
     private const int LAP_DURATION = 60;
     private int currentLap = 0;
-
-    // === Coroutines ===
-    private Coroutine gameTimerRoutine;
 
     // === Events ===
     public event Action LapRestarted;
 
     // === Properties ===
-    public GameObject TrackManager => trackManager;
-    public GameState State { get => gameState; set => gameState = value; }
+    public TrackManager TrackManager => trackManager;
     public int CurrentGameTime => currentGameTime;
     public int TotalGameDuration => gameDuration;
-    public int CurrentLap { get => currentLap; set => currentLap = value; }
+    public int TotalLaps => totalLaps;
+    public int CurrentLap => currentLap;
     public int LapDuration => LAP_DURATION;
 
-    void Awake()
+    // === Overridden Abstract Methods ===
+    protected override void InitializeManagers()
     {
-        Time.timeScale = 1;
+        if (sfxManager == null) sfxManager = GetComponentInChildren<SfxManagerLevel1>();
+        if (pauseManager == null) pauseManager = GetComponentInChildren<PauseManager>();
+        if (raceManager == null) raceManager = transform.Find("RaceManager").gameObject;
+        if (trackManager == null) trackManager = GetComponentInChildren<TrackManager>();
+    }
+
+    protected override IEnumerator StartGameTimer()
+    {
+        yield return new WaitForSeconds(startRaceDelay);
+
+        while (currentGameTime < gameDuration)
+        {
+            currentGameTime++;
+            yield return new WaitForSeconds(1);
+        }
+    }
+
+    protected override void Awake()
+    {
+        base.Awake();
 
         // Singleton
         if (instance == null)
@@ -62,67 +80,67 @@ public class GameManagerLevel1 : MonoBehaviour
             Destroy(gameObject);
         }
 
-        // Initialize timer
+        // Initialization
+        sleighController = player.GetComponent<SleighController>();
+        lifeManager = player.GetComponent<LifeManager>();
+        collisionManager = player.GetComponent<CollisionManagerLevel1>();
+
+        collisionManager.FinishLineCrossed += UpdateLap;
+
         gameDuration = (minutes * 60) + seconds;
 
         if (gameTimerRoutine != null) StopCoroutine(gameTimerRoutine);
         gameTimerRoutine = StartCoroutine(StartGameTimer());
     }
 
+    // === Race Management Methods ===
     void Update()
     {
-        if (playerLifeManager.LifeCounter == 0 && hasExtraLife)
+        sleighController.CanMove = (gameState == GameState.Playing);
+
+        if (lifeManager.LifeCounter == 0 && hasExtraLife)
         {
-            RestartLap();
+            ResetLap();
         }
-        else if (playerLifeManager.LifeCounter == 0 && !hasExtraLife)
+        else if (lifeManager.LifeCounter == 0 && !hasExtraLife)
         {
-            RestartRace();
+            ResetRace();
         }
     }
 
-    private void InitializeManagers()
+    private void UpdateLap()
     {
-        if (raceManager == null) raceManager = transform.Find("RaceManager").gameObject;
-        if (trackManager == null) trackManager = transform.Find("TrackManager").gameObject;
-    }
+        currentLap++;
 
-    private IEnumerator StartGameTimer()
-    {
-        while (currentGameTime < gameDuration)
+        if (currentLap > totalLaps)
         {
-            yield return new WaitForSeconds(1);
-            currentGameTime++;
+            StartLevelFinishing(LevelSelectorManager.NextLevel.Level_02);
         }
     }
 
-    private void RestartLap()
+    private void ResetLap()
     {
         int lapStartTime = (currentGameTime / LAP_DURATION) * LAP_DURATION;
         currentGameTime = lapStartTime;
         currentLap--;
-        playerLifeManager.AddLife();
+        lifeManager.AddLife();
         hasExtraLife = false;
 
-        RaceGenerator[] raceGenerators = raceManager.GetComponents<RaceGenerator>();
-        foreach (var raceGenerator in raceGenerators)
-        {
-            raceGenerator.InitializeRace();
-        }
-
-        StopCoroutine(gameTimerRoutine);
-        gameTimerRoutine = StartCoroutine(StartGameTimer());
-
-        LapRestarted?.Invoke();
+        ResetTimer();
     }
 
-    private void RestartRace()
+    private void ResetRace()
     {
         currentGameTime = 0;
         currentLap = 0;
-        playerLifeManager.ResetLives();
+        lifeManager.ResetLives();
         hasExtraLife = true;
 
+        ResetTimer();
+    }
+
+    private void ResetTimer()
+    {
         RaceGenerator[] raceGenerators = raceManager.GetComponents<RaceGenerator>();
         foreach (var raceGenerator in raceGenerators)
         {

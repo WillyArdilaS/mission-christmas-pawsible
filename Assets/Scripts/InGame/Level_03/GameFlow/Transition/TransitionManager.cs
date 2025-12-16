@@ -1,5 +1,4 @@
 using System;
-using System.Collections;
 using UnityEngine;
 
 public class TransitionManager : MonoBehaviour
@@ -7,7 +6,7 @@ public class TransitionManager : MonoBehaviour
     private TreeAnimator treeAnimator;
 
     // === Animation ===
-    [SerializeField] private Animator snowTransition;
+    [SerializeField] private Animator transitionAnim;
 
     // === Events ===
     public event Action TransitionFinished;
@@ -20,7 +19,7 @@ public class TransitionManager : MonoBehaviour
 
     private void StartTransitionRoutine()
     {
-        snowTransition.SetTrigger("t_showTransition");
+        transitionAnim.SetTrigger("t_showSnowy");
     }
 
     public void OnTransitionAnimationFinished()

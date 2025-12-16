@@ -6,7 +6,6 @@ using UnityEngine.InputSystem;
 public class SkaterFoxController : MonoBehaviour
 {
     // === Input ===
-    private PlayerInput playerInput;
     private InputAction moveAction;
 
     // === Limits ===
@@ -32,13 +31,11 @@ public class SkaterFoxController : MonoBehaviour
 
     void Awake()
     {
-        playerInput = GetComponent<PlayerInput>();
         rb2D = GetComponent<Rigidbody2D>();
         spriteRend = GetComponent<SpriteRenderer>();
         col2D = GetComponent<Collider2D>();
 
-        moveAction = playerInput.actions["Move"];
-        
+        moveAction = GlobalGameManager.instance.InputManager.PlayerInput.actions["Move"];
         originalColliderOffset = col2D.offset;
     }
 

@@ -1,22 +1,16 @@
 using System;
 using UnityEngine;
 
-[DefaultExecutionOrder(-1)]
-public class GameManagerLevel3 : MonoBehaviour
+public class GameManagerLevel3 : AbstractGameManager
 {
     // === Singleton ===
     public static GameManagerLevel3 instance;
 
     // === Managers ===
-    private GameObject transitionManager;
     private GameObject sequenceManager;
     private GameObject mapManager;
-    private GameObject lightManager;
+    private LightManager lightManager;
     private GameObject treeManager;
-
-    // === States ===
-    public enum GameState { ShowingSequence, ShowingTree, Playing, InPause, Finishing }
-    [SerializeField] private GameState gameState;
 
     // === Camera ===
     private CameraFollow cameraFollow;
@@ -31,16 +25,25 @@ public class GameManagerLevel3 : MonoBehaviour
     public event Action RoundStarted;
 
     // === Properties ===
-    public GameState State { get => gameState; set => gameState = value; }
-    public GameObject TransitionManager => transitionManager;
     public GameObject SequenceManager => sequenceManager;
     public GameObject MapManager => mapManager;
-    public GameObject LightManager => lightManager;
+    public LightManager LightManager => lightManager;
     public GameObject TreeManager => treeManager;
 
-    void Awake()
+    // === Overridden Abstract Methods ===
+    protected override void InitializeManagers()
     {
-        Time.timeScale = 1;
+        if (pauseManager == null) pauseManager = GetComponentInChildren<PauseManager>();
+        if (transitionManager == null) transitionManager = GetComponentInChildren<TransitionManager>();
+        if (sequenceManager == null) sequenceManager = transform.Find("SequenceManager").gameObject;
+        if (mapManager == null) mapManager = transform.Find("MapManager").gameObject;
+        if (lightManager == null) lightManager = GetComponentInChildren<LightManager>();
+        if (treeManager == null) treeManager = transform.Find("TreeManager").gameObject;
+    }
+
+    protected override void Awake()
+    {
+        base.Awake();
 
         // Singleton
         if (instance == null)
@@ -58,44 +61,27 @@ public class GameManagerLevel3 : MonoBehaviour
         treeAnimator = treeManager.GetComponent<TreeAnimator>();
 
         transitionManager.GetComponent<TransitionManager>().TransitionFinished += StartNewRound;
+        treeAnimator.LightedTreeFinal += StartLevelFinishing;
     }
 
+    // === Round Management Methods ===
     void Start()
     {
-        RoundStarted?.Invoke();
+        StartNewRound();
     }
 
     void Update()
     {
-        foxController.CanMove = gameState == GameState.Playing;
-
-        if (gameState == GameState.Finishing) FinishGame();
-    }
-
-    private void InitializeManagers()
-    {
-        if (transitionManager == null) transitionManager = transform.Find("TransitionManager").gameObject;
-        if (sequenceManager == null) sequenceManager = transform.Find("SequenceManager").gameObject;
-        if (mapManager == null) mapManager = transform.Find("MapManager").gameObject;
-        if (lightManager == null) lightManager = transform.Find("LightManager").gameObject;
-        if (treeManager == null) treeManager = transform.Find("TreeManager").gameObject;
+        foxController.CanMove = (gameState == GameState.Playing);
     }
 
     private void StartNewRound()
     {
         RoundStarted?.Invoke();
 
-        if (gameState == GameState.Finishing) return;
-
         cameraFollow.ResetPosition();
         foxController.ResetPosition();
         lightManager.GetComponent<LightManager>().ResetActiveLights();
         treeAnimator.TurnOffTree();
-    }
-
-    private void FinishGame()
-    {
-        Debug.Log("Juego finalizado...");
-        Time.timeScale = 0;
     }
 }
