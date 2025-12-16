@@ -154,6 +154,17 @@ public class AudioManager : MonoBehaviour
         musicSource.Play();
     }
 
+    public void RestartMusic()
+    {
+        musicSource.Stop();
+        musicSource.Play();
+    }
+
+    public void StopMusic()
+    {
+        musicSource.Stop();
+    }
+
     public void PauseMusic()
     {
         musicSource.Pause();
@@ -162,11 +173,6 @@ public class AudioManager : MonoBehaviour
     public void UnPauseMusic()
     {
         musicSource.UnPause();
-    }
-
-    public void StopMusic()
-    {
-        musicSource.Stop();
     }
 
     public AudioClip GetMusicClip()

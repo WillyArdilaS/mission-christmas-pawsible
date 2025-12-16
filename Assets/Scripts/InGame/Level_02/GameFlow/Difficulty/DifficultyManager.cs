@@ -12,8 +12,8 @@ public class DifficultyManager : MonoBehaviour
     private float spawnTimer = 0f;
 
     // === Difficulty Events Management ===
-    [SerializeField] private DifficultyEventLevel2Data[] difficultyEvents;
-    private DifficultyEventLevel2Data currentDifficultyEvent;
+    [SerializeField] private DifficultyEventData[] difficultyEvents;
+    private DifficultyEventData currentDifficultyEvent;
     private Queue<int> pendingTimes = new();
     private int currentGlobalTime = 0;
 
@@ -48,7 +48,7 @@ public class DifficultyManager : MonoBehaviour
         StartSpawnLoop();
     }
 
-    private void ChangeDifficulty(DifficultyEventLevel2Data difficultyEvent)
+    private void ChangeDifficulty(DifficultyEventData difficultyEvent)
     {
         spawnManager.SpawnRate = difficultyEvent.NewSpawnRate;
         currentSpawnRate = difficultyEvent.NewSpawnRate;

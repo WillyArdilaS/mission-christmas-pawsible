@@ -31,7 +31,7 @@ public class LevelManager1 : AbstractLevelManager
     [Header("Race")]
     [SerializeField, Range(0, 3)] private float startRaceDelay;
     [SerializeField] private int totalLaps;
-    private const int LAP_DURATION = 60;
+    private const int LAP_DURATION = 55;
     private int currentLap = 0;
 
     // === Events ===
@@ -39,6 +39,7 @@ public class LevelManager1 : AbstractLevelManager
 
     // === Properties ===
     public TrackManager TrackManager => trackManager;
+    public GameObject RaceManager => raceManager;
     public int CurrentGameTime => currentGameTime;
     public int TotalGameDuration => gameDuration;
     public int TotalLaps => totalLaps;
@@ -104,7 +105,7 @@ public class LevelManager1 : AbstractLevelManager
         }
         else if (lifeManager.LifeCounter == 0 && !hasExtraLife)
         {
-            ResetRace();
+            RestartRace();
         }
     }
 
@@ -129,13 +130,14 @@ public class LevelManager1 : AbstractLevelManager
         ResetTimer();
     }
 
-    private void ResetRace()
+    private void RestartRace()
     {
-        currentGameTime = 0;
+        currentGameTime = -1;
         currentLap = 0;
         lifeManager.ResetLives();
         hasExtraLife = true;
 
+        GameManager.instance.AudioManager.RestartMusic();
         ResetTimer();
     }
 
