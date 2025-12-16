@@ -9,7 +9,8 @@ public class CollisionManagerLevel1 : MonoBehaviour
     private bool canCrash = true;
 
     // === Events ===
-    public event Action ObstacleHit;
+    public event Action HitObstacle;
+    public event Action FinishLineCrossed;
 
     // === Properties ===
     public bool CanCrash { get => canCrash; set => canCrash = value; }
@@ -25,7 +26,7 @@ public class CollisionManagerLevel1 : MonoBehaviour
         {
             if ((collision.CompareTag("SmallObstacle") && !sleighController.IsJumping) || collision.CompareTag("BigObstacle"))
             {
-                ObstacleHit?.Invoke();
+                HitObstacle?.Invoke();
                 collision.gameObject.SetActive(false);
             }
         }
@@ -33,6 +34,6 @@ public class CollisionManagerLevel1 : MonoBehaviour
 
     void OnTriggerExit2D(Collider2D collision)
     {
-        if (collision.CompareTag("Goal")) GameManagerLevel1.instance.CurrentLap++;
+        if (collision.CompareTag("FinishLine")) FinishLineCrossed?.Invoke();
     }
 }

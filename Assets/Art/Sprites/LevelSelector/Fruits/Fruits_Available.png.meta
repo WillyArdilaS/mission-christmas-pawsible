@@ -1,0 +1,845 @@
+fileFormatVersion: 2
+guid: 7c1938f47f55b4d4da83ec774a578404
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3858081123560750046
+    second: Level 2 Icon available_0
+  - first:
+      213: 8476084684591147069
+    second: Level 2 Icon available_1
+  - first:
+      213: -4562669877593039626
+    second: Level 2 Icon available_2
+  - first:
+      213: -1657642789467829139
+    second: Level 2 Icon available_3
+  - first:
+      213: 6705183326434219068
+    second: Level 2 Icon available_4
+  - first:
+      213: 5715817969339897317
+    second: Level 2 Icon available_5
+  - first:
+      213: -7945640626066374703
+    second: Level 2 Icon available_6
+  - first:
+      213: 4553301420169338413
+    second: Level 2 Icon available_7
+  - first:
+      213: -8705939543911842887
+    second: Level 2 Icon available_8
+  - first:
+      213: 3992704326716352884
+    second: Level 2 Icon available_9
+  - first:
+      213: -1663102930513640756
+    second: Level 2 Icon available_10
+  - first:
+      213: 4575222666838745648
+    second: Level 2 Icon available_11
+  - first:
+      213: 8315579789809345865
+    second: Level 2 Icon available_12
+  - first:
+      213: -2609296765927985366
+    second: Level 2 Icon available_13
+  - first:
+      213: 7810454942336151350
+    second: Level 2 Icon available_14
+  - first:
+      213: 1356360052909588900
+    second: Level 2 Icon available_15
+  - first:
+      213: 176721029313966015
+    second: Level 2 Icon available_16
+  - first:
+      213: -8754224386038050736
+    second: Level 2 Icon available_17
+  - first:
+      213: -3076404071837318768
+    second: Level 2 Icon available_18
+  - first:
+      213: -5874809217526405489
+    second: Level 2 Icon available_19
+  - first:
+      213: -6200168608751091538
+    second: Level 2 Icon available_20
+  - first:
+      213: -5819302521187647636
+    second: Level 2 Icon available_21
+  - first:
+      213: 3018540478439889748
+    second: Level 2 Icon available_22
+  - first:
+      213: -5318266570010915994
+    second: Level 2 Icon available_23
+  - first:
+      213: -2779025543014657700
+    second: Level 2 Icon available_24
+  - first:
+      213: 8892683203138566793
+    second: Level 2 Icon available_25
+  - first:
+      213: 5051806709180385808
+    second: Level 2 Icon available_26
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Level 2 Icon available_0
+      rect:
+        serializedVersion: 2
+        x: 205
+        y: 805
+        width: 101
+        height: 119
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: edb7a744758aa8530800000000000000
+      internalID: 3858081123560750046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 Icon available_1
+      rect:
+        serializedVersion: 2
+        x: 211
+        y: 922
+        width: 35
+        height: 36
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d382f27cc1a11a570800000000000000
+      internalID: 8476084684591147069
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 Icon available_2
+      rect:
+        serializedVersion: 2
+        x: 709
+        y: 827
+        width: 75
+        height: 70
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6fc11be9be32ea0c0800000000000000
+      internalID: -4562669877593039626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 Icon available_3
+      rect:
+        serializedVersion: 2
+        x: 881
+        y: 837
+        width: 41
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6c48416aaedef8e0800000000000000
+      internalID: -1657642789467829139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 Icon available_4
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 712
+        width: 112
+        height: 121
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c34dbf5b5b89d0d50800000000000000
+      internalID: 6705183326434219068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 Icon available_5
+      rect:
+        serializedVersion: 2
+        x: 812
+        y: 690
+        width: 88
+        height: 126
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5e59c4fc82aa25f40800000000000000
+      internalID: 5715817969339897317
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 Icon available_6
+      rect:
+        serializedVersion: 2
+        x: 950
+        y: 632
+        width: 87
+        height: 110
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1dfb66ac2f96bb190800000000000000
+      internalID: -7945640626066374703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 Icon available_7
+      rect:
+        serializedVersion: 2
+        x: 188
+        y: 652
+        width: 35
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2e99786483903f30800000000000000
+      internalID: 4553301420169338413
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 Icon available_8
+      rect:
+        serializedVersion: 2
+        x: 73
+        y: 487
+        width: 70
+        height: 94
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9bbbb116c1a4e2780800000000000000
+      internalID: -8705939543911842887
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 Icon available_9
+      rect:
+        serializedVersion: 2
+        x: 908
+        y: 578
+        width: 41
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 479e71f4e6fe86730800000000000000
+      internalID: 3992704326716352884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 Icon available_10
+      rect:
+        serializedVersion: 2
+        x: 21
+        y: 465
+        width: 42
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc2c2d932b87be8e0800000000000000
+      internalID: -1663102930513640756
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 Icon available_11
+      rect:
+        serializedVersion: 2
+        x: 986
+        y: 495
+        width: 39
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0322d3166c47e7f30800000000000000
+      internalID: 4575222666838745648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 Icon available_12
+      rect:
+        serializedVersion: 2
+        x: 67
+        y: 317
+        width: 55
+        height: 87
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 945e001d2cfd66370800000000000000
+      internalID: 8315579789809345865
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 Icon available_13
+      rect:
+        serializedVersion: 2
+        x: 160
+        y: 368
+        width: 89
+        height: 86
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a2f69418a6ae9cbd0800000000000000
+      internalID: -2609296765927985366
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 Icon available_14
+      rect:
+        serializedVersion: 2
+        x: 832
+        y: 272
+        width: 83
+        height: 111
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63fe324736f446c60800000000000000
+      internalID: 7810454942336151350
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 Icon available_15
+      rect:
+        serializedVersion: 2
+        x: 928
+        y: 312
+        width: 129
+        height: 117
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4a1c4352842c2d210800000000000000
+      internalID: 1356360052909588900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 Icon available_16
+      rect:
+        serializedVersion: 2
+        x: 120
+        y: 306
+        width: 13
+        height: 12
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fbfa99007d6d37200800000000000000
+      internalID: 176721029313966015
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 Icon available_17
+      rect:
+        serializedVersion: 2
+        x: 221
+        y: 308
+        width: 42
+        height: 40
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 050d3228d4fb28680800000000000000
+      internalID: -8754224386038050736
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 Icon available_18
+      rect:
+        serializedVersion: 2
+        x: 926
+        y: 286
+        width: 42
+        height: 41
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0914290dbca6e45d0800000000000000
+      internalID: -3076404071837318768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 Icon available_19
+      rect:
+        serializedVersion: 2
+        x: 178
+        y: 194
+        width: 121
+        height: 96
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f86e52a842c787ea0800000000000000
+      internalID: -5874809217526405489
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 Icon available_20
+      rect:
+        serializedVersion: 2
+        x: 755
+        y: 168
+        width: 42
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea00ddf008394f9a0800000000000000
+      internalID: -6200168608751091538
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 Icon available_21
+      rect:
+        serializedVersion: 2
+        x: 814
+        y: 156
+        width: 78
+        height: 77
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6f3310603fad3fa0800000000000000
+      internalID: -5819302521187647636
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 Icon available_22
+      rect:
+        serializedVersion: 2
+        x: 249
+        y: 137
+        width: 37
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 45b1c8d729204e920800000000000000
+      internalID: 3018540478439889748
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 Icon available_23
+      rect:
+        serializedVersion: 2
+        x: 451
+        y: 121
+        width: 41
+        height: 42
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 66b0aa16bb8b136b0800000000000000
+      internalID: -5318266570010915994
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 Icon available_24
+      rect:
+        serializedVersion: 2
+        x: 587
+        y: 113
+        width: 41
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c51dfd61efaee69d0800000000000000
+      internalID: -2779025543014657700
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 Icon available_25
+      rect:
+        serializedVersion: 2
+        x: 341
+        y: 35
+        width: 75
+        height: 101
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 98a382ff148296b70800000000000000
+      internalID: 8892683203138566793
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Level 2 Icon available_26
+      rect:
+        serializedVersion: 2
+        x: 658
+        y: 42
+        width: 41
+        height: 43
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 01ac1a6bf6f9b1640800000000000000
+      internalID: 5051806709180385808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Level 2 Icon available_0: 3858081123560750046
+      Level 2 Icon available_1: 8476084684591147069
+      Level 2 Icon available_10: -1663102930513640756
+      Level 2 Icon available_11: 4575222666838745648
+      Level 2 Icon available_12: 8315579789809345865
+      Level 2 Icon available_13: -2609296765927985366
+      Level 2 Icon available_14: 7810454942336151350
+      Level 2 Icon available_15: 1356360052909588900
+      Level 2 Icon available_16: 176721029313966015
+      Level 2 Icon available_17: -8754224386038050736
+      Level 2 Icon available_18: -3076404071837318768
+      Level 2 Icon available_19: -5874809217526405489
+      Level 2 Icon available_2: -4562669877593039626
+      Level 2 Icon available_20: -6200168608751091538
+      Level 2 Icon available_21: -5819302521187647636
+      Level 2 Icon available_22: 3018540478439889748
+      Level 2 Icon available_23: -5318266570010915994
+      Level 2 Icon available_24: -2779025543014657700
+      Level 2 Icon available_25: 8892683203138566793
+      Level 2 Icon available_26: 5051806709180385808
+      Level 2 Icon available_3: -1657642789467829139
+      Level 2 Icon available_4: 6705183326434219068
+      Level 2 Icon available_5: 5715817969339897317
+      Level 2 Icon available_6: -7945640626066374703
+      Level 2 Icon available_7: 4553301420169338413
+      Level 2 Icon available_8: -8705939543911842887
+      Level 2 Icon available_9: 3992704326716352884
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
