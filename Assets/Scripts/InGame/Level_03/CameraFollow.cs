@@ -12,6 +12,7 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] private float maxXPos;
 
     // === Properties ===
+    public float MinXPos => minXPos;
     public float MaxXPos => maxXPos;
 
     void LateUpdate()

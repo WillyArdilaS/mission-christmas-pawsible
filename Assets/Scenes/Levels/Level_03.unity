@@ -1617,7 +1617,6 @@ MonoBehaviour:
   - {fileID: 965596362}
   - {fileID: 871263202}
   lightOnDuration: 1.2
-  transitionTime: 0.6
 --- !u!1 &707129070
 GameObject:
   m_ObjectHideFlags: 0
@@ -1663,7 +1662,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lightManager: {fileID: 253882082}
-  sequenceManager: {fileID: 951511429}
+  treeAnimator: {fileID: 940834922}
 --- !u!1 &756385959
 GameObject:
   m_ObjectHideFlags: 0
@@ -2032,9 +2031,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   treeLight: {fileID: 1678098188}
-  cameraSpeed: 5
-  transitionTime: 0.6
   houseLightTransitionTime: 0.1
+  targetCamPosition: {x: 8.5, y: 5, z: -10}
+  targetZoom: 9.5
+  zoomSpeed: 0.25
 --- !u!1 &951511427
 GameObject:
   m_ObjectHideFlags: 0
@@ -2095,9 +2095,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sequenceEvents:
-  - newSize: 2
-    newMin: 1
-    newMax: 12
   - newSize: 2
     newMin: 1
     newMax: 12
@@ -3806,7 +3803,9 @@ MonoBehaviour:
   gameState: 0
   transitionAnim: {fileID: 1946606181}
   transitionDelay: 0.7
+  cameraSpeed: 4
   foxController: {fileID: 1492890108}
+  transitionTime: 0.6
 --- !u!1001 &2046765926
 PrefabInstance:
   m_ObjectHideFlags: 0

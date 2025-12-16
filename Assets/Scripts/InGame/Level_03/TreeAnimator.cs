@@ -13,15 +13,21 @@ public class TreeAnimator : MonoBehaviour
     [SerializeField] private GameObject treeLight;
 
     // === Camera ===
-    [SerializeField] private float cameraSpeed;
     private Camera mainCam;
     private CameraFollow cameraFollow;
+    private float cameraSpeed;
 
     // === Animation ===
-    [Header("Animation Time Settings")]
-    [SerializeField] private float transitionTime;
-    [SerializeField] private float houseLightTransitionTime;
+    private float transitionTime;
 
+    [Header("Tree Animation Settings")]
+    [SerializeField] private float houseLightTransitionTime;
+    
+    [Header("Final Animation Settings")]
+    [SerializeField] private Vector3 targetCamPosition;
+    [SerializeField] private float targetZoom;
+    [SerializeField] private float zoomSpeed;
+    
     // === Coroutines ===
     private Coroutine treeAnimationRoutine;
     private Coroutine finalTreeAnimationRoutine;
@@ -37,7 +43,10 @@ public class TreeAnimator : MonoBehaviour
         lightManager = LevelManager3.instance.LightManager;
 
         mainCam = Camera.main;
-        cameraFollow = Camera.main.GetComponent<CameraFollow>();
+        cameraFollow = LevelManager3.instance.CameraFollow;
+        cameraSpeed = LevelManager3.instance.CameraSpeed;
+
+        transitionTime = LevelManager3.instance.TransitionTime;
 
         sequenceManager.SequenceMatched += StartTreeAnimation;
     }
@@ -98,7 +107,26 @@ public class TreeAnimator : MonoBehaviour
 
     private IEnumerator ShowFinalTreeIlumination()
     {
-        yield return null;
+        Vector3 startPos = mainCam.transform.position;
+
+        float startZoom = mainCam.orthographicSize;
+        float currentTime = 0f;
+
+        while (currentTime < 1f)
+        {
+            currentTime += Time.deltaTime * zoomSpeed;
+            
+            mainCam.transform.position = Vector3.Lerp(startPos, targetCamPosition, currentTime); // Interpolate position
+            mainCam.orthographicSize = Mathf.Lerp(startZoom, targetZoom, currentTime); // Interpolate zoom
+
+            yield return null;
+        }
+
+        // Adjust it to the exact final values.
+        mainCam.transform.position = targetCamPosition;
+        mainCam.orthographicSize = targetZoom;
+
+        yield return new WaitForSeconds(transitionTime);
         LightedTreeFinal?.Invoke(LevelSelectorManager.NextLevel.Finished);
     }
 }

@@ -14,17 +14,22 @@ public class LevelManager3 : AbstractLevelManager
     private GameObject treeManager;
 
     // === Camera ===
+    [Header("Camera")]
+    [SerializeField] private float cameraSpeed;
     private CameraFollow cameraFollow;
 
     // === Player ===
     [Header("Player")]
     [SerializeField] private FoxController foxController;
 
-    // === Animation ===
+    // === Animations ===
+    [Header("Animation")]
+    [SerializeField] private float transitionTime;
     private TreeAnimator treeAnimator;
 
     // === Coroutines ===
     private Coroutine resetRoundRoutine;
+    private Coroutine openingAnimationRoutine;
 
     // === Events ===
     public event Action RoundStarted;
@@ -34,6 +39,9 @@ public class LevelManager3 : AbstractLevelManager
     public GameObject MapManager => mapManager;
     public LightManager LightManager => lightManager;
     public GameObject TreeManager => treeManager;
+    public CameraFollow CameraFollow => cameraFollow;
+    public float CameraSpeed => cameraSpeed;
+    public float TransitionTime => transitionTime;
 
     // === Overridden Abstract Methods ===
     protected override void InitializeManagers()
@@ -69,12 +77,13 @@ public class LevelManager3 : AbstractLevelManager
         treeAnimator.LightedTreeFinal += StartLevelFinishing;
     }
 
-    // === Round Management Methods ===
     void Start()
     {
-        StartResetRoundRoutine();
+        if (openingAnimationRoutine != null) StopCoroutine(openingAnimationRoutine);
+        openingAnimationRoutine = StartCoroutine(ShowOpeningAnimation());
     }
 
+    // === Round Management Methods ===
     void Update()
     {
         foxController.CanMove = (gameState == GameState.Playing);
@@ -82,13 +91,13 @@ public class LevelManager3 : AbstractLevelManager
 
     private void StartResetRoundRoutine()
     {
-        if(resetRoundRoutine != null) StopCoroutine(resetRoundRoutine);
+        if (resetRoundRoutine != null) StopCoroutine(resetRoundRoutine);
         resetRoundRoutine = StartCoroutine(ResetRound());
     }
 
     private IEnumerator ResetRound()
     {
-        if(sequenceManager.GetComponent<SequenceGenerator>().CurrentSequenceIndex != 0)
+        if (sequenceManager.GetComponent<SequenceGenerator>().CurrentSequenceIndex != 0)
         {
             transitionAnim.SetTrigger("t_showSnowy");
             yield return new WaitForSeconds(transitionDelay);
@@ -100,5 +109,40 @@ public class LevelManager3 : AbstractLevelManager
         foxController.ResetPosition();
         lightManager.GetComponent<LightManager>().ResetActiveLights();
         treeAnimator.TurnOffTree();
+    }
+
+    // === Opening Animation ===
+    private IEnumerator ShowOpeningAnimation()
+    {
+        LevelManager3.instance.State = LevelManager3.GameState.ShowingAnimation;
+
+        // Horizontal camera movement
+        float targetX = cameraFollow.MaxXPos;
+        bool isMovingToLeft = false;
+        bool isAnimationFinished = false;
+
+        yield return new WaitForSeconds(transitionTime);
+        while (isAnimationFinished == false)
+        {
+            Vector3 currentPos = Camera.main.transform.position;
+            currentPos.x = Mathf.MoveTowards(currentPos.x, targetX, cameraSpeed * Time.deltaTime);
+            Camera.main.transform.position = currentPos;
+
+            yield return null;
+
+            if (!isMovingToLeft && Camera.main.transform.position.x >= targetX)
+            {
+                targetX = cameraFollow.MinXPos;
+                isMovingToLeft = true;
+                yield return new WaitForSeconds(transitionTime);
+            }
+            if (isMovingToLeft && Camera.main.transform.position.x == targetX)
+            {
+                isAnimationFinished = true;
+            }
+        }
+
+        yield return new WaitForSeconds(transitionTime);
+        StartResetRoundRoutine();
     }
 }

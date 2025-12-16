@@ -8,10 +8,15 @@ public class MapLightsAnimator : MonoBehaviour
     // === Sequence Animation ===
     [SerializeField] private GameObject[] mapLights;
     [SerializeField] private float lightOnDuration;
-    [SerializeField] private float transitionTime;
+    private float transitionTime;
 
     // === Coroutines ===
     private Coroutine lightSequenceRoutine;
+
+    void Awake()
+    {
+        transitionTime = LevelManager3.instance.TransitionTime;
+    }
 
     public void StartAnimation(List<int> sequence)
     {
