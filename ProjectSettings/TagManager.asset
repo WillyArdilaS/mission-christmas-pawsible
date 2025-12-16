@@ -6,7 +6,7 @@ TagManager:
   tags:
   - SmallObstacle
   - BigObstacle
-  - FinishLine
+  - Goal
   - Berry
   - Orange
   - Pinecone

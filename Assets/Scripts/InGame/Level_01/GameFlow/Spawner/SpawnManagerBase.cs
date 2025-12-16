@@ -21,7 +21,7 @@ public class SpawnManagerBase : MonoBehaviour
 
     void Start()
     {
-        trackManager = GameManagerLevel1.instance.TrackManager;
+        trackManager = GameManagerLevel1.instance.TrackManager.GetComponent<TrackManager>();
     }
 
     // === Spawning Methods ===

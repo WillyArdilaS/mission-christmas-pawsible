@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using UnityEngine;
 
@@ -10,16 +9,12 @@ public class PowerupManager : MonoBehaviour
     private CollisionManagerLevel1 collisionManager;
 
     // === Fade Settings ===
-    [Header("Fade Animation")]
     [SerializeField] protected float fadeBlinkDuration;
     [SerializeField] protected int fadeBlinksQuantity;
 
     // === Coroutines ===
     private Coroutine invincibilityRoutine;
     private Coroutine finishPowerupRoutine;
-
-    // === Events ===
-    public event Action PowerupPickedUp;
 
     void Awake()
     {
@@ -33,12 +28,12 @@ public class PowerupManager : MonoBehaviour
         {
             case PowerupData.PowerupType.Invincibility:
                 var invData = (InvincibilityData)data;
+
                 if (invincibilityRoutine != null) StopCoroutine(invincibilityRoutine);
                 invincibilityRoutine = StartCoroutine(StartInvincibility(invData.Duration, invData.Transparency));
+                
                 break;
         }
-
-        PowerupPickedUp?.Invoke();
     }
 
     public IEnumerator StartInvincibility(float duration, float transparency)

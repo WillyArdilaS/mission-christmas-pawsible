@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using UnityEngine;
 using UnityEngine.InputSystem;
@@ -6,6 +7,7 @@ using UnityEngine.InputSystem;
 public class FoxController : MonoBehaviour
 {
     // === Input ===
+    private PlayerInput playerInput;
     private InputAction moveAction;
 
     // === Limits ===
@@ -34,58 +36,20 @@ public class FoxController : MonoBehaviour
     // === Coroutines ===
     private Coroutine goingInsideRoutine;
 
+    // === Events ===
+    public event Action GoInsidePressed;
+
     // === Properties ===
     public bool CanMove { get => canMove; set => canMove = value; }
 
-    // === Initialization Methods ===
     void Awake()
     {
+        playerInput = GetComponent<PlayerInput>();
         rb2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
 
-        moveAction = GlobalGameManager.instance.InputManager.PlayerInput.actions["Move"];
-    }
-
-    void OnEnable()
-    {
-        GlobalGameManager.instance.InputManager.GoInsidePressed += StartGoInside;
-    }
-
-    void OnDisable()
-    {
-        GlobalGameManager.instance.InputManager.GoInsidePressed -= StartGoInside;
-    }
-
-    // === Movement Methods ===
-    void Update()
-    {
-        if (!canMove || isGoingInside)
-        {
-            movementInput = Vector2.zero;
-            animator.SetBool("b_isWalking", false);
-            return;
-        }
-
-        // Read movement input
-        movementInput = moveAction.ReadValue<Vector2>();
-
-        // Determine desired rotation according to direction
-        if (movementInput.x > 0)
-        {
-            targetYRotation = 0f;
-        }
-        else if (movementInput.x < 0)
-        {
-            targetYRotation = 180f;
-        }
-        else
-        {
-            animator.SetBool("b_isWalking", false);
-        }
-
-        // Interpolate to the target rotation
-        Quaternion targetRot = Quaternion.Euler(0, targetYRotation, 0);
-        transform.rotation = Quaternion.Lerp(transform.rotation, targetRot, rotationSpeed * Time.deltaTime);
+        playerInput.onActionTriggered += OnActionTriggered;
+        moveAction = playerInput.actions["Move"];
     }
 
     void FixedUpdate()
@@ -118,22 +82,48 @@ public class FoxController : MonoBehaviour
         }
     }
 
-    public void ResetPosition()
+    void Update()
     {
-        rb2D.position = new Vector2(minXPos, rb2D.position.y);
-        rb2D.linearVelocityX = 0;
+        if (!canMove || isGoingInside)
+        {
+            movementInput = Vector2.zero;
+            animator.SetBool("b_isWalking", false);
+            return;
+        }
 
-        targetYRotation = 0f;
-        transform.rotation = Quaternion.Euler(0, targetYRotation, 0);
+        // Read movement input
+        movementInput = moveAction.ReadValue<Vector2>();
+
+        // Determine desired rotation according to direction
+        if (movementInput.x > 0)
+        {
+            targetYRotation = 0f;
+        }
+        else if (movementInput.x < 0)
+        {
+            targetYRotation = 180f;
+        }
+        else
+        {
+            animator.SetBool("b_isWalking", false);
+        }
+
+        // Interpolate to the target rotation
+        Quaternion targetRot = Quaternion.Euler(0, targetYRotation, 0);
+        transform.rotation = Quaternion.Lerp(transform.rotation, targetRot, rotationSpeed * Time.deltaTime);
     }
 
-    // === Go Inside Methods ===
-    private void StartGoInside()
+    private void OnActionTriggered(InputAction.CallbackContext ctx)
     {
-        if (isGoingInside) return;
-
-        if (goingInsideRoutine != null) StopCoroutine(goingInsideRoutine);
-        goingInsideRoutine = StartCoroutine(GoInside());
+        if (ctx.action.actionMap.name == "Player" && ctx.performed)
+        {
+            if (ctx.action.name == "Go Inside" && !isGoingInside)
+            {
+                if (goingInsideRoutine != null) StopCoroutine(goingInsideRoutine);
+                goingInsideRoutine = StartCoroutine(GoInside());
+                GoInsidePressed?.Invoke();
+            }
+        }
     }
 
     private IEnumerator GoInside()
@@ -145,5 +135,14 @@ public class FoxController : MonoBehaviour
 
         isGoingInside = false;
         animator.SetBool("b_isLookingBack", false);
+    }
+
+    public void ResetPosition()
+    {
+        rb2D.position = new Vector2(minXPos, rb2D.position.y);
+        rb2D.linearVelocityX = 0;
+
+        targetYRotation = 0f;
+        transform.rotation = Quaternion.Euler(0, targetYRotation, 0);
     }
 }

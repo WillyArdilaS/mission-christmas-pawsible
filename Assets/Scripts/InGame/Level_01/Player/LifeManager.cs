@@ -20,7 +20,7 @@ public class LifeManager : MonoBehaviour
         collisionManager = GetComponent<CollisionManagerLevel1>();
         powerupManager = GetComponent<PowerupManager>();
 
-        collisionManager.HitObstacle += SubstractLife;
+        collisionManager.ObstacleHit += SubstractLife;
 
         lifeCounter = livesUI.Count();
     }

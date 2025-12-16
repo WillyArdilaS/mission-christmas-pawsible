@@ -1,6 +1,5 @@
 using System;
 using System.Collections.Generic;
-using System.Linq;
 using UnityEngine;
 
 public class ScoreManager : MonoBehaviour
@@ -18,7 +17,6 @@ public class ScoreManager : MonoBehaviour
 
     // === Events ===
     public event Action<string> ScoreChanged;
-    public event Action<LevelSelectorManager.NextLevel> ScoreAchieved;
 
     // === Properties ===
     public Dictionary<string, int> FruitsDictionary => fruitsDictionary;
@@ -43,8 +41,6 @@ public class ScoreManager : MonoBehaviour
         {
             fruitsDictionary[tag]++;
             ScoreChanged?.Invoke(tag);
-
-            CheckPoints();
         }
     }
 
@@ -57,7 +53,7 @@ public class ScoreManager : MonoBehaviour
         {
             if (fruit.Value > 0) validKeys.Add(fruit.Key);
         }
-
+        
         if (validKeys.Count == 0) return;
 
         // Pick random valid fruit
@@ -65,13 +61,5 @@ public class ScoreManager : MonoBehaviour
         fruitsDictionary[randomKey]--;
 
         ScoreChanged?.Invoke(randomKey);
-    }
-
-    private void CheckPoints()
-    {
-        if (fruitsDictionary.All(fruit => fruit.Value >= GameManagerLevel2.instance.RequiredFruitsDictionary[fruit.Key]))
-        {
-            ScoreAchieved?.Invoke(LevelSelectorManager.NextLevel.Level_03);
-        }
     }
 }

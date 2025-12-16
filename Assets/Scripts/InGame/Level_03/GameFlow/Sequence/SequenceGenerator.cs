@@ -10,13 +10,9 @@ public class SequenceGenerator : MonoBehaviour
     [SerializeField] private SequenceEventData[] sequenceEvents;
     private SequenceEventData currentSequenceEvent;
     private int currentSequenceIndex = 0;
-    private bool isFinalRound = false;
     
     // === Animation ===
     private MapLightsAnimator mapAnimator;
-
-    // === Properties ===
-    public bool IsFinalRound => isFinalRound;
 
     void Awake()
     {
@@ -28,9 +24,14 @@ public class SequenceGenerator : MonoBehaviour
 
     private void NextRound()
     {
-        if(currentSequenceIndex == sequenceEvents.Length - 1) isFinalRound = true;
-
-        CreateSequence();
+        if (currentSequenceIndex < sequenceEvents.Length)
+        {
+            CreateSequence();
+        }
+        else
+        {
+            GameManagerLevel3.instance.State = GameManagerLevel3.GameState.Finishing;
+        }
     }
 
     private void CreateSequence()
@@ -45,5 +46,6 @@ public class SequenceGenerator : MonoBehaviour
         mapAnimator.StartAnimation(sequenceManager.SequenceList);
 
         currentSequenceIndex++;
+        GameManagerLevel3.instance.State = GameManagerLevel3.GameState.ShowingSequence;
     }
 }
