@@ -1,13 +1,22 @@
 fileFormatVersion: 2
-guid: 5e5c9568ba62ff84eb39cf70ad627585
+guid: 62261da2bbd648d4c8c9f30dc016436b
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -6634934018350726638
-    second: H7_0
+      213: 673573092151707672
+    second: TreeLight_0
   - first:
-      213: -3080620092225416807
-    second: H7_1
+      213: 188645800392031459
+    second: TreeLight_1
+  - first:
+      213: 8411381909346671552
+    second: TreeLight_2
+  - first:
+      213: -4281228591800772412
+    second: TreeLight_3
+  - first:
+      213: 6999166244209762663
+    second: TreeLight_4
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -129,13 +138,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: H7_0
+      name: TreeLight_0
       rect:
         serializedVersion: 2
-        x: 2353
-        y: 475
-        width: 86
-        height: 92
+        x: 289
+        y: 1015
+        width: 133
+        height: 141
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -144,20 +153,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 212cc08e9aafbe3a0800000000000000
-      internalID: -6634934018350726638
+      spriteID: 818c6f79823095900800000000000000
+      internalID: 673573092151707672
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: H7_1
+      name: TreeLight_1
       rect:
         serializedVersion: 2
-        x: 2336
-        y: 233
-        width: 255
-        height: 223
+        x: 192
+        y: 652
+        width: 278
+        height: 209
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,8 +175,74 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 99119f219507f35d0800000000000000
-      internalID: -3080620092225416807
+      spriteID: 3ec7cb02b543e9200800000000000000
+      internalID: 188645800392031459
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TreeLight_2
+      rect:
+        serializedVersion: 2
+        x: 255
+        y: 820
+        width: 180
+        height: 169
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cb51c8f74b3bb470800000000000000
+      internalID: 8411381909346671552
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TreeLight_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 42
+        width: 566
+        height: 714
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c8187757450694c0800000000000000
+      internalID: -4281228591800772412
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: TreeLight_4
+      rect:
+        serializedVersion: 2
+        x: 273
+        y: 0
+        width: 327
+        height: 160
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 761270ead98022160800000000000000
+      internalID: 6999166244209762663
       vertices: []
       indices: 
       edges: []
@@ -186,8 +261,11 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      H7_0: -6634934018350726638
-      H7_1: -3080620092225416807
+      TreeLight_0: 673573092151707672
+      TreeLight_1: 188645800392031459
+      TreeLight_2: 8411381909346671552
+      TreeLight_3: -4281228591800772412
+      TreeLight_4: 6999166244209762663
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

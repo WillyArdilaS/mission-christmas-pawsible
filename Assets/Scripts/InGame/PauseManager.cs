@@ -14,13 +14,14 @@ public class PauseManager : MonoBehaviour
     void Awake()
     {
         audioManager = GameManager.instance.AudioManager;
+        
         pauseUI.SetActive(false);
     }
 
-    public void Pause(AbstractLevelManager gameManager)
+    public void Pause(AbstractLevelManager levelManager)
     {
-        previousState = gameManager.State;
-        gameManager.State = AbstractLevelManager.GameState.InPause;
+        previousState = levelManager.State;
+        levelManager.State = AbstractLevelManager.GameState.InPause;
 
         pauseUI.SetActive(true);
         Time.timeScale = 0;
@@ -28,13 +29,12 @@ public class PauseManager : MonoBehaviour
         audioManager.PauseMusic();
     }
 
-    public void Continue(AbstractLevelManager gameManager)
+    public void Continue(AbstractLevelManager levelManager)
     {
-        gameManager.State = previousState;
+        levelManager.State = previousState;
 
         pauseUI.SetActive(false);
         Time.timeScale = 1;
-
 
         audioManager.UnPauseMusic();
     }

@@ -34,6 +34,9 @@ public class LevelManager1 : AbstractLevelManager
     private const int LAP_DURATION = 55;
     private int currentLap = 0;
 
+    // === Coroutines ===
+    private Coroutine resetTimerRoutine;
+
     // === Events ===
     public event Action LapRestarted;
 
@@ -127,7 +130,8 @@ public class LevelManager1 : AbstractLevelManager
         lifeManager.AddLife();
         hasExtraLife = false;
 
-        ResetTimer();
+        if(resetTimerRoutine != null) StopCoroutine(resetTimerRoutine);
+        resetTimerRoutine = StartCoroutine(ResetTimer());
     }
 
     private void RestartRace()
@@ -138,20 +142,25 @@ public class LevelManager1 : AbstractLevelManager
         hasExtraLife = true;
 
         GameManager.instance.AudioManager.RestartMusic();
-        ResetTimer();
+
+        if(resetTimerRoutine != null) StopCoroutine(resetTimerRoutine);
+        resetTimerRoutine = StartCoroutine(ResetTimer());
     }
 
-    private void ResetTimer()
+    private IEnumerator ResetTimer()
     {
+        StopCoroutine(gameTimerRoutine);
+
+        transitionAnim.SetTrigger("t_showSnowy");
+        yield return new WaitForSeconds(transitionDelay);
+
         RaceGenerator[] raceGenerators = raceManager.GetComponents<RaceGenerator>();
         foreach (var raceGenerator in raceGenerators)
         {
             raceGenerator.InitializeRace();
         }
 
-        StopCoroutine(gameTimerRoutine);
         gameTimerRoutine = StartCoroutine(StartGameTimer());
-
         LapRestarted?.Invoke();
     }
 }

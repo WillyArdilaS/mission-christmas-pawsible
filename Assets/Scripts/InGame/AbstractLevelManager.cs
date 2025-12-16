@@ -6,19 +6,22 @@ public abstract class AbstractLevelManager : MonoBehaviour
 {
     // === Managers ===
     protected PauseManager pauseManager;
-    protected TransitionManager transitionManager;
     private LevelSelectorManager levelSelector;
 
     // === States ===
     public enum GameState { Playing, InPause, ShowingAnimation }
     [SerializeField] protected GameState gameState = GameState.Playing;
 
+    // === Transition ===
+    [Header("Transition")]
+    [SerializeField] protected Animator transitionAnim;
+    [SerializeField] protected float transitionDelay;
+
     // === Coroutines ===
     protected Coroutine gameTimerRoutine;
     private Coroutine finishLevelRoutine;
 
     // === Properties ===
-    public TransitionManager TransitionManager => transitionManager;
     public GameState State { get => gameState; set => gameState = value; }
 
     // === Abstract Methods ===

@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using UnityEngine;
 
 public class LevelManager3 : AbstractLevelManager
@@ -16,10 +17,14 @@ public class LevelManager3 : AbstractLevelManager
     private CameraFollow cameraFollow;
 
     // === Player ===
+    [Header("Player")]
     [SerializeField] private FoxController foxController;
 
     // === Animation ===
     private TreeAnimator treeAnimator;
+
+    // === Coroutines ===
+    private Coroutine resetRoundRoutine;
 
     // === Events ===
     public event Action RoundStarted;
@@ -34,7 +39,6 @@ public class LevelManager3 : AbstractLevelManager
     protected override void InitializeManagers()
     {
         if (pauseManager == null) pauseManager = GetComponentInChildren<PauseManager>();
-        if (transitionManager == null) transitionManager = GetComponentInChildren<TransitionManager>();
         if (sequenceManager == null) sequenceManager = transform.Find("SequenceManager").gameObject;
         if (mapManager == null) mapManager = transform.Find("MapManager").gameObject;
         if (lightManager == null) lightManager = GetComponentInChildren<LightManager>();
@@ -60,14 +64,15 @@ public class LevelManager3 : AbstractLevelManager
         cameraFollow = Camera.main.GetComponent<CameraFollow>();
         treeAnimator = treeManager.GetComponent<TreeAnimator>();
 
-        transitionManager.GetComponent<TransitionManager>().TransitionFinished += StartNewRound;
+        // transitionManager.GetComponent<TransitionManager>().TransitionFinished += StartNewRound;
+        treeAnimator.LightedTree += StartResetRoundRoutine;
         treeAnimator.LightedTreeFinal += StartLevelFinishing;
     }
 
     // === Round Management Methods ===
     void Start()
     {
-        StartNewRound();
+        StartResetRoundRoutine();
     }
 
     void Update()
@@ -75,8 +80,20 @@ public class LevelManager3 : AbstractLevelManager
         foxController.CanMove = (gameState == GameState.Playing);
     }
 
-    private void StartNewRound()
+    private void StartResetRoundRoutine()
     {
+        if(resetRoundRoutine != null) StopCoroutine(resetRoundRoutine);
+        resetRoundRoutine = StartCoroutine(ResetRound());
+    }
+
+    private IEnumerator ResetRound()
+    {
+        if(sequenceManager.GetComponent<SequenceGenerator>().CurrentSequenceIndex != 0)
+        {
+            transitionAnim.SetTrigger("t_showSnowy");
+            yield return new WaitForSeconds(transitionDelay);
+        }
+
         RoundStarted?.Invoke();
 
         cameraFollow.ResetPosition();

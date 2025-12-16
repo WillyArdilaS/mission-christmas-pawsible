@@ -1,13 +1,19 @@
 fileFormatVersion: 2
-guid: 5cb5734b0a841fc43b35b4229e8cc200
+guid: 42dbbb852e368ec4c8f71dd244834905
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6318853899534260313
-    second: H12_0
+      213: 483504506887395200
+    second: HouseLight_03_0
   - first:
-      213: -5224076202933152986
-    second: H12_1
+      213: 1136693064586539729
+    second: HouseLight_03_1
+  - first:
+      213: 6147491938632657966
+    second: HouseLight_03_2
+  - first:
+      213: 8751588398730518080
+    second: HouseLight_03_3
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -129,13 +135,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: H12_0
+      name: HouseLight_03_0
       rect:
         serializedVersion: 2
-        x: 4038
-        y: 523
-        width: 104
-        height: 116
+        x: 0
+        y: 399
+        width: 292
+        height: 231
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -144,20 +150,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 958d455942411b750800000000000000
-      internalID: 6318853899534260313
+      spriteID: 087d25c89c0c5b600800000000000000
+      internalID: 483504506887395200
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: H12_1
+      name: HouseLight_03_1
       rect:
         serializedVersion: 2
-        x: 3931
-        y: 218
-        width: 325
-        height: 214
+        x: 28
+        y: 164
+        width: 242
+        height: 230
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,8 +172,52 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 623199c2f5a5087b0800000000000000
-      internalID: -5224076202933152986
+      spriteID: 1d2b45dd15856cf00800000000000000
+      internalID: 1136693064586539729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HouseLight_03_2
+      rect:
+        serializedVersion: 2
+        x: 48
+        y: 0
+        width: 91
+        height: 137
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e2ce6cde857405550800000000000000
+      internalID: 6147491938632657966
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HouseLight_03_3
+      rect:
+        serializedVersion: 2
+        x: 181
+        y: 0
+        width: 98
+        height: 134
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04e13ced743e37970800000000000000
+      internalID: 8751588398730518080
       vertices: []
       indices: 
       edges: []
@@ -186,8 +236,10 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      H12_0: 6318853899534260313
-      H12_1: -5224076202933152986
+      HouseLight_03_0: 483504506887395200
+      HouseLight_03_1: 1136693064586539729
+      HouseLight_03_2: 6147491938632657966
+      HouseLight_03_3: 8751588398730518080
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

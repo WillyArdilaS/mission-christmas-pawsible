@@ -1,16 +1,16 @@
 fileFormatVersion: 2
-guid: 82d63866f33838540b5fdb89a683b496
+guid: 140ccbc0b4c725f469dc1b1f6b85f533
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8909495648073042519
-    second: H10_0
+      213: -840549971978793545
+    second: HouseLight_08_0
   - first:
-      213: 3887507603379458798
-    second: H10_1
+      213: 1366999597771941677
+    second: HouseLight_08_1
   - first:
-      213: -1646587359571393714
-    second: H10_2
+      213: 2024328396095309337
+    second: HouseLight_08_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -132,13 +132,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: H10_0
+      name: HouseLight_08_0
       rect:
         serializedVersion: 2
-        x: 3352
-        y: 624
-        width: 209
-        height: 216
+        x: 0
+        y: 126
+        width: 279
+        height: 320
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -147,20 +147,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 9a5b7b0a9ec1b5480800000000000000
-      internalID: -8909495648073042519
+      spriteID: 7bd4d300144c554f0800000000000000
+      internalID: -840549971978793545
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: H10_1
+      name: HouseLight_08_1
       rect:
         serializedVersion: 2
-        x: 3274
-        y: 361
-        width: 300
-        height: 251
+        x: 18
+        y: 3
+        width: 64
+        height: 69
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -169,20 +169,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: ee21011819333f530800000000000000
-      internalID: 3887507603379458798
+      spriteID: d276c4934ee88f210800000000000000
+      internalID: 1366999597771941677
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: H10_2
+      name: HouseLight_08_2
       rect:
         serializedVersion: 2
-        x: 3427
-        y: 292
-        width: 107
-        height: 119
+        x: 189
+        y: 0
+        width: 73
+        height: 74
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -191,8 +191,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e43491d35852629e0800000000000000
-      internalID: -1646587359571393714
+      spriteID: 9164ffd63fbd71c10800000000000000
+      internalID: 2024328396095309337
       vertices: []
       indices: 
       edges: []
@@ -211,9 +211,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      H10_0: -8909495648073042519
-      H10_1: 3887507603379458798
-      H10_2: -1646587359571393714
+      HouseLight_08_0: -840549971978793545
+      HouseLight_08_1: 1366999597771941677
+      HouseLight_08_2: 2024328396095309337
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

@@ -1,13 +1,10 @@
 fileFormatVersion: 2
-guid: f5bd082fdafc13e45a539ed5fd32c558
+guid: 38bd5feb30274974e8332861576b4cef
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 1337925784645565758
-    second: H6_0
-  - first:
-      213: 7104705449332180161
-    second: H6_1
+      213: 6001028627990441995
+    second: HouseLight_01_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -129,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: H6_0
+      name: HouseLight_01_0
       rect:
         serializedVersion: 2
-        x: 1999
-        y: 320
-        width: 339
-        height: 256
+        x: 0
+        y: 7
+        width: 299
+        height: 248
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -144,30 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e3d72a99964419210800000000000000
-      internalID: 1337925784645565758
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: H6_1
-      rect:
-        serializedVersion: 2
-        x: 2045
-        y: 242
-        width: 107
-        height: 130
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1c40a3db6fbf89260800000000000000
-      internalID: 7104705449332180161
+      spriteID: b00f15a0ebfe74350800000000000000
+      internalID: 6001028627990441995
       vertices: []
       indices: 
       edges: []
@@ -186,8 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      H6_0: 1337925784645565758
-      H6_1: 7104705449332180161
+      HouseLight_01_0: 6001028627990441995
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

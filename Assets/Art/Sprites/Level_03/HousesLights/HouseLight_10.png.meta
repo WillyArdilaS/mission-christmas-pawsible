@@ -1,22 +1,16 @@
 fileFormatVersion: 2
-guid: f31201c46a7417e40ac91f43f0129e0f
+guid: f142c43f5f6475e458ce330c5a661853
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6853316077166303748
-    second: Tree_0
+      213: -3514194100686939205
+    second: HouseLight_10_0
   - first:
-      213: 4134985361545656292
-    second: Tree_1
+      213: 2782779452509941691
+    second: HouseLight_10_1
   - first:
-      213: -1566730818833404899
-    second: Tree_2
-  - first:
-      213: -7301469273254094464
-    second: Tree_3
-  - first:
-      213: 4246777929600769233
-    second: Tree_4
+      213: -4185038183968459815
+    second: HouseLight_10_2
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -138,13 +132,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Tree_0
+      name: HouseLight_10_0
       rect:
         serializedVersion: 2
-        x: 4622
-        y: 1212
-        width: 133
-        height: 151
+        x: 62
+        y: 322
+        width: 209
+        height: 192
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -153,20 +147,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 40a98f869aedb1f50800000000000000
-      internalID: 6853316077166303748
+      spriteID: bbb18cc95131b3fc0800000000000000
+      internalID: -3514194100686939205
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tree_1
+      name: HouseLight_10_1
       rect:
         serializedVersion: 2
-        x: 4525
-        y: 849
+        x: 0
+        y: 59
         width: 278
-        height: 209
+        height: 251
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -175,20 +169,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 4e77e5a374b626930800000000000000
-      internalID: 4134985361545656292
+      spriteID: bbf6c131b2b6e9620800000000000000
+      internalID: 2782779452509941691
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Tree_2
+      name: HouseLight_10_2
       rect:
         serializedVersion: 2
-        x: 4588
-        y: 1017
-        width: 180
-        height: 169
+        x: 137
+        y: 0
+        width: 107
+        height: 109
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -197,52 +191,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: d1c27c40f9ad14ae0800000000000000
-      internalID: -1566730818833404899
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tree_3
-      rect:
-        serializedVersion: 2
-        x: 4326
-        y: 239
-        width: 573
-        height: 714
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 089924d7168fbaa90800000000000000
-      internalID: -7301469273254094464
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Tree_4
-      rect:
-        serializedVersion: 2
-        x: 4606
-        y: 194
-        width: 341
-        height: 163
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      customData: 
-      outline: []
-      physicsShape: []
-      tessellationDetail: -1
-      bones: []
-      spriteID: 1dc92ddc6069fea30800000000000000
-      internalID: 4246777929600769233
+      spriteID: 9d33d19e1f1cbe5c0800000000000000
+      internalID: -4185038183968459815
       vertices: []
       indices: 
       edges: []
@@ -261,11 +211,9 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Tree_0: 6853316077166303748
-      Tree_1: 4134985361545656292
-      Tree_2: -1566730818833404899
-      Tree_3: -7301469273254094464
-      Tree_4: 4246777929600769233
+      HouseLight_10_0: -3514194100686939205
+      HouseLight_10_1: 2782779452509941691
+      HouseLight_10_2: -4185038183968459815
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

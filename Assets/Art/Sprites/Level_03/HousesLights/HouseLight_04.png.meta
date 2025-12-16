@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: b3a73dde8a65d6b4e98fb9f2d3802f47
+guid: 47b952e079c11bb46a833cd27c4a331d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 6909438903880075253
-    second: H9_0
+      213: 6437609932955041138
+    second: HouseLight_04_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -126,13 +126,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: H9_0
+      name: HouseLight_04_0
       rect:
         serializedVersion: 2
-        x: 2888
-        y: 292
-        width: 358
-        height: 230
+        x: 0
+        y: 0
+        width: 337
+        height: 342
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -141,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 5f74907431243ef50800000000000000
-      internalID: 6909438903880075253
+      spriteID: 27dbf48402cf65950800000000000000
+      internalID: 6437609932955041138
       vertices: []
       indices: 
       edges: []
@@ -161,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      H9_0: 6909438903880075253
+      HouseLight_04_0: 6437609932955041138
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

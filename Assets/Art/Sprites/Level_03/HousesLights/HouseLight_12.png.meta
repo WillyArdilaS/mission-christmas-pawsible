@@ -1,13 +1,13 @@
 fileFormatVersion: 2
-guid: b189c44c19deccb4486c0161fd2c9279
+guid: 631590b9a8e314e48a67ad75046f750d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: 5729175951876053196
-    second: H5_0
+      213: 2572076760601727614
+    second: HouseLight_12_0
   - first:
-      213: 8096941750822726788
-    second: H5_1
+      213: -590588413040109864
+    second: HouseLight_12_1
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -129,13 +129,13 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: H5_0
+      name: HouseLight_12_0
       rect:
         serializedVersion: 2
-        x: 1801
-        y: 531
-        width: 102
-        height: 111
+        x: 87
+        y: 330
+        width: 104
+        height: 106
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -144,20 +144,20 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cc8584b7c2f128f40800000000000000
-      internalID: 5729175951876053196
+      spriteID: e7214b2bf2ad1b320800000000000000
+      internalID: 2572076760601727614
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: H5_1
+      name: HouseLight_12_1
       rect:
         serializedVersion: 2
-        x: 1715
-        y: 163
-        width: 284
-        height: 358
+        x: 0
+        y: 25
+        width: 285
+        height: 214
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -166,8 +166,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 48c61d87f9d1e5070800000000000000
-      internalID: 8096941750822726788
+      spriteID: 8d65848a7fecdc7f0800000000000000
+      internalID: -590588413040109864
       vertices: []
       indices: 
       edges: []
@@ -186,8 +186,8 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      H5_0: 5729175951876053196
-      H5_1: 8096941750822726788
+      HouseLight_12_0: 2572076760601727614
+      HouseLight_12_1: -590588413040109864
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

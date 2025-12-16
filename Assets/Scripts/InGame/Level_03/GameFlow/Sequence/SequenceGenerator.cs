@@ -16,6 +16,7 @@ public class SequenceGenerator : MonoBehaviour
     private MapLightsAnimator mapAnimator;
 
     // === Properties ===
+    public int CurrentSequenceIndex => currentSequenceIndex;
     public bool IsFinalRound => isFinalRound;
 
     void Awake()
