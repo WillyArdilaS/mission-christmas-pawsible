@@ -3,32 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-// === Structures ===
-[Serializable]
-public struct MusicList
-{
-    [HideInInspector] public string name;
-    [SerializeField] private AudioClip[] songsArray;
-    public AudioClip[] SongsArray => songsArray;
-}
-
-[Serializable]
-public struct SfxList
-{
-    [HideInInspector] public string name;
-    [SerializeField] private AudioClip[] sfxArray;
-    public AudioClip[] SfxArray => sfxArray;
-}
-
-[Serializable]
-public struct UISfxList
-{
-    [HideInInspector] public string name;
-    [SerializeField] private AudioClip[] uiSfxArray;
-    public AudioClip[] UISfxArray => uiSfxArray;
-}
-
-// === Class ===
 [ExecuteInEditMode]
 public class AudioManager : MonoBehaviour
 {
@@ -38,17 +12,17 @@ public class AudioManager : MonoBehaviour
     [SerializeField] private AudioSource uiSfxSource;
 
     // === Music ===
-    [SerializeField] private MusicList[] musicList;
+    [SerializeField] private MusicListData[] musicList;
     [HideInInspector] public enum MusicScope { MainMenu, InGame }
     private Dictionary<string, AudioClip> musicDictionary;
 
     // === SFX ===
-    [SerializeField] private SfxList[] sfxList;
+    [SerializeField] private SfxListData[] sfxList;
     [HideInInspector] public enum SfxScope { Level_01, Level_02, Level_03 }
     private Dictionary<string, AudioClip> sfxDictionary = new();
 
     // === UI SFX ===
-    [SerializeField] private UISfxList[] uiSfxList;
+    [SerializeField] private UISfxListData[] uiSfxList;
     [HideInInspector] public enum UISfxScope { Button }
     private Dictionary<string, AudioClip> uiSfxDictionary = new();
 
