@@ -14,6 +14,7 @@ public class SleighController : MonoBehaviour
 
     // === Movement ===
     [SerializeField] private Transform[] tracks;
+    private float originalYPos;
     private int originalTrackIndex;
     private int currentTrackIndex;
     private bool canMove = true;
@@ -46,7 +47,9 @@ public class SleighController : MonoBehaviour
         }
 
         originalTrackIndex = currentTrackIndex;
+
         originalColliderOffset = col2D.offset;
+        originalYPos = transform.position.y;
     }
 
     void OnEnable()
@@ -54,6 +57,7 @@ public class SleighController : MonoBehaviour
         GameManager.instance.InputManager.MoveLeftPressed += OnMoveLeft;
         GameManager.instance.InputManager.MoveRightPressed += OnMoveRight;
         GameManager.instance.InputManager.JumpPressed += Jump;
+        GameManager.instance.InputManager.CancelJumpPressed += CancelJump;
     }
 
     void OnDisable()
@@ -61,6 +65,7 @@ public class SleighController : MonoBehaviour
         GameManager.instance.InputManager.MoveLeftPressed -= OnMoveLeft;
         GameManager.instance.InputManager.MoveRightPressed -= OnMoveRight;
         GameManager.instance.InputManager.JumpPressed -= Jump;
+        GameManager.instance.InputManager.CancelJumpPressed -= CancelJump;
     }
 
     private void OnMoveLeft()
@@ -102,19 +107,26 @@ public class SleighController : MonoBehaviour
         }
     }
 
-    private void Jump()
-    {
-        if (!canMove) return;
-        isJumping = true;
-        rb2D.AddForceY(jumpForce, ForceMode2D.Impulse);
-    }
-
     private void ResetPosition()
     {
         currentTrackIndex = originalTrackIndex;
 
-        transform.position = new Vector2(tracks[originalTrackIndex].position.x, transform.position.y);
+        transform.position = new Vector2(tracks[originalTrackIndex].position.x, originalYPos);
         spriteRend.sprite = sleighSprites[originalTrackIndex];
         col2D.offset = originalColliderOffset;
+    }
+
+    // === Jump Methods ===
+    private void Jump()
+    {
+        if (!canMove || isJumping) return;
+        isJumping = true;
+        rb2D.AddForceY(jumpForce, ForceMode2D.Impulse);
+    }
+
+    private void CancelJump()
+    {
+        transform.position = new Vector2(transform.position.x, originalYPos);
+        rb2D.linearVelocityY = 0;
     }
 }

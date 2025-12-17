@@ -16,6 +16,7 @@ public class InputManager : MonoBehaviour
     public event Action MoveLeftPressed;
     public event Action MoveRightPressed;
     public event Action JumpPressed;
+    public event Action CancelJumpPressed;
 
     // === Player Events ===
     public event Action GoInsidePressed;
@@ -61,6 +62,9 @@ public class InputManager : MonoBehaviour
                     break;
                 case "Jump":
                     JumpPressed?.Invoke();
+                    break;
+                case "Cancel Jump":
+                    CancelJumpPressed?.Invoke();
                     break;
             }
         }

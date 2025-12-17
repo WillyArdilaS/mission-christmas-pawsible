@@ -22,18 +22,37 @@ public class CollisionManagerLevel1 : MonoBehaviour
 
     void OnTriggerEnter2D(Collider2D collision)
     {
-        if (CanCrash)
+        if (canCrash)
         {
-            if ((collision.CompareTag("SmallObstacle") && !sleighController.IsJumping) || collision.CompareTag("BigObstacle"))
+            if (collision.CompareTag("BigObstacle"))
             {
                 HitObstacle?.Invoke();
                 collision.gameObject.SetActive(false);
             }
         }
+
+        if (collision.CompareTag("FinishLine")) FinishLineCrossed?.Invoke();
     }
 
-    void OnTriggerExit2D(Collider2D collision)
+    void OnTriggerStay2D(Collider2D collision)
     {
-        if (collision.CompareTag("FinishLine")) FinishLineCrossed?.Invoke();
+        // Collisions with small obstacles should be detected here to avoid being ignored when jumping
+        if (canCrash)
+        {
+            if (collision.CompareTag("SmallObstacle") && !sleighController.IsJumping)
+            {
+                HitObstacle?.Invoke();
+                collision.gameObject.SetActive(false);
+                canCrash = false;
+            }
+        }
+    }
+
+    void OnTriggerExit(Collider other)
+    {
+        if (other.CompareTag("SmallObstacle"))
+        {
+            canCrash = true;
+        }
     }
 }

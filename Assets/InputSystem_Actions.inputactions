@@ -80,6 +80,15 @@
                     "processors": "",
                     "interactions": "",
                     "initialStateCheck": false
+                },
+                {
+                    "name": "Cancel Jump",
+                    "type": "Button",
+                    "id": "3bb858d0-7300-4c8b-8e23-a0b81f64f2ad",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": "",
+                    "initialStateCheck": false
                 }
             ],
             "bindings": [
@@ -146,6 +155,28 @@
                     "processors": "",
                     "groups": "",
                     "action": "Move Right",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "77cdbc76-cb61-4384-9396-9fe8e9dee489",
+                    "path": "<Keyboard>/s",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "Cancel Jump",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "1da1e706-57ca-41e9-8804-0622deb43249",
+                    "path": "<Keyboard>/downArrow",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": ";Keyboard&Mouse",
+                    "action": "Cancel Jump",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }
