@@ -18,7 +18,7 @@ public class TreeAnimator : MonoBehaviour
     private float cameraSpeed;
 
     // === Animation ===
-    private float transitionTime;
+    private float waitingTime;
 
     [Header("Tree Animation Settings")]
     [SerializeField] private float houseLightTransitionTime;
@@ -46,7 +46,7 @@ public class TreeAnimator : MonoBehaviour
         cameraFollow = LevelManager3.instance.CameraFollow;
         cameraSpeed = LevelManager3.instance.CameraSpeed;
 
-        transitionTime = LevelManager3.instance.TransitionTime;
+        waitingTime = LevelManager3.instance.WaitingTime;
 
         sequenceManager.SequenceMatched += StartTreeAnimation;
     }
@@ -77,7 +77,7 @@ public class TreeAnimator : MonoBehaviour
         }
 
         // Horizontal camera movement
-        yield return new WaitForSeconds(transitionTime);
+        yield return new WaitForSeconds(waitingTime);
         float targetX = cameraFollow.MaxXPos;
 
         while (mainCam.transform.position.x < targetX)
@@ -90,11 +90,11 @@ public class TreeAnimator : MonoBehaviour
         }
 
         // Turn on the tree light
-        yield return new WaitForSeconds(transitionTime);
+        yield return new WaitForSeconds(waitingTime);
         treeLight.SetActive(true);
 
         // Extend the animation only if it is the final round
-        yield return new WaitForSeconds(transitionTime);
+        yield return new WaitForSeconds(waitingTime);
         if (!sequenceGenerator.IsFinalRound)
         {
             LightedTree?.Invoke();
@@ -127,7 +127,7 @@ public class TreeAnimator : MonoBehaviour
         mainCam.transform.position = targetCamPosition;
         mainCam.orthographicSize = targetZoom;
 
-        yield return new WaitForSeconds(transitionTime);
+        yield return new WaitForSeconds(waitingTime);
         LightedTreeFinal?.Invoke(LevelSelectorManager.NextLevel.Finished);
     }
 }

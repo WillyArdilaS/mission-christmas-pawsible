@@ -1365,12 +1365,6 @@ MonoBehaviour:
     newSpawnRate: 13
     newGlobalSpeed: 9
   - minutes: 0
-    seconds: 40
-    spawnedType: 1
-    doubleSpawnChance: 0
-    newSpawnRate: 13
-    newGlobalSpeed: 9
-  - minutes: 0
     seconds: 54
     spawnedType: 1
     doubleSpawnChance: 0
@@ -1386,13 +1380,13 @@ MonoBehaviour:
     seconds: 25
     spawnedType: 1
     doubleSpawnChance: 0
-    newSpawnRate: 11
+    newSpawnRate: 12
     newGlobalSpeed: 10
   - minutes: 1
     seconds: 45
     spawnedType: 1
     doubleSpawnChance: 0
-    newSpawnRate: 9
+    newSpawnRate: 11
     newGlobalSpeed: 11
   - minutes: 1
     seconds: 49
@@ -1404,13 +1398,13 @@ MonoBehaviour:
     seconds: 52
     spawnedType: 1
     doubleSpawnChance: 0
-    newSpawnRate: 9
+    newSpawnRate: 11
     newGlobalSpeed: 11
   - minutes: 2
     seconds: 25
     spawnedType: 1
     doubleSpawnChance: 0
-    newSpawnRate: 6
+    newSpawnRate: 9
     newGlobalSpeed: 12.5
   - minutes: 2
     seconds: 44
@@ -2078,6 +2072,10 @@ PrefabInstance:
     - target: {fileID: 1450523622614696039, guid: 75f2ae024b2ec914eb646ef0fd73d2dd, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7738602090973823130, guid: 75f2ae024b2ec914eb646ef0fd73d2dd, type: 3}
+      propertyPath: powerupVol
+      value: 0.25
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

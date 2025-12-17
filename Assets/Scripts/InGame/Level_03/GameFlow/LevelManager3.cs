@@ -29,11 +29,12 @@ public class LevelManager3 : AbstractLevelManager
 
     // === Animations ===
     [Header("Animation")]
-    [SerializeField] private float transitionTime;
+    [SerializeField] private float waitingTime;
     private TreeAnimator treeAnimator;
+    private bool isRestarting = false;
 
     // === Coroutines ===
-    private Coroutine resetRoundRoutine;
+    private Coroutine newRoundRoutine;
     private Coroutine openingAnimationRoutine;
 
     // === Events ===
@@ -46,7 +47,8 @@ public class LevelManager3 : AbstractLevelManager
     public GameObject TreeManager => treeManager;
     public CameraFollow CameraFollow => cameraFollow;
     public float CameraSpeed => cameraSpeed;
-    public float TransitionTime => transitionTime;
+    public float WaitingTime => waitingTime;
+    public bool IsRestarting { get => isRestarting; set => isRestarting = value; }
 
     // === Overridden Abstract Methods ===
     protected override void InitializeManagers()
@@ -78,7 +80,7 @@ public class LevelManager3 : AbstractLevelManager
         treeAnimator = treeManager.GetComponent<TreeAnimator>();
 
         // transitionManager.GetComponent<TransitionManager>().TransitionFinished += StartNewRound;
-        treeAnimator.LightedTree += StartResetRoundRoutine;
+        treeAnimator.LightedTree += StartNewRoundRoutine;
         treeAnimator.LightedTreeFinal += StartLevelFinishing;
     }
 
@@ -100,18 +102,22 @@ public class LevelManager3 : AbstractLevelManager
         foxController.CanMove = (gameState == GameState.Playing);
     }
 
-    private void StartResetRoundRoutine()
+    public void StartNewRoundRoutine()
     {
-        if (resetRoundRoutine != null) StopCoroutine(resetRoundRoutine);
-        resetRoundRoutine = StartCoroutine(ResetRound());
+        gameState = GameState.ShowingAnimation;
+
+        if (newRoundRoutine != null) StopCoroutine(newRoundRoutine);
+        newRoundRoutine = StartCoroutine(StartNewRound());
     }
 
-    private IEnumerator ResetRound()
+    private IEnumerator StartNewRound()
     {
-        if (sequenceManager.GetComponent<SequenceGenerator>().CurrentSequenceIndex != 0)
+        if (sequenceManager.GetComponent<SequenceGenerator>().CurrentSequenceIndex != 0 || isRestarting)
         {
             transitionAnim.SetTrigger("t_showSnowy");
             yield return new WaitForSeconds(transitionDelay);
+
+            isRestarting = false;
         }
 
         RoundStarted?.Invoke();
@@ -133,7 +139,7 @@ public class LevelManager3 : AbstractLevelManager
         bool isMovingToLeft = false;
         bool isAnimationFinished = false;
 
-        yield return new WaitForSeconds(transitionTime);
+        yield return new WaitForSeconds(waitingTime);
         while (isAnimationFinished == false)
         {
             Vector3 currentPos = Camera.main.transform.position;
@@ -146,7 +152,7 @@ public class LevelManager3 : AbstractLevelManager
             {
                 targetX = cameraFollow.MinXPos;
                 isMovingToLeft = true;
-                yield return new WaitForSeconds(transitionTime);
+                yield return new WaitForSeconds(waitingTime);
             }
             if (isMovingToLeft && Camera.main.transform.position.x == targetX)
             {
@@ -154,7 +160,7 @@ public class LevelManager3 : AbstractLevelManager
             }
         }
 
-        yield return new WaitForSeconds(transitionTime);
-        StartResetRoundRoutine();
+        yield return new WaitForSeconds(waitingTime);
+        StartNewRoundRoutine();
     }
 }

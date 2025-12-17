@@ -16,10 +16,11 @@ public class FoxController : MonoBehaviour
     // === Movement ===
     [Header("Movement")]
     [SerializeField] private float speed;
-    private bool canMove = false;
     private Rigidbody2D rb2D;
     private Vector2 movementInput;
     private Animator animator;
+    private bool canMove = false;
+    private float startXPos;
 
     // === Sprite ===
     [Header("Sprite Rotation")]
@@ -42,6 +43,8 @@ public class FoxController : MonoBehaviour
     {
         rb2D = GetComponent<Rigidbody2D>();
         animator = GetComponent<Animator>();
+
+        startXPos = transform.position.x;
 
         moveAction = GameManager.instance.InputManager.PlayerInput.actions["Move"];
     }
@@ -120,7 +123,7 @@ public class FoxController : MonoBehaviour
 
     public void ResetPosition()
     {
-        rb2D.position = new Vector2(minXPos, rb2D.position.y);
+        rb2D.position = new Vector2(startXPos, rb2D.position.y);
         rb2D.linearVelocityX = 0;
 
         targetYRotation = 0f;

@@ -20,7 +20,7 @@ public class CameraShake : MonoBehaviour
 
     void Awake()
     {
-        mainCam = gameObject.transform;
+        mainCam = transform;
         originalPosition = mainCam.localPosition;
 
         collisionManager.HitObstacle += StartShake;

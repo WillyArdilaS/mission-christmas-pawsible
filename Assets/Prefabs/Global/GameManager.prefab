@@ -842,13 +842,13 @@ MonoBehaviour:
   mainMenuVol: 0.25
   level01Vol: 0.35
   level02Vol: 0.35
-  level03Vol: 0.35
+  level03Vol: 0.45
   hitObstacleVol: 0.6
   lapUpdatedVol: 0.4
-  powerupVol: 0.4
+  powerupVol: 0.3
   raceStartVol: 0.4
   coalRecolectedVol: 0.4
   fruitRecolectedVol: 0.75
   lightSwitchVol: 0.4
-  sequenceCompleteVol: 0.2
+  sequenceCompleteVol: 0.17
   buttonClickVol: 0.4

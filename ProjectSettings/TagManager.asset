@@ -11,6 +11,7 @@ TagManager:
   - Orange
   - Pinecone
   - Coal
+  - RestartZone
   layers:
   - Default
   - TransparentFX

@@ -126,6 +126,7 @@ public class SleighController : MonoBehaviour
 
     private void CancelJump()
     {
+        if(!isJumping) return;
         transform.position = new Vector2(transform.position.x, originalYPos);
         rb2D.linearVelocityY = 0;
     }

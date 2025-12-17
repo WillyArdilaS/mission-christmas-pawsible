@@ -8,14 +8,14 @@ public class MapLightsAnimator : MonoBehaviour
     // === Sequence Animation ===
     [SerializeField] private GameObject[] mapLights;
     [SerializeField] private float lightOnDuration;
-    private float transitionTime;
+    private float waitingTime;
 
     // === Coroutines ===
     private Coroutine lightSequenceRoutine;
 
     void Awake()
     {
-        transitionTime = LevelManager3.instance.TransitionTime;
+        waitingTime = LevelManager3.instance.WaitingTime;
     }
 
     public void StartAnimation(List<int> sequence)
@@ -39,7 +39,7 @@ public class MapLightsAnimator : MonoBehaviour
             }
 
             // Turn on and off animation
-            yield return new WaitForSeconds(transitionTime);
+            yield return new WaitForSeconds(waitingTime);
             currentLight.SetActive(true);
             
             yield return new WaitForSeconds(lightOnDuration);

@@ -47,12 +47,4 @@ public class CollisionManagerLevel1 : MonoBehaviour
             }
         }
     }
-
-    void OnTriggerExit(Collider other)
-    {
-        if (other.CompareTag("SmallObstacle"))
-        {
-            canCrash = true;
-        }
-    }
 }

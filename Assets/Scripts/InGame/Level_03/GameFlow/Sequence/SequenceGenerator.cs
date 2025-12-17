@@ -11,7 +11,7 @@ public class SequenceGenerator : MonoBehaviour
     private SequenceEventData currentSequenceEvent;
     private int currentSequenceIndex = 0;
     private bool isFinalRound = false;
-    
+
     // === Animation ===
     private MapLightsAnimator mapAnimator;
 
@@ -24,12 +24,18 @@ public class SequenceGenerator : MonoBehaviour
         sequenceManager = GetComponent<SequenceManager>();
         mapAnimator = LevelManager3.instance.MapManager.GetComponent<MapLightsAnimator>();
 
+        sequenceManager.SequenceMatched += UpdateCurrentSequenceIndex;
         LevelManager3.instance.RoundStarted += NextRound;
+    }
+
+    private void UpdateCurrentSequenceIndex()
+    {
+        currentSequenceIndex++;
     }
 
     private void NextRound()
     {
-        if(currentSequenceIndex == sequenceEvents.Length - 1) isFinalRound = true;
+        if (currentSequenceIndex == sequenceEvents.Length - 1) isFinalRound = true;
 
         CreateSequence();
     }
@@ -37,16 +43,14 @@ public class SequenceGenerator : MonoBehaviour
     private void CreateSequence()
     {
         LevelManager3.instance.SetMapUI(true);
-        
+
         currentSequenceEvent = sequenceEvents[currentSequenceIndex];
 
         sequenceManager.Size = currentSequenceEvent.NewSize;
         sequenceManager.Min = currentSequenceEvent.NewMin;
         sequenceManager.Max = currentSequenceEvent.NewMax;
-        
+
         sequenceManager.ResetSequence();
         mapAnimator.StartAnimation(sequenceManager.SequenceList);
-
-        currentSequenceIndex++;
     }
 }
