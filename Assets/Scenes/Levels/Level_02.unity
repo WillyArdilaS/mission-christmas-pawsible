@@ -1509,11 +1509,59 @@ MonoBehaviour:
   - minutes: 0
     seconds: 0
     coalSpawnChance: 0
-    newSpawnRate: 1.2
+    newSpawnRate: 1.4
   - minutes: 0
-    seconds: 15
+    seconds: 10
+    coalSpawnChance: 0.25
+    newSpawnRate: 1.4
+  - minutes: 0
+    seconds: 30
     coalSpawnChance: 0.3
+    newSpawnRate: 1.3
+  - minutes: 0
+    seconds: 40
+    coalSpawnChance: 0.4
+    newSpawnRate: 1.1
+  - minutes: 1
+    seconds: 10
+    coalSpawnChance: 0.35
+    newSpawnRate: 1.3
+  - minutes: 1
+    seconds: 20
+    coalSpawnChance: 0.35
     newSpawnRate: 1.2
+  - minutes: 1
+    seconds: 35
+    coalSpawnChance: 0.55
+    newSpawnRate: 1
+  - minutes: 2
+    seconds: 0
+    coalSpawnChance: 0.42
+    newSpawnRate: 1.2
+  - minutes: 2
+    seconds: 15
+    coalSpawnChance: 0.42
+    newSpawnRate: 1.1
+  - minutes: 2
+    seconds: 30
+    coalSpawnChance: 0.6
+    newSpawnRate: 0.9
+  - minutes: 2
+    seconds: 40
+    coalSpawnChance: 0.45
+    newSpawnRate: 1
+  - minutes: 3
+    seconds: 0
+    coalSpawnChance: 0.55
+    newSpawnRate: 0.8
+  - minutes: 3
+    seconds: 15
+    coalSpawnChance: 0
+    newSpawnRate: 0.6
+  - minutes: 3
+    seconds: 50
+    coalSpawnChance: 0.35
+    newSpawnRate: 1
 --- !u!1 &1737535308
 GameObject:
   m_ObjectHideFlags: 0
@@ -1893,6 +1941,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   gameState: 0
+  transitionAnim: {fileID: 0}
+  transitionDelay: 0
   currentGameTime: 0
   skaterFoxController: {fileID: 1492890105}
   requiredBerries: 24

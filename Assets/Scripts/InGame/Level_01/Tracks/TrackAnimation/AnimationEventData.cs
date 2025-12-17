@@ -10,7 +10,7 @@ public class AnimationEventData
     [SerializeField, Range(0, 59)] private int seconds;
 
     [Header("Clip Settings")]
-    [SerializeField, Range(1, 5)] private float speedMultiplier;
+    [SerializeField, Range(1, 3)] private float speedMultiplier;
 
     // === Properties ===
     public int Minutes => minutes;

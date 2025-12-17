@@ -36,6 +36,8 @@ public class SequenceGenerator : MonoBehaviour
 
     private void CreateSequence()
     {
+        LevelManager3.instance.SetMapUI(true);
+        
         currentSequenceEvent = sequenceEvents[currentSequenceIndex];
 
         sequenceManager.Size = currentSequenceEvent.NewSize;

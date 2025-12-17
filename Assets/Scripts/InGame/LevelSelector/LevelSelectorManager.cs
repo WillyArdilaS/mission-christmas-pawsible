@@ -8,7 +8,10 @@ public class LevelSelectorManager : MonoBehaviour
 
     // === State ===
     public enum NextLevel { Level_01, Level_02, Level_03, Finished };
-    public NextLevel nextLevel = NextLevel.Level_01;
+    [SerializeField] private NextLevel nextLevel = NextLevel.Level_01;
+
+    // === Properties ===
+    public NextLevel NextLevelState { get => nextLevel; set => nextLevel = value; }
 
     void Awake()
     {
@@ -53,7 +56,7 @@ public class LevelSelectorManager : MonoBehaviour
                 ChangeScene("Level_03");
                 break;
             case NextLevel.Finished:
-                ChangeScene("MainMenu");
+                ChangeScene("Credits");
                 break;
         }
     }

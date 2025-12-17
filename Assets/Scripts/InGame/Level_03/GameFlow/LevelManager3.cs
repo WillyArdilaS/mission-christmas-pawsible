@@ -22,6 +22,11 @@ public class LevelManager3 : AbstractLevelManager
     [Header("Player")]
     [SerializeField] private FoxController foxController;
 
+    // === Map ===
+    [Header("Map")]
+    [SerializeField] private GameObject mapUI;
+    [SerializeField] private GameObject arrowsUI;
+
     // === Animations ===
     [Header("Animation")]
     [SerializeField] private float transitionTime;
@@ -83,6 +88,12 @@ public class LevelManager3 : AbstractLevelManager
         openingAnimationRoutine = StartCoroutine(ShowOpeningAnimation());
     }
 
+    public void SetMapUI(bool isActive)
+    {
+        mapUI.SetActive(isActive);
+        arrowsUI.SetActive(isActive);
+    }
+
     // === Round Management Methods ===
     void Update()
     {
@@ -115,6 +126,7 @@ public class LevelManager3 : AbstractLevelManager
     private IEnumerator ShowOpeningAnimation()
     {
         LevelManager3.instance.State = LevelManager3.GameState.ShowingAnimation;
+        SetMapUI(false);
 
         // Horizontal camera movement
         float targetX = cameraFollow.MaxXPos;

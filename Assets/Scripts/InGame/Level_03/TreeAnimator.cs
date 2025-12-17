@@ -66,6 +66,7 @@ public class TreeAnimator : MonoBehaviour
     private IEnumerator ShowTreeIlumination()
     {
         LevelManager3.instance.State = LevelManager3.GameState.ShowingAnimation;
+        LevelManager3.instance.SetMapUI(false);
 
         // Turn on all the house lights
         WaitForSeconds lightDelay = new WaitForSeconds(houseLightTransitionTime);

@@ -840,15 +840,15 @@ MonoBehaviour:
     uiSfxArray:
     - {fileID: 8300000, guid: 14273b4724d3a8545acf3c5376dc5ad2, type: 3}
   mainMenuVol: 0.25
-  level01Vol: 0.4
-  level02Vol: 0.4
-  level03Vol: 0.4
+  level01Vol: 0.35
+  level02Vol: 0.35
+  level03Vol: 0.35
   hitObstacleVol: 0.6
   lapUpdatedVol: 0.4
   powerupVol: 0.4
   raceStartVol: 0.4
-  coalRecolectedVol: 0.5
+  coalRecolectedVol: 0.4
   fruitRecolectedVol: 0.75
   lightSwitchVol: 0.4
-  sequenceCompleteVol: 0.4
+  sequenceCompleteVol: 0.2
   buttonClickVol: 0.4

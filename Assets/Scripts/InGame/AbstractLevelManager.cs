@@ -65,7 +65,7 @@ public abstract class AbstractLevelManager : MonoBehaviour
 
         yield return new WaitForSeconds(1);
 
-        LevelSelectorManager.instance.nextLevel = nextLevel;
+        LevelSelectorManager.instance.NextLevelState = nextLevel;
         GameManager.instance.SceneSwitchManager.StartLoadScene("LevelSelector");
     }
 

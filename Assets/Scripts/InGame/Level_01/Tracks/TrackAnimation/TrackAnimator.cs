@@ -29,6 +29,6 @@ public class TrackAnimator : MonoBehaviour
             currentAnimationEvent = animationEvents.FirstOrDefault(animEvent => animEvent.Minutes == spawnEvent.Minutes && animEvent.Seconds == spawnEvent.Seconds);
         }
 
-        lightsAnimator.SetFloat("f_speedMultiplier", currentAnimationEvent.SpeedMultiplier);
+        if(currentAnimationEvent != null) lightsAnimator.SetFloat("f_speedMultiplier", currentAnimationEvent.SpeedMultiplier);
     }
 }

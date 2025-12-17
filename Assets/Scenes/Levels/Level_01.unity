@@ -860,8 +860,20 @@ MonoBehaviour:
     seconds: 0
     speedMultiplier: 1
   - minutes: 0
-    seconds: 10
-    speedMultiplier: 1.5
+    seconds: 30
+    speedMultiplier: 1.2
+  - minutes: 0
+    seconds: 40
+    speedMultiplier: 1.4
+  - minutes: 1
+    seconds: 25
+    speedMultiplier: 1.6
+  - minutes: 1
+    seconds: 45
+    speedMultiplier: 1.8
+  - minutes: 2
+    seconds: 25
+    speedMultiplier: 2
 --- !u!1 &579869016
 GameObject:
   m_ObjectHideFlags: 0
@@ -1322,7 +1334,73 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   spawnManager: {fileID: 851067655}
-  spawnEvents: []
+  spawnEvents:
+  - minutes: 0
+    seconds: 0
+    spawnedType: 1
+    doubleSpawnChance: 0
+    newSpawnRate: 14
+    newGlobalSpeed: 8
+  - minutes: 0
+    seconds: 30
+    spawnedType: 1
+    doubleSpawnChance: 0
+    newSpawnRate: 13
+    newGlobalSpeed: 9
+  - minutes: 0
+    seconds: 40
+    spawnedType: 1
+    doubleSpawnChance: 0
+    newSpawnRate: 13
+    newGlobalSpeed: 9
+  - minutes: 0
+    seconds: 54
+    spawnedType: 1
+    doubleSpawnChance: 0
+    newSpawnRate: 0
+    newGlobalSpeed: 0
+  - minutes: 0
+    seconds: 57
+    spawnedType: 1
+    doubleSpawnChance: 0
+    newSpawnRate: 13
+    newGlobalSpeed: 9
+  - minutes: 1
+    seconds: 25
+    spawnedType: 1
+    doubleSpawnChance: 0
+    newSpawnRate: 11
+    newGlobalSpeed: 10
+  - minutes: 1
+    seconds: 45
+    spawnedType: 1
+    doubleSpawnChance: 0
+    newSpawnRate: 9
+    newGlobalSpeed: 11
+  - minutes: 1
+    seconds: 49
+    spawnedType: 1
+    doubleSpawnChance: 0
+    newSpawnRate: 0
+    newGlobalSpeed: 0
+  - minutes: 1
+    seconds: 52
+    spawnedType: 1
+    doubleSpawnChance: 0
+    newSpawnRate: 9
+    newGlobalSpeed: 11
+  - minutes: 2
+    seconds: 25
+    spawnedType: 1
+    doubleSpawnChance: 0
+    newSpawnRate: 6
+    newGlobalSpeed: 12.5
+  - minutes: 2
+    seconds: 44
+    spawnedType: 1
+    doubleSpawnChance: 0
+    newSpawnRate: 0
+    newGlobalSpeed: 0
 --- !u!114 &835481637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1342,15 +1420,27 @@ MonoBehaviour:
     spawnedType: 0
     doubleSpawnChance: 0
     newSpawnRate: 1.5
-    newGlobalSpeed: 6
+    newGlobalSpeed: 8
   - minutes: 0
     seconds: 10
     spawnedType: 0
-    doubleSpawnChance: 0
-    newSpawnRate: 1.4
-    newGlobalSpeed: 6
+    doubleSpawnChance: 0.25
+    newSpawnRate: 1.5
+    newGlobalSpeed: 8
   - minutes: 0
-    seconds: 53
+    seconds: 30
+    spawnedType: 0
+    doubleSpawnChance: 0.25
+    newSpawnRate: 1.4
+    newGlobalSpeed: 9
+  - minutes: 0
+    seconds: 40
+    spawnedType: 0
+    doubleSpawnChance: 0.4
+    newSpawnRate: 1.3
+    newGlobalSpeed: 9
+  - minutes: 0
+    seconds: 54
     spawnedType: 0
     doubleSpawnChance: 0
     newSpawnRate: 0
@@ -1358,15 +1448,45 @@ MonoBehaviour:
   - minutes: 0
     seconds: 57
     spawnedType: 0
-    doubleSpawnChance: 0
+    doubleSpawnChance: 0.5
     newSpawnRate: 1.3
-    newGlobalSpeed: 7
-  - minutes: 2
-    seconds: 43
+    newGlobalSpeed: 9
+  - minutes: 1
+    seconds: 25
+    spawnedType: 0
+    doubleSpawnChance: 0.6
+    newSpawnRate: 1.3
+    newGlobalSpeed: 10
+  - minutes: 1
+    seconds: 45
+    spawnedType: 0
+    doubleSpawnChance: 0.7
+    newSpawnRate: 1.2
+    newGlobalSpeed: 11
+  - minutes: 1
+    seconds: 49
     spawnedType: 0
     doubleSpawnChance: 0
-    newSpawnRate: 1.4
-    newGlobalSpeed: 6
+    newSpawnRate: 0
+    newGlobalSpeed: 0
+  - minutes: 1
+    seconds: 52
+    spawnedType: 0
+    doubleSpawnChance: 0.7
+    newSpawnRate: 1.2
+    newGlobalSpeed: 11
+  - minutes: 2
+    seconds: 25
+    spawnedType: 0
+    doubleSpawnChance: 0.8
+    newSpawnRate: 1.1
+    newGlobalSpeed: 12.5
+  - minutes: 2
+    seconds: 44
+    spawnedType: 0
+    doubleSpawnChance: 0
+    newSpawnRate: 0
+    newGlobalSpeed: 0
 --- !u!114 &835481638
 MonoBehaviour:
   m_ObjectHideFlags: 0

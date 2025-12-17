@@ -4,7 +4,7 @@ public class SfxManagerLevel3 : MonoBehaviour
 {
     // === Managers ===
     [SerializeField] private LightManager lightManager;
-    [SerializeField] private TreeAnimator treeAnimator;
+    [SerializeField] private SequenceManager sequenceManager;
     private AudioManager audioManager;
 
     void Awake()
@@ -12,13 +12,13 @@ public class SfxManagerLevel3 : MonoBehaviour
         audioManager = GameManager.instance.AudioManager;
 
         lightManager.ActiveLightsUpdated += _ => PlayLightSwitchSfx();
-        treeAnimator.LightedTree += PlaySequenceCompleteSfx;
+        sequenceManager.SequenceMatched += PlaySequenceCompleteSfx;
     }
 
     void OnDestroy()
     {
         lightManager.ActiveLightsUpdated -= _ => PlayLightSwitchSfx();
-        treeAnimator.LightedTree -= PlaySequenceCompleteSfx;
+        sequenceManager.SequenceMatched -= PlaySequenceCompleteSfx;
     }
 
     private void PlayLightSwitchSfx()
