@@ -22,12 +22,12 @@ public class TreeAnimator : MonoBehaviour
 
     [Header("Tree Animation Settings")]
     [SerializeField] private float houseLightTransitionTime;
-    
+
     [Header("Final Animation Settings")]
     [SerializeField] private Vector3 targetCamPosition;
     [SerializeField] private float targetZoom;
     [SerializeField] private float zoomSpeed;
-    
+
     // === Coroutines ===
     private Coroutine treeAnimationRoutine;
     private Coroutine finalTreeAnimationRoutine;
@@ -111,14 +111,14 @@ public class TreeAnimator : MonoBehaviour
         Vector3 startPos = mainCam.transform.position;
 
         float startZoom = mainCam.orthographicSize;
-        float currentTime = 0f;
+        float elapsedTime = 0f;
 
-        while (currentTime < 1f)
+        while (elapsedTime < 1f)
         {
-            currentTime += Time.deltaTime * zoomSpeed;
-            
-            mainCam.transform.position = Vector3.Lerp(startPos, targetCamPosition, currentTime); // Interpolate position
-            mainCam.orthographicSize = Mathf.Lerp(startZoom, targetZoom, currentTime); // Interpolate zoom
+            elapsedTime += Time.deltaTime * zoomSpeed;
+
+            mainCam.transform.position = Vector3.Lerp(startPos, targetCamPosition, elapsedTime); // Interpolate position
+            mainCam.orthographicSize = Mathf.Lerp(startZoom, targetZoom, elapsedTime); // Interpolate zoom
 
             yield return null;
         }
