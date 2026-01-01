@@ -9,18 +9,19 @@ public class PauseManager : MonoBehaviour
     [SerializeField] private GameObject pauseUI;
 
     // === Game state ===
-    private AbstractGameManager.GameState previousState;
+    private AbstractLevelManager.GameState previousState;
 
     void Awake()
     {
-        audioManager = GlobalGameManager.instance.AudioManager;
+        audioManager = GameManager.instance.AudioManager;
+        
         pauseUI.SetActive(false);
     }
 
-    public void Pause(AbstractGameManager gameManager)
+    public void Pause(AbstractLevelManager levelManager)
     {
-        previousState = gameManager.State;
-        gameManager.State = AbstractGameManager.GameState.InPause;
+        previousState = levelManager.State;
+        levelManager.State = AbstractLevelManager.GameState.InPause;
 
         pauseUI.SetActive(true);
         Time.timeScale = 0;
@@ -28,14 +29,18 @@ public class PauseManager : MonoBehaviour
         audioManager.PauseMusic();
     }
 
-    public void Continue(AbstractGameManager gameManager)
+    public void Continue(AbstractLevelManager levelManager)
     {
-        gameManager.State  = previousState;
+        levelManager.State = previousState;
 
         pauseUI.SetActive(false);
         Time.timeScale = 1;
 
-        audioManager.PlayUISFX(audioManager.UISfxDictionary["Click"], audioManager.ButtonClickVol);
         audioManager.UnPauseMusic();
+    }
+
+    public void PlayButtonSFX()
+    {
+        audioManager.PlayUISFX(audioManager.UISfxDictionary["Click"], audioManager.ButtonClickVol);
     }
 }

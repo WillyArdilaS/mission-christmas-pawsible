@@ -7,16 +7,22 @@ public class CollisionManagerLevel3 : MonoBehaviour
     private bool goInsidePressedThisFrame = false;
 
     // === Events ===
+    public event Action RestartZoneEntered;
     public event Action<int> HouseEntered;
 
     void Awake()
     {
-        GlobalGameManager.instance.InputManager.GoInsidePressed += HandleGoInside;
+        GameManager.instance.InputManager.GoInsidePressed += HandleGoInside;
     }
 
     private void HandleGoInside()
     {
         goInsidePressedThisFrame = true;
+    }
+
+    void OnTriggerEnter2D(Collider2D collision)
+    {
+        if(collision.CompareTag("RestartZone")) RestartZoneEntered?.Invoke();
     }
 
     void OnTriggerStay2D(Collider2D collision)

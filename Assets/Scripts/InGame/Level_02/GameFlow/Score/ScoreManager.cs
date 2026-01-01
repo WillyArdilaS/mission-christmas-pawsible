@@ -39,7 +39,7 @@ public class ScoreManager : MonoBehaviour
 
     private void AddPoint(string tag)
     {
-        if (fruitsDictionary[tag] < GameManagerLevel2.instance.RequiredFruitsDictionary[tag])
+        if (fruitsDictionary[tag] < LevelManager2.instance.RequiredFruitsDictionary[tag])
         {
             fruitsDictionary[tag]++;
             ScoreChanged?.Invoke(tag);
@@ -69,7 +69,7 @@ public class ScoreManager : MonoBehaviour
 
     private void CheckPoints()
     {
-        if (fruitsDictionary.All(fruit => fruit.Value >= GameManagerLevel2.instance.RequiredFruitsDictionary[fruit.Key]))
+        if (fruitsDictionary.All(fruit => fruit.Value >= LevelManager2.instance.RequiredFruitsDictionary[fruit.Key]))
         {
             ScoreAchieved?.Invoke(LevelSelectorManager.NextLevel.Level_03);
         }

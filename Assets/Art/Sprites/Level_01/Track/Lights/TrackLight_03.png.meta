@@ -1,0 +1,559 @@
+fileFormatVersion: 2
+guid: 50f58861c47d4434e84afc91468a6801
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 4779861991284961097
+    second: Foxy_Wreath_Assets-4_0
+  - first:
+      213: 7248641018727911019
+    second: Foxy_Wreath_Assets-4_1
+  - first:
+      213: 1606949236850066719
+    second: Foxy_Wreath_Assets-4_2
+  - first:
+      213: 1094857194974763328
+    second: Foxy_Wreath_Assets-4_3
+  - first:
+      213: 6037067245540985782
+    second: Foxy_Wreath_Assets-4_4
+  - first:
+      213: 7572098037607639102
+    second: Foxy_Wreath_Assets-4_5
+  - first:
+      213: 3973076077077896703
+    second: Foxy_Wreath_Assets-4_6
+  - first:
+      213: -4290293021053202116
+    second: Foxy_Wreath_Assets-4_7
+  - first:
+      213: 6211248272579928979
+    second: Foxy_Wreath_Assets-4_8
+  - first:
+      213: -1604881629931667336
+    second: Foxy_Wreath_Assets-4_9
+  - first:
+      213: -7110642720982587615
+    second: Foxy_Wreath_Assets-4_10
+  - first:
+      213: 7757961731609484908
+    second: Foxy_Wreath_Assets-4_11
+  - first:
+      213: -4835557005548890565
+    second: Foxy_Wreath_Assets-4_12
+  - first:
+      213: -4580608464280327148
+    second: Foxy_Wreath_Assets-4_13
+  - first:
+      213: 2230945417726646956
+    second: Foxy_Wreath_Assets-4_14
+  - first:
+      213: -2020042440585481742
+    second: Foxy_Wreath_Assets-4_15
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 1
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WindowsStoreApps
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Foxy_Wreath_Assets-4_0
+      rect:
+        serializedVersion: 2
+        x: 932
+        y: 1383
+        width: 22
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 94f6ee1082b755240800000000000000
+      internalID: 4779861991284961097
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Foxy_Wreath_Assets-4_1
+      rect:
+        serializedVersion: 2
+        x: 1603
+        y: 1381
+        width: 25
+        height: 59
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b6e4a910a98589460800000000000000
+      internalID: 7248641018727911019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Foxy_Wreath_Assets-4_2
+      rect:
+        serializedVersion: 2
+        x: 917
+        y: 1238
+        width: 38
+        height: 125
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f15888221d70d4610800000000000000
+      internalID: 1606949236850066719
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Foxy_Wreath_Assets-4_3
+      rect:
+        serializedVersion: 2
+        x: 1612
+        y: 1238
+        width: 31
+        height: 115
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 049504a61d6b13f00800000000000000
+      internalID: 1094857194974763328
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Foxy_Wreath_Assets-4_4
+      rect:
+        serializedVersion: 2
+        x: 894
+        y: 1090
+        width: 45
+        height: 141
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6bbcd9f8ca8f7c350800000000000000
+      internalID: 6037067245540985782
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Foxy_Wreath_Assets-4_5
+      rect:
+        serializedVersion: 2
+        x: 1623
+        y: 1087
+        width: 46
+        height: 122
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e382908eb0f751960800000000000000
+      internalID: 7572098037607639102
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Foxy_Wreath_Assets-4_6
+      rect:
+        serializedVersion: 2
+        x: 859
+        y: 947
+        width: 45
+        height: 108
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ffd94df44a3332730800000000000000
+      internalID: 3973076077077896703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Foxy_Wreath_Assets-4_7
+      rect:
+        serializedVersion: 2
+        x: 1649
+        y: 948
+        width: 54
+        height: 127
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3159c17a31d574c0800000000000000
+      internalID: -4290293021053202116
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Foxy_Wreath_Assets-4_8
+      rect:
+        serializedVersion: 2
+        x: 800
+        y: 785
+        width: 78
+        height: 157
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 393a2e23569c23650800000000000000
+      internalID: 6211248272579928979
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Foxy_Wreath_Assets-4_9
+      rect:
+        serializedVersion: 2
+        x: 1690
+        y: 782
+        width: 71
+        height: 149
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8708f5d19a05ab9e0800000000000000
+      internalID: -1604881629931667336
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Foxy_Wreath_Assets-4_10
+      rect:
+        serializedVersion: 2
+        x: 685
+        y: 550
+        width: 99
+        height: 179
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 127ad1b7e1ce15d90800000000000000
+      internalID: -7110642720982587615
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Foxy_Wreath_Assets-4_11
+      rect:
+        serializedVersion: 2
+        x: 1764
+        y: 543
+        width: 107
+        height: 206
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c6e58a96711d9ab60800000000000000
+      internalID: 7757961731609484908
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Foxy_Wreath_Assets-4_12
+      rect:
+        serializedVersion: 2
+        x: 497
+        y: 276
+        width: 127
+        height: 142
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b365b19f586a4ecb0800000000000000
+      internalID: -4835557005548890565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Foxy_Wreath_Assets-4_13
+      rect:
+        serializedVersion: 2
+        x: 1883
+        y: 272
+        width: 173
+        height: 236
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 41c6c6feed86e60c0800000000000000
+      internalID: -4580608464280327148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Foxy_Wreath_Assets-4_14
+      rect:
+        serializedVersion: 2
+        x: 231
+        y: 6
+        width: 166
+        height: 155
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: caad1e09909e5fe10800000000000000
+      internalID: 2230945417726646956
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Foxy_Wreath_Assets-4_15
+      rect:
+        serializedVersion: 2
+        x: 2079
+        y: 7
+        width: 248
+        height: 230
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2f170b95a1e57f3e0800000000000000
+      internalID: -2020042440585481742
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 5e97eb03825dee720800000000000000
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Foxy_Wreath_Assets-4_0: 4779861991284961097
+      Foxy_Wreath_Assets-4_1: 7248641018727911019
+      Foxy_Wreath_Assets-4_10: -7110642720982587615
+      Foxy_Wreath_Assets-4_11: 7757961731609484908
+      Foxy_Wreath_Assets-4_12: -4835557005548890565
+      Foxy_Wreath_Assets-4_13: -4580608464280327148
+      Foxy_Wreath_Assets-4_14: 2230945417726646956
+      Foxy_Wreath_Assets-4_15: -2020042440585481742
+      Foxy_Wreath_Assets-4_2: 1606949236850066719
+      Foxy_Wreath_Assets-4_3: 1094857194974763328
+      Foxy_Wreath_Assets-4_4: 6037067245540985782
+      Foxy_Wreath_Assets-4_5: 7572098037607639102
+      Foxy_Wreath_Assets-4_6: 3973076077077896703
+      Foxy_Wreath_Assets-4_7: -4290293021053202116
+      Foxy_Wreath_Assets-4_8: 6211248272579928979
+      Foxy_Wreath_Assets-4_9: -1604881629931667336
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

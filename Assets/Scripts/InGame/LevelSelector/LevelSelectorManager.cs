@@ -8,7 +8,10 @@ public class LevelSelectorManager : MonoBehaviour
 
     // === State ===
     public enum NextLevel { Level_01, Level_02, Level_03, Finished };
-    public NextLevel nextLevel = NextLevel.Level_01;
+    [SerializeField] private NextLevel nextLevel = NextLevel.Level_01;
+
+    // === Properties ===
+    public NextLevel NextLevelState { get => nextLevel; set => nextLevel = value; }
 
     void Awake()
     {
@@ -25,12 +28,12 @@ public class LevelSelectorManager : MonoBehaviour
 
     void OnEnable()
     {
-        GlobalGameManager.instance.InputManager.SelectLevelPressed += SelectLevel;
+        GameManager.instance.InputManager.SelectLevelPressed += SelectLevel;
     }
 
     void OnDisable()
     {
-        if (GlobalGameManager.instance != null) GlobalGameManager.instance.InputManager.SelectLevelPressed -= SelectLevel;
+        if (GameManager.instance != null) GameManager.instance.InputManager.SelectLevelPressed -= SelectLevel;
     }
 
     public void ResetLevelSelector()
@@ -53,14 +56,14 @@ public class LevelSelectorManager : MonoBehaviour
                 ChangeScene("Level_03");
                 break;
             case NextLevel.Finished:
-                ChangeScene("MainMenu");
+                ChangeScene("Credits");
                 break;
         }
     }
 
     private void ChangeScene(string sceneName)
     {
-        GlobalGameManager.instance.SceneSwitchManager.StartLoadScene(sceneName);
+        GameManager.instance.SceneSwitchManager.StartLoadScene(sceneName);
         gameObject.SetActive(false);
     }
 }

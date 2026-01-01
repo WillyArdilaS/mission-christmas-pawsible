@@ -34,7 +34,7 @@ public class SceneSwitchManager : MonoBehaviour
 
         yield return new WaitForSeconds(transitionTime);
 
-        GlobalGameManager.instance.AudioManager.SelectSceneMusic(nextSceneName);
+        GameManager.instance.AudioManager.SelectSceneMusic(nextSceneName);
         SceneManager.LoadScene(nextSceneName);
     }
 }

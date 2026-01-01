@@ -7,12 +7,14 @@ public class SleighController : MonoBehaviour
 {
     // === Sprites ===
     [SerializeField] private Sprite[] sleighSprites;
+    [SerializeField] private Sprite[] sleighJumpSprites;
     private SpriteRenderer spriteRend;
     private Collider2D col2D;
     private Vector2 originalColliderOffset;
 
     // === Movement ===
     [SerializeField] private Transform[] tracks;
+    private float originalYPos;
     private int originalTrackIndex;
     private int currentTrackIndex;
     private bool canMove = true;
@@ -33,7 +35,7 @@ public class SleighController : MonoBehaviour
         col2D = GetComponent<Collider2D>();
         rb2D = GetComponent<Rigidbody2D>();
 
-        GameManagerLevel1.instance.LapRestarted += ResetPosition;
+        LevelManager1.instance.LapRestarted += ResetPosition;
 
         // Tracks initialization
         tracks = tracks.OrderBy(track => track.transform.position.x).ToArray();
@@ -45,21 +47,25 @@ public class SleighController : MonoBehaviour
         }
 
         originalTrackIndex = currentTrackIndex;
+
         originalColliderOffset = col2D.offset;
+        originalYPos = transform.position.y;
     }
 
     void OnEnable()
     {
-        GlobalGameManager.instance.InputManager.MoveLeftPressed += OnMoveLeft;
-        GlobalGameManager.instance.InputManager.MoveRightPressed += OnMoveRight;
-        GlobalGameManager.instance.InputManager.JumpPressed += Jump;
+        GameManager.instance.InputManager.MoveLeftPressed += OnMoveLeft;
+        GameManager.instance.InputManager.MoveRightPressed += OnMoveRight;
+        GameManager.instance.InputManager.JumpPressed += Jump;
+        GameManager.instance.InputManager.CancelJumpPressed += CancelJump;
     }
 
     void OnDisable()
     {
-        GlobalGameManager.instance.InputManager.MoveLeftPressed -= OnMoveLeft;
-        GlobalGameManager.instance.InputManager.MoveRightPressed -= OnMoveRight;
-        GlobalGameManager.instance.InputManager.JumpPressed -= Jump;
+        GameManager.instance.InputManager.MoveLeftPressed -= OnMoveLeft;
+        GameManager.instance.InputManager.MoveRightPressed -= OnMoveRight;
+        GameManager.instance.InputManager.JumpPressed -= Jump;
+        GameManager.instance.InputManager.CancelJumpPressed -= CancelJump;
     }
 
     private void OnMoveLeft()
@@ -76,6 +82,15 @@ public class SleighController : MonoBehaviour
     void Update()
     {
         if (Mathf.Abs(rb2D.linearVelocityY) < 0.01f) isJumping = false;
+
+        if (isJumping)
+        {
+            spriteRend.sprite = sleighJumpSprites[currentTrackIndex];
+        }
+        else
+        {
+            spriteRend.sprite = sleighSprites[currentTrackIndex];
+        }
     }
 
     private void ChangeTrack(int direction)
@@ -92,19 +107,27 @@ public class SleighController : MonoBehaviour
         }
     }
 
-    private void Jump()
-    {
-        if (!canMove) return;
-        isJumping = true;
-        rb2D.AddForceY(jumpForce, ForceMode2D.Impulse);
-    }
-
     private void ResetPosition()
     {
         currentTrackIndex = originalTrackIndex;
 
-        transform.position = new Vector2(tracks[originalTrackIndex].position.x, transform.position.y);
+        transform.position = new Vector2(tracks[originalTrackIndex].position.x, originalYPos);
         spriteRend.sprite = sleighSprites[originalTrackIndex];
         col2D.offset = originalColliderOffset;
+    }
+
+    // === Jump Methods ===
+    private void Jump()
+    {
+        if (!canMove || isJumping) return;
+        isJumping = true;
+        rb2D.AddForceY(jumpForce, ForceMode2D.Impulse);
+    }
+
+    private void CancelJump()
+    {
+        if(!isJumping) return;
+        transform.position = new Vector2(transform.position.x, originalYPos);
+        rb2D.linearVelocityY = 0;
     }
 }

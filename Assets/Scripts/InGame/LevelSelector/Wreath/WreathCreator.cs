@@ -18,7 +18,7 @@ public class WreathCreator : MonoBehaviour
 
     private void SelectIcons()
     {
-        switch (LevelSelectorManager.instance.nextLevel)
+        switch (LevelSelectorManager.instance.NextLevelState)
         {
             case LevelSelectorManager.NextLevel.Level_01:
                 bowChanger.ChangeIcon("Available");

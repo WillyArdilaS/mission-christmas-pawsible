@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -6,23 +7,31 @@ public class RaceGenerator : MonoBehaviour
 {
     // === Spawn Settings ===
     [SerializeField] private SpawnManagerBase spawnManager;
-    private float currentSpawnRate;
+    private float currentSpawnRate = 0f;
     private float spawnTimer = 0f;
 
     // === Difficulty Events Management ===
-    [SerializeField] private DifficultyEventLevel1Data[] difficultyEvents;
-    private DifficultyEventLevel1Data currentDifficultyEvent;
-    private readonly List<int> originalDifficultyEventTimes = new();
+    [SerializeField] private SpawnEventData[] spawnEvents;
+    private SpawnEventData previousSpawnEvent;
+    private SpawnEventData currentSpawnEvent;
+    private readonly List<int> originalSpawnEventTimes = new();
     private Queue<int> pendingTimes;
     private int currentGlobalTime = 0;
+
+    // === Events ===
+    public event Action<SpawnEventData> spawnEventChanged;
+
+    // === Properties ===
+    public SpawnEventData CurrentSpawnEvent => currentSpawnEvent;
+    public Queue<int> PendingTimes => pendingTimes;
 
     void Start()
     {
         // Convert all timestamps into total seconds and sort them in ascending order
-        IOrderedEnumerable<int> times = difficultyEvents.Select(difEvent => (difEvent.Minutes * 60) + difEvent.Seconds).OrderBy(difEvent => difEvent);
+        IOrderedEnumerable<int> times = spawnEvents.Select(spawnEvent => (spawnEvent.Minutes * 60) + spawnEvent.Seconds).OrderBy(spawnEvent => spawnEvent);
         foreach (var time in times)
         {
-            originalDifficultyEventTimes.Add(time); // Add timestamp to list for sequential processing
+            originalSpawnEventTimes.Add(time); // Add timestamp to list for sequential processing
         }
 
         InitializeRace();
@@ -30,29 +39,42 @@ public class RaceGenerator : MonoBehaviour
 
     void Update()
     {
-        currentGlobalTime = GameManagerLevel1.instance.CurrentGameTime;
+        currentGlobalTime = LevelManager1.instance.CurrentGameTime;
+
+        if(currentSpawnEvent != previousSpawnEvent)
+        {
+            previousSpawnEvent = currentSpawnEvent;
+            spawnEventChanged?.Invoke(currentSpawnEvent);
+        }
 
         // Check if there are pending timestamps AND if the current time matches the next scheduled timestamp
         if (pendingTimes.Count > 0 && currentGlobalTime == pendingTimes.Peek())
         {
             int matchTime = pendingTimes.Dequeue(); // Remove the matched timestamp from the queue
-            currentDifficultyEvent = difficultyEvents.First(difEvent => (difEvent.Minutes * 60) + difEvent.Seconds == matchTime);
+            
+            currentSpawnEvent = spawnEvents.First(spawnEvent => (spawnEvent.Minutes * 60) + spawnEvent.Seconds == matchTime);
 
-            ChangeDifficulty(currentDifficultyEvent);
+            ChangeDifficulty(currentSpawnEvent);
         }
 
         StartSpawnLoop();
     }
 
+    // === Initialization Methods ===
     public void InitializeRace()
     {
-        currentDifficultyEvent = null;
-        currentGlobalTime = GameManagerLevel1.instance.CurrentGameTime;
-        currentSpawnRate = 0f;
+        currentGlobalTime = LevelManager1.instance.CurrentGameTime;
+        pendingTimes = new Queue<int>(originalSpawnEventTimes);
         spawnTimer = 0f;
-        pendingTimes = new Queue<int>(originalDifficultyEventTimes);
+
+        if (currentGlobalTime == -1)
+        {
+            currentSpawnEvent = null;
+            currentSpawnRate = 0f;
+        }
 
         FilterPendingTimes();
+        SetCurrentSpawnEvent();
     }
 
     private void FilterPendingTimes()
@@ -67,22 +89,36 @@ public class RaceGenerator : MonoBehaviour
         pendingTimes = filtered;
     }
 
-    private void ChangeDifficulty(DifficultyEventLevel1Data difficultyEvent)
+    private void SetCurrentSpawnEvent()
     {
-        spawnManager.SpawnRate = difficultyEvent.NewSpawnRate;
-        spawnManager.GlobalSpeed = difficultyEvent.NewGlobalSpeed;
+        if (currentSpawnEvent == null || pendingTimes.Count == 0) return;
+ 
+        SpawnEventData previousSpawnEvent = spawnEvents.TakeWhile(spawnEvent => (spawnEvent.Minutes * 60) + spawnEvent.Seconds < pendingTimes.Peek()).LastOrDefault();
 
-        currentSpawnRate = difficultyEvent.NewSpawnRate;
+        if (previousSpawnEvent != null)
+        {
+            currentSpawnEvent = previousSpawnEvent;
+            currentSpawnRate = currentSpawnEvent.NewSpawnRate;
+        }
+    }
+
+    // === Race Management Methods ===
+    private void ChangeDifficulty(SpawnEventData spawnEvent)
+    {
+        spawnManager.SpawnRate = spawnEvent.NewSpawnRate;
+        spawnManager.GlobalSpeed = spawnEvent.NewGlobalSpeed;
+
+        currentSpawnRate = spawnEvent.NewSpawnRate;
     }
 
     private void StartSpawnLoop()
     {
-        if (currentDifficultyEvent == null) return;
+        if (currentSpawnEvent == null) return;
 
-        if (currentDifficultyEvent.SpawnedType == SpawnManagerBase.SpanwedType.Goal)
+        if (currentSpawnEvent.SpawnedType == SpawnManagerBase.SpanwedType.Goal)
         {
             spawnManager.SpawnObject(1);
-            currentDifficultyEvent = null;
+            currentSpawnEvent = null;
         }
         else
         {
@@ -93,7 +129,7 @@ public class RaceGenerator : MonoBehaviour
             {
                 int spawnCount = 1;
 
-                if (currentDifficultyEvent.DoubleSpawnChance == 1 || Random.value < currentDifficultyEvent.DoubleSpawnChance) spawnCount = 2;
+                if (currentSpawnEvent.DoubleSpawnChance == 1 || UnityEngine.Random.value < currentSpawnEvent.DoubleSpawnChance) spawnCount = 2;
 
                 spawnManager.SpawnObject(spawnCount);
                 spawnTimer = 0f;

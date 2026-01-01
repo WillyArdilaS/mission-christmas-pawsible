@@ -12,11 +12,12 @@ public class CameraFollow : MonoBehaviour
     [SerializeField] private float maxXPos;
 
     // === Properties ===
+    public float MinXPos => minXPos;
     public float MaxXPos => maxXPos;
 
     void LateUpdate()
     {
-        if (GameManagerLevel3.instance.State == AbstractGameManager.GameState.Playing)
+        if (LevelManager3.instance.State == AbstractLevelManager.GameState.Playing)
         {
             targetXPos = target.position.x;
 

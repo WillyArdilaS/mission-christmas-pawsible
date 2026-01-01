@@ -7,7 +7,7 @@ public class ObjectDespawner : MonoBehaviour
 
     void Start()
     {
-        if(GameManagerLevel1.instance != null) GameManagerLevel1.instance.LapRestarted += Despawn;
+        if(LevelManager1.instance != null) LevelManager1.instance.LapRestarted += Despawn;
     }
 
     void Update()

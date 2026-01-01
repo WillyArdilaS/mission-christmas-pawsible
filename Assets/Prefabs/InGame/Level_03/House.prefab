@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 8816574229991555790}
-  - component: {fileID: 8212015523208008836}
+  - component: {fileID: -1198276443916147169}
   - component: {fileID: -6600712692168988977}
   m_Layer: 0
   m_Name: House
@@ -34,7 +34,7 @@ Transform:
   - {fileID: 4817242142826208863}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &8212015523208008836
+--- !u!61 &-1198276443916147169
 BoxCollider2D:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -93,7 +93,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   houseID: 0
-  isOn: 0
 --- !u!1 &6531467895093727770
 GameObject:
   m_ObjectHideFlags: 0

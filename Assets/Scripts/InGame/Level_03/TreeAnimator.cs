@@ -13,14 +13,20 @@ public class TreeAnimator : MonoBehaviour
     [SerializeField] private GameObject treeLight;
 
     // === Camera ===
-    [SerializeField] private float cameraSpeed;
     private Camera mainCam;
     private CameraFollow cameraFollow;
+    private float cameraSpeed;
 
     // === Animation ===
-    [Header("Animation Time Settings")]
-    [SerializeField] private float transitionTime;
+    private float waitingTime;
+
+    [Header("Tree Animation Settings")]
     [SerializeField] private float houseLightTransitionTime;
+
+    [Header("Final Animation Settings")]
+    [SerializeField] private Vector3 targetCamPosition;
+    [SerializeField] private float targetZoom;
+    [SerializeField] private float zoomSpeed;
 
     // === Coroutines ===
     private Coroutine treeAnimationRoutine;
@@ -32,12 +38,15 @@ public class TreeAnimator : MonoBehaviour
 
     void Awake()
     {
-        sequenceManager = GameManagerLevel3.instance.SequenceManager.GetComponent<SequenceManager>();
-        sequenceGenerator = GameManagerLevel3.instance.SequenceManager.GetComponent<SequenceGenerator>();
-        lightManager = GameManagerLevel3.instance.LightManager;
+        sequenceManager = LevelManager3.instance.SequenceManager.GetComponent<SequenceManager>();
+        sequenceGenerator = LevelManager3.instance.SequenceManager.GetComponent<SequenceGenerator>();
+        lightManager = LevelManager3.instance.LightManager;
 
         mainCam = Camera.main;
-        cameraFollow = Camera.main.GetComponent<CameraFollow>();
+        cameraFollow = LevelManager3.instance.CameraFollow;
+        cameraSpeed = LevelManager3.instance.CameraSpeed;
+
+        waitingTime = LevelManager3.instance.WaitingTime;
 
         sequenceManager.SequenceMatched += StartTreeAnimation;
     }
@@ -56,7 +65,8 @@ public class TreeAnimator : MonoBehaviour
 
     private IEnumerator ShowTreeIlumination()
     {
-        GameManagerLevel3.instance.State = GameManagerLevel3.GameState.ShowingAnimation;
+        LevelManager3.instance.State = LevelManager3.GameState.ShowingAnimation;
+        LevelManager3.instance.SetMapUI(false);
 
         // Turn on all the house lights
         WaitForSeconds lightDelay = new WaitForSeconds(houseLightTransitionTime);
@@ -67,7 +77,7 @@ public class TreeAnimator : MonoBehaviour
         }
 
         // Horizontal camera movement
-        yield return new WaitForSeconds(transitionTime);
+        yield return new WaitForSeconds(waitingTime);
         float targetX = cameraFollow.MaxXPos;
 
         while (mainCam.transform.position.x < targetX)
@@ -80,11 +90,11 @@ public class TreeAnimator : MonoBehaviour
         }
 
         // Turn on the tree light
-        yield return new WaitForSeconds(transitionTime);
+        yield return new WaitForSeconds(waitingTime);
         treeLight.SetActive(true);
 
         // Extend the animation only if it is the final round
-        yield return new WaitForSeconds(transitionTime);
+        yield return new WaitForSeconds(waitingTime);
         if (!sequenceGenerator.IsFinalRound)
         {
             LightedTree?.Invoke();
@@ -98,7 +108,26 @@ public class TreeAnimator : MonoBehaviour
 
     private IEnumerator ShowFinalTreeIlumination()
     {
-        yield return null;
+        Vector3 startPos = mainCam.transform.position;
+
+        float startZoom = mainCam.orthographicSize;
+        float elapsedTime = 0f;
+
+        while (elapsedTime < 1f)
+        {
+            elapsedTime += Time.deltaTime * zoomSpeed;
+
+            mainCam.transform.position = Vector3.Lerp(startPos, targetCamPosition, elapsedTime); // Interpolate position
+            mainCam.orthographicSize = Mathf.Lerp(startZoom, targetZoom, elapsedTime); // Interpolate zoom
+
+            yield return null;
+        }
+
+        // Adjust it to the exact final values.
+        mainCam.transform.position = targetCamPosition;
+        mainCam.orthographicSize = targetZoom;
+
+        yield return new WaitForSeconds(waitingTime);
         LightedTreeFinal?.Invoke(LevelSelectorManager.NextLevel.Finished);
     }
 }

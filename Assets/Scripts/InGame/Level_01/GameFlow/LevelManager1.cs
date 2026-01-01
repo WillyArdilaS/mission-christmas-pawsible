@@ -1,0 +1,166 @@
+using System;
+using System.Collections;
+using UnityEngine;
+
+public class LevelManager1 : AbstractLevelManager
+{
+    // === Singleton ===
+    public static LevelManager1 instance;
+
+    // === Managers ===
+    private SfxManagerLevel1 sfxManager;
+    private GameObject raceManager;
+    private TrackManager trackManager;
+
+    // === Game Timer ===
+    [Header("Game Duration")]
+    [SerializeField, Min(0)] private int minutes;
+    [SerializeField, Range(0, 59)] private int seconds;
+    [SerializeField, Tooltip("It should start at -1 due to the delay at the beginning")] private int currentGameTime;
+    private int gameDuration;
+
+    // === Player ===
+    [Header("Player")]
+    [SerializeField] private GameObject player;
+    private SleighController sleighController;
+    private LifeManager lifeManager;
+    private CollisionManagerLevel1 collisionManager;
+    private bool hasExtraLife = true;
+
+    // === Race ===
+    [Header("Race")]
+    [SerializeField, Range(0, 3)] private float startRaceDelay;
+    [SerializeField] private int totalLaps;
+    private const int LAP_DURATION = 55;
+    private int currentLap = 0;
+
+    // === Coroutines ===
+    private Coroutine resetTimerRoutine;
+
+    // === Events ===
+    public event Action LapRestarted;
+
+    // === Properties ===
+    public TrackManager TrackManager => trackManager;
+    public GameObject RaceManager => raceManager;
+    public int CurrentGameTime => currentGameTime;
+    public int TotalGameDuration => gameDuration;
+    public int TotalLaps => totalLaps;
+    public int CurrentLap => currentLap;
+    public int LapDuration => LAP_DURATION;
+
+    // === Overridden Abstract Methods ===
+    protected override void InitializeManagers()
+    {
+        if (sfxManager == null) sfxManager = GetComponentInChildren<SfxManagerLevel1>();
+        if (pauseManager == null) pauseManager = GetComponentInChildren<PauseManager>();
+        if (raceManager == null) raceManager = transform.Find("RaceManager").gameObject;
+        if (trackManager == null) trackManager = GetComponentInChildren<TrackManager>();
+    }
+
+    protected override IEnumerator StartGameTimer()
+    {
+        yield return new WaitForSeconds(startRaceDelay);
+
+        while (currentGameTime < gameDuration)
+        {
+            currentGameTime++;
+            yield return new WaitForSeconds(1);
+        }
+    }
+
+    protected override void Awake()
+    {
+        base.Awake();
+
+        // Singleton
+        if (instance == null)
+        {
+            instance = this;
+            InitializeManagers();
+        }
+        else
+        {
+            Destroy(gameObject);
+        }
+
+        // Initialization
+        sleighController = player.GetComponent<SleighController>();
+        lifeManager = player.GetComponent<LifeManager>();
+        collisionManager = player.GetComponent<CollisionManagerLevel1>();
+
+        collisionManager.FinishLineCrossed += UpdateLap;
+
+        gameDuration = (minutes * 60) + seconds;
+
+        if (gameTimerRoutine != null) StopCoroutine(gameTimerRoutine);
+        gameTimerRoutine = StartCoroutine(StartGameTimer());
+    }
+
+    // === Race Management Methods ===
+    void Update()
+    {
+        sleighController.CanMove = (gameState == GameState.Playing);
+
+        if (lifeManager.LifeCounter == 0 && hasExtraLife)
+        {
+            ResetLap();
+        }
+        else if (lifeManager.LifeCounter == 0 && !hasExtraLife)
+        {
+            RestartRace();
+        }
+    }
+
+    private void UpdateLap()
+    {
+        currentLap++;
+
+        if (currentLap > totalLaps)
+        {
+            StartLevelFinishing(LevelSelectorManager.NextLevel.Level_02);
+        }
+    }
+
+    private void ResetLap()
+    {
+        int lapStartTime = (currentGameTime / LAP_DURATION) * LAP_DURATION;
+        currentGameTime = lapStartTime;
+        currentLap--;
+        lifeManager.AddLife();
+        hasExtraLife = false;
+
+        if(resetTimerRoutine != null) StopCoroutine(resetTimerRoutine);
+        resetTimerRoutine = StartCoroutine(ResetTimer());
+    }
+
+    private void RestartRace()
+    {
+        currentGameTime = -1;
+        currentLap = 0;
+        lifeManager.ResetLives();
+        hasExtraLife = true;
+
+        GameManager.instance.AudioManager.RestartMusic();
+
+        if(resetTimerRoutine != null) StopCoroutine(resetTimerRoutine);
+        resetTimerRoutine = StartCoroutine(ResetTimer());
+    }
+
+    private IEnumerator ResetTimer()
+    {
+        StopCoroutine(gameTimerRoutine);
+
+        transitionAnim.SetTrigger("t_showSnowy");
+        yield return new WaitForSeconds(transitionDelay);
+
+        RaceGenerator[] raceGenerators = raceManager.GetComponents<RaceGenerator>();
+        foreach (var raceGenerator in raceGenerators)
+        {
+            raceGenerator.InitializeRace();
+        }
+
+        gameTimerRoutine = StartCoroutine(StartGameTimer());
+        LapRestarted?.Invoke();
+    }
+}
